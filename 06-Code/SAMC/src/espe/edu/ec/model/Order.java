@@ -3,9 +3,6 @@ package espe.edu.ec.model;
 import java.util.Date;
 import java.util.List;
 
-/**
- * Clase que representa una orden en un restaurante.
- */
 public class Order {
     private int orderId;
     private String customerName;

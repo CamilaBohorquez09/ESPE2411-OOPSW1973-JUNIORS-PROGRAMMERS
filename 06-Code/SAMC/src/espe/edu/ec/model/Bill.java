@@ -1,33 +1,24 @@
 package espe.edu.ec.model;
 
-/**
- * Clase que representa una factura.
- */
-public class Bill {
-    private Cashier cashier;
+import java.util.Map;
 
-    public Bill(Cashier cashier) {
-        this.cashier = cashier;
+public class Bill {
+    private Customer customer;
+    private Map<String, Integer> order;
+    private float total;
+
+    public Bill(Customer customer, Map<String, Integer> order, float total) {
+        this.customer = customer;
+        this.order = order;
+        this.total = total;
     }
 
     @Override
     public String toString() {
-        return "Bill{" +
-                "dniCustomer=" + cashier.getDniCustomer() +
-                ", nameCustomer='" + cashier.getNameCustomer() + '\'' +
-                ", addressOfCustomer='" + cashier.getAddressOfCustomer() + '\'' +
-                ", emailOfCustomer='" + cashier.getEmailOfCustomer() + '\'' +
-                ", phoneOfCustomer='" + cashier.getPhoneOfCustomer() + '\'' +
+        return "Factura{" +
+                "Cliente: " + customer +
+                ", Platos Pedidos: " + order +
+                ", Total: $" + total +
                 '}';
     }
-  // Additional methods for processing the bill can be added here
-
-    public Cashier getCashier(Order order) {
-        return cashier;
-    }
-
-    public void setCashier(Cashier cashier) {
-        this.cashier = cashier;
-    }
-    
 }

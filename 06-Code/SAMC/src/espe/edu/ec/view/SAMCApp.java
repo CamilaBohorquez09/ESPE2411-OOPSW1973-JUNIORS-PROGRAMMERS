@@ -1,44 +1,79 @@
 package espe.edu.ec.view;
 
-import espe.edu.ec.controller.ManageFileCsv;
-import espe.edu.ec.controller.ManageFileJson;
-import espe.edu.ec.model.Cashier;
-import espe.edu.ec.model.Bill;
+import espe.edu.ec.model.*;
 
+import java.util.HashMap;
+import java.util.Map;
 import java.util.Scanner;
 
-/**
- * Clase principal para ingresar datos del cliente y generar una factura.
- */
 public class SAMCApp {
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
-        Cashier cashier = new Cashier();
-        ManageFileCsv manageFileCsv = new ManageFileCsv();
-        ManageFileJson manageFileJson = new ManageFileJson();
 
-        System.out.print("Enter DNI: ");
-        cashier.setDniCustomer(scanner.nextInt());
+        // 1. Mostrar el menú
+        Map<String, Float> menuItems = new HashMap<>();
+        menuItems.put("Salchichas", 5.0f); 
+        menuItems.put("Pollo", 7.0f);     
+        menuItems.put("Carne", 10.0f);    
+
+        System.out.println("**************Menú de Platos****************");
+        for (Map.Entry<String, Float> entry : menuItems.entrySet()) {
+            System.out.println(entry.getKey() + " - Precio: $" + entry.getValue());
+        }
+
+        Map<String, Integer> order = new HashMap<>();
+        boolean ordering = true;
+
+        while (ordering) {
+            System.out.print("Ingrese el nombre del plato que desea pedir: ");
+            String dishName = scanner.nextLine();
+            if (!menuItems.containsKey(dishName)) {
+                System.out.println("Plato no disponible.");
+                continue;
+            }
+
+            System.out.print("¿Cuántos platos desea?: ");
+            int quantity = scanner.nextInt();
+            scanner.nextLine();  
+            order.put(dishName, quantity);
+
+            System.out.print("¿Desea pedir otro plato? (si/no): ");
+            String answer = scanner.nextLine();
+            if (!answer.equalsIgnoreCase("si")) {
+                ordering = false;
+            }
+        }
+        
+        System.out.print("Ingrese su nombre: ");
+        String name = scanner.nextLine();
+        System.out.print("Ingrese su ID: ");
+        int id = scanner.nextInt();
         scanner.nextLine();
+        System.out.print("Ingrese su email: ");
+        String email = scanner.nextLine();
+        System.out.print("Ingrese su teléfono: ");
+        String phoneNumber = scanner.nextLine();
 
-        System.out.print("Enter Name: ");
-        cashier.setNameCustomer(scanner.nextLine());
+        Customer customer = new Customer(name, id, email, "N/A", phoneNumber);
+        Cashier cashier = new Cashier(customer);
 
-        System.out.print("Enter Address: ");
-        cashier.setAddressOfCustomer(scanner.nextLine());
+        cashier.calculateTotal(order, menuItems);
 
-        System.out.print("Enter Email: ");
-        cashier.setEmailOfCustomer(scanner.nextLine());
+        System.out.print("¿Desea factura o nota de venta? ");
+        String documentType = scanner.nextLine();
 
-        System.out.print("Enter Phone Number: ");
-        cashier.setPhoneOfCustomer(scanner.nextLine());
+        System.out.println("El total a pagar es: $" + cashier.getTotalToPay());
 
-        Bill bill = new Bill(cashier);
+        if (documentType.equalsIgnoreCase("factura")) {
+            Bill bill = new Bill(customer, order, cashier.getTotalToPay());
+            System.out.println(bill);
+        } else if (documentType.equalsIgnoreCase("nota de venta")) {
+            SaleNote saleNote = new SaleNote(customer, order, cashier.getTotalToPay());
+            System.out.println(saleNote);
+        } else {
+            System.out.println("Opción no válida.");
+        }
 
-        manageFileCsv.saveToCsv(cashier);
-        manageFileJson.saveToJson(cashier);
-
-        System.out.println("Factura Generada:");
-        System.out.println(bill);
+        System.out.println("Gracias por su compra!");
     }
 }

@@ -1,63 +1,33 @@
 package espe.edu.ec.model;
 
-/**
- * Clase que representa los datos del cliente.
- */
+import java.util.Map;
+
 public class Cashier {
-    private int dniCustomer;
-    private String nameCustomer;
-    private String addressOfCustomer;
-    private String emailOfCustomer;
-    private String phoneOfCustomer;
+    private Customer customer;
+    private float totalToPay;
 
-    @Override
-    public String toString() {
-        return "Cashier{" + "dniCustomer=" + dniCustomer + ", nameCustomer=" 
-                + nameCustomer + ", addressOfCustomer=" + addressOfCustomer 
-                + ", emailOfCustomer=" + emailOfCustomer + ", phoneOfCustomer=" 
-                + phoneOfCustomer + '}';
+    public Cashier(Customer customer) {
+        this.customer = customer;
+        this.totalToPay = 0;
     }
 
-    // Getters and Setters
-    public int getDniCustomer() {
-        return dniCustomer;
+    // Método para calcular el total a pagar basándonos en el pedido
+    public void calculateTotal(Map<String, Integer> order, Map<String, Float> menuItems) {
+        for (Map.Entry<String, Integer> entry : order.entrySet()) {
+            String dishName = entry.getKey();
+            int quantity = entry.getValue();
+            Float price = menuItems.get(dishName);
+            if (price != null) {
+                totalToPay += price * quantity;
+            }
+        }
     }
 
-    public void setDniCustomer(int dniCustomer) {
-        this.dniCustomer = dniCustomer;
+    public float getTotalToPay() {
+        return totalToPay;
     }
 
-    public String getNameCustomer() {
-        return nameCustomer;
-    }
-
-    public void setNameCustomer(String nameCustomer) {
-        this.nameCustomer = nameCustomer;
-    }
-
-    public String getAddressOfCustomer() {
-        return addressOfCustomer;
-    }
-
-    public void setAddressOfCustomer(String addressOfCustomer) {
-        this.addressOfCustomer = addressOfCustomer;
-    }
-
-    public String getEmailOfCustomer() {
-        return emailOfCustomer;
-    }
-
-    public void setEmailOfCustomer(String emailOfCustomer) {
-        this.emailOfCustomer = emailOfCustomer;
-    }
-
-    public String getPhoneOfCustomer() {
-        return phoneOfCustomer;
-    }
-
-    public void setPhoneOfCustomer(String phoneOfCustomer) {
-        this.phoneOfCustomer = phoneOfCustomer;
+    public Customer getCustomer() {
+        return customer;
     }
 }
-
-

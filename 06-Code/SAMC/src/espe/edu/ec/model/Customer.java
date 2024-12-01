@@ -2,9 +2,6 @@ package espe.edu.ec.model;
 
 import java.util.List;
 
-/**
- * Clase que representa un cliente en el restaurante.
- */
 public class Customer {
     private String name;
     private int id;
@@ -39,38 +36,7 @@ public class Customer {
                 '}';
     }
 
-    // Métodos vacíos para implementar en el futuro
-
-    /**
-     * Agrega una nueva orden al cliente.
-     *
-     * @param order La orden que se va a agregar.
-     */
-    public void addOrder(Order order) {
-        // Implementación futura
-    }
-
-    /**
-     * Calcula el total gastado por el cliente en todas sus órdenes.
-     *
-     * @return El total calculado.
-     */
-    public float calculateTotalSpent() {
-        // Implementación futura
-        return 0.0f;
-    }
-
-    /**
-     * Obtiene las órdenes activas (no pagadas) del cliente.
-     *
-     * @return Lista de órdenes activas.
-     */
-    public List<Order> getActiveOrders() {
-        // Implementación futura
-        return null;
-    }
-
-    // Getters
+    // Getters and Setters
     public String getName() {
         return name;
     }
@@ -89,14 +55,5 @@ public class Customer {
 
     public String getPhoneNumber() {
         return phoneNumber;
-    }
-
-    public List<Order> getOrders() {
-        return orders;
-    }
-
-    // Setters
-    public void setOrders(List<Order> orders) {
-        this.orders = orders;
     }
 }
