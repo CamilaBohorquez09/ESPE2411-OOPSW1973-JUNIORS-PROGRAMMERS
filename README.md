@@ -11,7 +11,7 @@ Author: Arias Alan, Bohórquez Camila, Bonilla Robinson, Camacho Mateo
 Instructor: Edison Lascano
 
 # Project Title
-Quickly
+SAMC
 
 ## Description
 This project aims to develop an automated ordering system for the restaurant "Agachaditos de la Javi," designed to streamline and simplify the a la carte ordering process. This virtual ordering application will enhance customer experience by allowing diners to place orders directly from their tables, reducing waiting times and the need for traditional interaction with waitstaff. The program focuses on efficiency, cost reduction, and improved customer satisfaction by modernizing the ordering and payment process.
