@@ -3,6 +3,7 @@ package espe.edu.ec.model;
 import java.util.List;
 
 public class Customer {
+    private static int nextId = 1;
     private String name;
     private int id;
     private String email;
@@ -10,12 +11,18 @@ public class Customer {
     private String phoneNumber;
     private List<Order> orders;
 
-    public Customer(String name, int id, String email, String address, String phoneNumber) {
+    // Constructor modificado
+    public Customer(String name, String email, String address, String phoneNumber) {
         this.name = name;
-        this.id = id;
+        this.id = generateNextId();
         this.email = email;
         this.address = address;
         this.phoneNumber = phoneNumber;
+    }
+
+    // Método para generar IDs de manera incremental
+    private static synchronized int generateNextId() {
+        return nextId++;
     }
 
     @Override
@@ -34,6 +41,13 @@ public class Customer {
                 ", phoneNumber='" + phoneNumber + '\'' +
                 ", orders=\n" + ordersDetails +
                 '}';
+    }
+    public List<Order> getOrders() {
+    return orders;
+    }
+
+    public void setOrders(List<Order> orders) {
+    this.orders = orders;
     }
 
     public String getName() {

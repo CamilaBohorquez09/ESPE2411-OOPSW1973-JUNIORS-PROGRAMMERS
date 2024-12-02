@@ -10,6 +10,7 @@ public class DrinksInventory {
     private String addressOfDescription;
     private float price;
     private boolean isAvailable;
+    private int quantity;
     
     @Override
     public String toString() {
@@ -75,4 +76,12 @@ public class DrinksInventory {
     public void setAvailable(boolean isAvailable) {
         this.isAvailable = isAvailable;
     }
+    public void reduceInventory(int quantity) {
+    if (isAvailable && quantity > 0) {
+        isAvailable = isAvailable && quantity <= this.quantity;
+        this.quantity -= quantity;
+    } else {
+        System.out.println("No hay suficiente stock.");
+    }
+}
 }

@@ -1,78 +1,164 @@
 package espe.edu.ec.view;
 
 import espe.edu.ec.model.*;
-
+import espe.edu.ec.controller.ManageFileJson;
+import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 import java.util.Scanner;
 
 public class SAMCApp {
     public static void main(String[] args) {
+        MenuItem.initializeMenu();
         Scanner scanner = new Scanner(System.in);
+        boolean running = true;
 
-        Map<String, Float> menuItems = new HashMap<>();
-        menuItems.put("Salchichas", 5.0f); 
-        menuItems.put("Pollo", 7.0f);     
-        menuItems.put("Carne", 10.0f);    
+        while (running) {
+            System.out.println("******** AGACHADITOS DE LA JAVI ********");
+            System.out.println("1. Realizar un pedido");
+            System.out.println("2. Imprimir factura");
+            System.out.println("3. Imprimir nota de venta");
+            System.out.println("4. Dejar un comentario");
+            System.out.println("5. Salir");
+            System.out.print("Seleccione una opcion: ");
 
-        System.out.println("**************Menú de Platos****************");
-        for (Map.Entry<String, Float> entry : menuItems.entrySet()) {
-            System.out.println(entry.getKey() + " - Precio: $" + entry.getValue());
+            int choice = scanner.nextInt();
+            scanner.nextLine();
+
+            switch (choice) {
+                case 1:
+                    realizarPedido(scanner);
+                    break;
+                case 2:
+                    imprimirFactura(scanner);
+                    break;
+                case 3:
+                    imprimirNotaVenta(scanner);
+                    break;
+                case 4:
+                    dejarComentario(scanner);
+                    break;
+                case 5:
+                    running = false;
+                    System.out.println("Gracias por visitarnos. Hasta pronto!");
+                    break;
+                default:
+                    System.out.println("Opcion no valida.");
+            }
         }
+        scanner.close();
+    }
+
+   private static void realizarPedido(Scanner scanner) {
+    System.out.print("Ingrese su nombre: ");
+    String name = scanner.nextLine();
+    System.out.print("Ingrese su email: ");
+    String email = scanner.nextLine();
+    System.out.print("Ingrese su direccion: ");
+    String address = scanner.nextLine();
+    System.out.print("Ingrese su telefono: ");
+    String phone = scanner.nextLine();
+    Customer customer = new Customer(name, email, address, phone);
 
         Map<String, Integer> order = new HashMap<>();
-        boolean ordering = true;
 
-        while (ordering) {
-            System.out.print("Ingrese el nombre del plato que desea pedir: ");
-            String dishName = scanner.nextLine();
-            if (!menuItems.containsKey(dishName)) {
-                System.out.println("Plato no disponible.");
-                continue;
-            }
+        System.out.println("Seleccione los platos (ingrese '0' para terminar): ");
+        MenuItem.displayMenu();
 
-            System.out.print("¿Cuántos platos desea?: ");
+        while (true) {
+            int itemId = scanner.nextInt();
+            if (itemId == 0) break;
+
+            System.out.print("Ingrese la cantidad: ");
             int quantity = scanner.nextInt();
-            scanner.nextLine();  
-            order.put(dishName, quantity);
 
-            System.out.print("¿Desea pedir otro plato? (si/no): ");
-            String answer = scanner.nextLine();
-            if (!answer.equalsIgnoreCase("si")) {
-                ordering = false;
+            MenuItem item = MenuItem.getMenuItemById(itemId);
+            if (item != null) {
+                order.put(item.getName(), quantity);
+                item.reduceInventory(quantity);
+            } else {
+                System.out.println("Plato no encontrado.");
             }
         }
+
+        float total = new Counter().calculateTotal(order);
+        SaleNote saleNote = new SaleNote(customer, order, total);
+
+        ManageFileJson manageFileJson = new ManageFileJson();
+        manageFileJson.saveSaleNoteToJson(saleNote);
         
-        System.out.print("Ingrese su nombre: ");
-        String name = scanner.nextLine();
-        System.out.print("Ingrese su ID: ");
-        int id = scanner.nextInt();
-        scanner.nextLine();
-        System.out.print("Ingrese su email: ");
-        String email = scanner.nextLine();
-        System.out.print("Ingrese su teléfono: ");
-        String phoneNumber = scanner.nextLine();
+        Bill bill = new Bill(customer, order, total);
+        manageFileJson.saveBillToJson(bill);
 
-        Customer customer = new Customer(name, id, email, "N/A", phoneNumber);
-        Cashier cashier = new Cashier(customer);
+        System.out.println("Pedido realizado con exito.");
+    }
 
-        cashier.calculateTotal(order, menuItems);
+    private static void imprimirFactura(Scanner scanner) {
+    System.out.print("Ingrese el ID del cliente: ");
+    int customerId = scanner.nextInt();
+    scanner.nextLine();
 
-        System.out.print("¿Desea factura o nota de venta? ");
-        String documentType = scanner.nextLine();
+    ManageFileJson manageFileJson = new ManageFileJson();
+    Customer customer = manageFileJson.obtenerClientePorId(customerId);
 
-        System.out.println("El total a pagar es: $" + cashier.getTotalToPay());
+    if (customer == null) {
+        System.out.println("Cliente no encontrado.");
+        return;
+    }
 
-        if (documentType.equalsIgnoreCase("factura")) {
-            Bill bill = new Bill(customer, order, cashier.getTotalToPay());
-            System.out.println(bill);
-        } else if (documentType.equalsIgnoreCase("nota de venta")) {
-            SaleNote saleNote = new SaleNote(customer, order, cashier.getTotalToPay());
-            System.out.println(saleNote);
-        } else {
-            System.out.println("Opción no válida.");
-        }
+    Map<String, Integer> order = manageFileJson.obtenerPedidoPorCliente(customerId);
 
-        System.out.println("Gracias por su compra!");
+    if (order.isEmpty()) {
+        System.out.println("No se encontraron pedidos para este cliente.");
+        return;
+    }
+
+    float total = new Counter().calculateTotal(order);
+    Bill bill = new Bill(customer, order, total);
+    manageFileJson.saveBillToJson(bill);
+
+    System.out.println(bill);
+}
+
+    private static void imprimirNotaVenta(Scanner scanner) {
+    System.out.print("Ingrese el ID del cliente: ");
+    int customerId = scanner.nextInt();
+    scanner.nextLine();
+
+    ManageFileJson manageFileJson = new ManageFileJson();
+    Customer customer = manageFileJson.obtenerClientePorId(customerId);
+
+    if (customer == null) {
+        System.out.println("Cliente no encontrado.");
+        return;
+    }
+
+    Map<String, Integer> order = manageFileJson.obtenerPedidoPorCliente(customerId);
+    float total = new Counter().calculateTotal(order);
+    SaleNote saleNote = new SaleNote(customer, order, total);
+
+    manageFileJson.saveSaleNoteToJson(saleNote);
+
+    System.out.println("Detalles de la Nota de Venta:");
+    System.out.println(saleNote);
+}
+
+    private static void dejarComentario(Scanner scanner) {
+        System.out.print("Ingrese su comentario: ");
+        String comentario = scanner.nextLine();
+        ManageFileJson manageFileJson = new ManageFileJson();
+        manageFileJson.saveCommentToJson(comentario);
+        System.out.println("Comentario guardado con exito.");
+    }
+
+    private static Customer obtenerClientePorId(int customerId) {
+        ManageFileJson manageFileJson = new ManageFileJson();
+        return manageFileJson.obtenerClientePorId(customerId);
+    }
+
+    private static Map<String, Integer> obtenerPedidoPorCliente(int customerId) {
+        ManageFileJson manageFileJson = new ManageFileJson();
+        return manageFileJson.obtenerPedidoPorCliente(customerId);
     }
 }
