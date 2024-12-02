@@ -36,7 +36,6 @@ public class Customer {
                 '}';
     }
 
-    // Getters and Setters
     public String getName() {
         return name;
     }

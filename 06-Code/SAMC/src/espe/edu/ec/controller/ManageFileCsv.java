@@ -20,7 +20,6 @@ public class ManageFileCsv {
             SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
             String date = dateFormat.format(new Date());
 
-            // Escribir los datos del cliente y la venta en el archivo CSV
             writer.append(cashier.getCustomer().getName()).append(",");
             writer.append(String.valueOf(cashier.getCustomer().getId())).append(",");
             writer.append(cashier.getCustomer().getEmail()).append(",");

@@ -10,7 +10,6 @@ public class SAMCApp {
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
 
-        // 1. Mostrar el menú
         Map<String, Float> menuItems = new HashMap<>();
         menuItems.put("Salchichas", 5.0f); 
         menuItems.put("Pollo", 7.0f);     

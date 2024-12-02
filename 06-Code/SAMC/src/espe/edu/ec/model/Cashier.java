@@ -11,7 +11,6 @@ public class Cashier {
         this.totalToPay = 0;
     }
 
-    // Método para calcular el total a pagar basándonos en el pedido
     public void calculateTotal(Map<String, Integer> order, Map<String, Float> menuItems) {
         for (Map.Entry<String, Integer> entry : order.entrySet()) {
             String dishName = entry.getKey();
