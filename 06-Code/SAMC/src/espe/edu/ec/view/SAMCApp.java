@@ -10,13 +10,29 @@ public class SAMCApp {
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
 
-        // 1. Mostrar el menú
         Map<String, Float> menuItems = new HashMap<>();
-        menuItems.put("Salchichas", 5.0f); 
-        menuItems.put("Pollo", 7.0f);     
-        menuItems.put("Carne", 10.0f);    
+        menuItems.put("Guata pequenia", 1.50f);
+        menuItems.put("Guata mediana", 2.00f);
+        menuItems.put("Guata extragrande", 2.50f);
+        menuItems.put("Papas con cuero", 2.00f);
+        menuItems.put("Seco de chivo", 2.50f);
+        menuItems.put("Seco de chancho", 2.50f);
+        menuItems.put("Seco de costilla", 2.50f);
+        menuItems.put("Seco de pollo", 2.50f);
+        menuItems.put("Mixto seco de pollo y guata", 3.50f);
+        menuItems.put("Mixto seco de costilla y guata", 3.50f);
+        menuItems.put("Mixto papas con cuero y guata", 3.50f);
+        menuItems.put("Mixto seco de chivo y guata", 3.50f);
+        menuItems.put("Mixto seco de chancho y guata", 3.50f);
+        menuItems.put("Mixto seco de pollo y papas con cuero", 3.50f);
+        menuItems.put("Mixto seco de chancho y papas con cuero", 3.50f);
+        menuItems.put("Mixto seco de costilla y papas con cuero", 3.50f);
+        menuItems.put("Mixto seco de chivo y papas con cuero", 3.50f);
+        menuItems.put("Mixto con doble carne; pollo, chivo, chancho, costilla", 4.50f);
+        menuItems.put("Banderas", 6.75f);
+   
 
-        System.out.println("**************Menú de Platos****************");
+        System.out.println("**************Menu de Platos****************");
         for (Map.Entry<String, Float> entry : menuItems.entrySet()) {
             System.out.println(entry.getKey() + " - Precio: $" + entry.getValue());
         }
@@ -32,7 +48,7 @@ public class SAMCApp {
                 continue;
             }
 
-            System.out.print("¿Cuántos platos desea?: ");
+            System.out.print("¿Cuantos platos desea?: ");
             int quantity = scanner.nextInt();
             scanner.nextLine();  
             order.put(dishName, quantity);
@@ -71,7 +87,7 @@ public class SAMCApp {
             SaleNote saleNote = new SaleNote(customer, order, cashier.getTotalToPay());
             System.out.println(saleNote);
         } else {
-            System.out.println("Opción no válida.");
+            System.out.println("Opcion no valida.");
         }
 
         System.out.println("Gracias por su compra!");
