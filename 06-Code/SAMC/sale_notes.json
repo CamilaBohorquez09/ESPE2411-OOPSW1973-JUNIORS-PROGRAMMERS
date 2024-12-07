@@ -12,5 +12,34 @@
     },
     "total": 1.5,
     "date": "2024-12-02 01:40:04"
+  },
+  {
+    "customer": {
+      "name": "1323",
+      "id": 1,
+      "email": "camila@hotmail.com",
+      "address": "Cuendina",
+      "phoneNumber": "0999"
+    },
+    "order": {
+      "Mixto seco de costilla y guata": 2,
+      "Guata pequenia": 2
+    },
+    "total": 10.0,
+    "date": "2024-12-07 12:00:45"
+  },
+  {
+    "customer": {
+      "name": "Camila",
+      "id": 1,
+      "email": "camila@hotmail.com",
+      "address": "Cuendina",
+      "phoneNumber": "0995646606"
+    },
+    "order": {
+      "Banderas": 2
+    },
+    "total": 13.5,
+    "date": "2024-12-07 12:57:27"
   }
 ]
