@@ -1,4 +1,4 @@
-package espe.edu.ec.controller;
+package espe.edu.ec.utils;
 
 import espe.edu.ec.model.Cashier;
 
