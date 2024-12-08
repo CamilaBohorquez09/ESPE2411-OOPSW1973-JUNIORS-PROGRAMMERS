@@ -1,8 +1,47 @@
 package espe.edu.ec.utils;
 
 import java.util.Scanner;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
-public class Utils {
+public class Validations {
+    public static boolean validarSoloLetras(String input) {
+        return input.matches("[a-zA-ZnN]+");
+    }
+
+    public static boolean validarCedula(String idCard) {
+        if (idCard.length() != 10) {
+            return false;
+        }
+        return idCard.matches("\\d{10}");
+    }
+
+    public static boolean validarCorreo(String correo) {
+        String regex = "^[a-zA-Z0-9_+&*-]+(?:\\.[a-zA-Z0-9_+&*-]+)*@(?:[a-zA-Z0-9-]+\\.)+[a-zA-Z]{2,7}$";
+        Pattern pattern = Pattern.compile(regex);
+        Matcher matcher = pattern.matcher(correo);
+        return matcher.matches();
+    }
+
+    public static int validarOpcion(int min, int max, Scanner scanner) {
+        int opcion;
+        while (true) {
+            try {
+                opcion = Integer.parseInt(scanner.nextLine());
+                if (opcion >= min && opcion <= max) {
+                    return opcion;
+                } else {
+                    System.out.println("Opcion fuera de rango. Ingrese una opcion valida entre " + min + " y " + max + ": ");
+                }
+            } catch (NumberFormatException e) {
+                System.out.println("Por favor, ingrese un numero valido.");
+            }
+        }
+    }
+
+    public static boolean validarTelefono(String telefono) {
+        return telefono.matches("\\d{10}");
+    }
     
     public void validarOpcion(int choice) {
         while (choice < 1 || choice > 5) {
@@ -103,7 +142,7 @@ public boolean esCedulaValida(String cedula) {
     int[] coeficientes = {2, 1, 2, 1, 2, 1, 2, 1, 2};
     int total = 0;
     int digitoVerificador;
-    int ultimoDigito = Integer.parseInt(cedula.substring(9, 10)); // Último dígito (verificador)
+    int ultimoDigito = Integer.parseInt(cedula.substring(9, 10));
 
     for (int i = 0; i < 9; i++) {
         total += Integer.parseInt(String.valueOf(cedula.charAt(i))) * coeficientes[i];

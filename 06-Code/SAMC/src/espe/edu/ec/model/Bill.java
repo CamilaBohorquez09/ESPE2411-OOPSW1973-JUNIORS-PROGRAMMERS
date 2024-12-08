@@ -64,15 +64,28 @@ public class Bill {
         return details.toString();
     }
     public String getCustomerDetails() {
-        return String.format("ID: %d\nNombre: %s\nEmail: %s\nDireccion: %s\nTelefono: %s",
-                customer.getId(), customer.getName(), customer.getEmail(), customer.getAddress(), customer.getPhoneNumber());
-    }
+    return String.format("ID: %s\nNombre: %s\nEmail: %s\nDireccion: %s\nTelefono: %s",
+            customer.getIdCard(),
+            customer.getName(),
+            customer.getEmail(),
+            customer.getAddress(),
+            customer.getPhoneNumber());
+}
      @Override
     public String toString() {
-        return "Factura:\n" +
-                getCustomerDetails() + "\n" +
-                "Fecha: " + getDate() + "\n" +
-                "Detalles del Pedido:\n" + getOrderDetails() +
-                "Total: $" + getTotal();
+        return "FACTURA\n" +
+                "-------------------------------------------\n" +
+                "Informacion del Cliente:\n" +
+                "Nombre: " + customer.getName() + "\n" +
+                "Cedula: " + customer.getIdCard() + "\n" +
+                "Telefono: " + customer.getPhoneNumber() + "\n" +
+                "Direccion: " + customer.getAddress() + "\n" +
+                "Correo: " + customer.getEmail() + "\n" +
+                "Fecha: " + date + "\n" +
+                "-------------------------------------------\n" +
+                "Detalles del Pedido:\n" 
+                +getOrderDetails()+ 
+                "-------------------------------------------\n" +
+                "Total: $" + total;
     }
 }

@@ -1,45 +1,75 @@
 [
   {
     "customer": {
-      "name": "dsadas",
-      "id": 1,
-      "email": "asdasd",
-      "address": "asdas",
-      "phoneNumber": "asdsa"
+      "name": "Alan Arias",
+      "idCard": "1726392515",
+      "email": "ariasalan634@gmail.com",
+      "address": "Turubamba",
+      "phoneNumber": "0991541777"
     },
     "order": {
-      "Guata pequenia": 1
-    },
-    "total": 1.5,
-    "date": "2024-12-02 01:40:04"
-  },
-  {
-    "customer": {
-      "name": "1323",
-      "id": 1,
-      "email": "camila@hotmail.com",
-      "address": "Cuendina",
-      "phoneNumber": "0999"
-    },
-    "order": {
-      "Mixto seco de costilla y guata": 2,
       "Guata pequenia": 2
     },
-    "total": 10.0,
-    "date": "2024-12-07 12:00:45"
+    "total": 3.0,
+    "date": "2024-12-07 23:48:28"
   },
   {
     "customer": {
-      "name": "Camila",
-      "id": 1,
-      "email": "camila@hotmail.com",
-      "address": "Cuendina",
-      "phoneNumber": "0995646606"
+      "name": "Joel Iza",
+      "idCard": "1710125442",
+      "email": "ajarias4@espe.edu.ec",
+      "address": "Solanda",
+      "phoneNumber": "0993910645"
     },
     "order": {
-      "Banderas": 2
+      "Guata pequenia": 5
     },
-    "total": 13.5,
-    "date": "2024-12-07 12:57:27"
+    "total": 7.5,
+    "date": "2024-12-07 23:49:27"
+  },
+  {
+    "customer": {
+      "name": "Martin Erazo",
+      "idCard": "1726392414",
+      "email": "martinerazo34@hotmail.com",
+      "address": "Carapungo",
+      "phoneNumber": "0992413678"
+    },
+    "order": {
+      "Papas con cuero": 2,
+      "Guata extragrande": 4,
+      "Guata pequenia": 2,
+      "Seco de pollo": 1
+    },
+    "total": 19.5,
+    "date": "2024-12-08 00:19:40"
+  },
+  {
+    "customer": {
+      "name": "Lucas Alonso",
+      "idCard": "1745671209",
+      "email": "allucas23@gmail.com",
+      "address": "Santa Rita",
+      "phoneNumber": "0986936123"
+    },
+    "order": {
+      "Guata mediana": 5
+    },
+    "total": 10.0,
+    "date": "2024-12-08 00:21:56"
+  },
+  {
+    "customer": {
+      "name": "Manolo Diaz",
+      "idCard": "1745678209",
+      "email": "manolitodiaz334@gmail.com",
+      "address": "Mena 2",
+      "phoneNumber": "0983254678"
+    },
+    "order": {
+      "Guata pequenia": 4
+    },
+    "total": 6.0,
+    "date": "2024-12-08 00:23:55"
   }
 ]

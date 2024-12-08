@@ -7,6 +7,7 @@ import java.util.List;
 import java.util.Map;
 
 public class Order {
+    private Map<String, Integer> items;
     private int orderId;
     private int customerId;
     private String customerName;
@@ -15,8 +16,27 @@ public class Order {
     private Date orderDate;
     private SaleNote saleNote;
 
+    public Order(Map<String, Integer> items) {
+        this.items = items;
+        this.orderId = 0;
+        this.customerId = 0;
+        this.customerName = "";
+        this.orderedItems = new ArrayList<>();
+        for (Map.Entry<String, Integer> entry : items.entrySet()) {
+            MenuItem item = MenuItem.getMenuItemById(getMenuItemIdByName(entry.getKey()));
+            if (item != null) {
+                for (int i = 0; i < entry.getValue(); i++) {
+                    this.orderedItems.add(item);
+                }
+            }
+        }
+        this.tableNumber = "";
+        this.orderDate = new Date();
+        this.saleNote = null;
+    }
+
     public Order(int orderId, int customerId, String customerName, List<MenuItem> orderedItems, 
-             String tableNumber, Date orderDate, SaleNote saleNote) {
+                 String tableNumber, Date orderDate, SaleNote saleNote) {
         this.orderId = orderId;
         this.customerId = customerId;
         this.customerName = customerName;
@@ -25,57 +45,14 @@ public class Order {
         this.orderDate = orderDate;
         this.saleNote = saleNote;
     }
-    public Order(Map<String, Integer> items) {
-    this.orderId = 0;
-    this.customerId = 0;
-    this.customerName = "";
-    
-    this.orderedItems = new ArrayList<>();
-    for (Map.Entry<String, Integer> entry : items.entrySet()) {
-        MenuItem item = MenuItem.getMenuItemById(getMenuItemIdByName(entry.getKey()));
-        if (item != null) {
-            for (int i = 0; i < entry.getValue(); i++) {
-                this.orderedItems.add(item);
+
+    private int getMenuItemIdByName(String name) {
+        for (MenuItem item : MenuItem.getMenuItems()) {
+            if (item.getName().equalsIgnoreCase(name)) {
+                return item.getId();
             }
         }
-    }
-    
-    this.tableNumber = "";
-    this.orderDate = new Date();
-    this.saleNote = null;
-}
-    private int getMenuItemIdByName(String name) {
-    for (MenuItem item : MenuItem.getMenuItems()) {
-        if (item.getName().equalsIgnoreCase(name)) {
-            return item.getId();
-        }
-    }
-    return -1;
-    }
-    @Override
-    public String toString() {
-        StringBuilder itemsDetails = new StringBuilder();
-        for (MenuItem item : orderedItems) {
-            itemsDetails.append(item.getName()).append("\n");
-        }
-        return "Order{" +
-                "orderId=" + orderId +
-                ", customerId=" + customerId +
-                ", customerName='" + customerName + '\'' +
-                ", orderedItems=\n" + itemsDetails +
-                ", tableNumber='" + tableNumber + '\'' +
-                ", orderDate=" + orderDate +
-                ", saleNote=" + saleNote +
-                '}';
-    }
-
-
-    public Map<String, Integer> getItems() {
-        Map<String, Integer> itemsMap = new HashMap<>();
-        for (MenuItem item : orderedItems) {
-            itemsMap.put(item.getName(), 1);
-        }
-        return itemsMap;
+        return -1;
     }
 
     public float calculateOrderTotal() {
@@ -86,17 +63,12 @@ public class Order {
         return total;
     }
 
-    public int getCustomerId() {
-        return customerId;
-    }
-
-    public void assignTable(String tableNumber) {
-        // TODO
-    }
-
-    public boolean processPayment(String paymentMethod) {
-        // TOD
-        return false;
+    public Map<String, Integer> getItems() {
+        Map<String, Integer> itemsMap = new HashMap<>();
+        for (MenuItem item : orderedItems) {
+            itemsMap.put(item.getName(), 1);
+        }
+        return itemsMap;
     }
 
     public int getOrderId() {
@@ -105,6 +77,10 @@ public class Order {
 
     public void setOrderId(int orderId) {
         this.orderId = orderId;
+    }
+
+    public int getCustomerId() {
+        return customerId;
     }
 
     public void setCustomerId(int customerId) {
@@ -134,6 +110,7 @@ public class Order {
     public void setTableNumber(String tableNumber) {
         this.tableNumber = tableNumber;
     }
+
     public Date getOrderDate() {
         return orderDate;
     }
@@ -148,5 +125,22 @@ public class Order {
 
     public void setSaleNote(SaleNote saleNote) {
         this.saleNote = saleNote;
+    }
+
+    @Override
+    public String toString() {
+        StringBuilder itemsDetails = new StringBuilder();
+        for (MenuItem item : orderedItems) {
+            itemsDetails.append(item.getName()).append("\n");
+        }
+        return "Order{" +
+                "orderId=" + orderId +
+                ", customerId=" + customerId +
+                ", customerName='" + customerName + '\'' +
+                ", orderedItems=\n" + itemsDetails +
+                ", tableNumber='" + tableNumber + '\'' +
+                ", orderDate=" + orderDate +
+                ", saleNote=" + saleNote +
+                '}';
     }
 }

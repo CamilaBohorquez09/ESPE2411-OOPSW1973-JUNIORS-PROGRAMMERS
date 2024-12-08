@@ -82,8 +82,6 @@ public class MenuItem {
         return inventory;
     }
 
-    
-
     public static List<MenuItem> getMenuItems() {
         return menuItems;
     }

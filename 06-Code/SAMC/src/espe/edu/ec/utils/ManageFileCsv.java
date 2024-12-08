@@ -13,17 +13,14 @@ public class ManageFileCsv {
 
     public void saveToCsv(Cashier cashier, Map<String, Integer> order, float totalToPay) {
         try (FileWriter writer = new FileWriter(FILE_NAME, true)) {
-            // Formatear la fecha actual
             SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
             String date = dateFormat.format(new Date());
 
-            // Escribir los datos del cliente y la venta en el archivo CSV
             writer.append(cashier.getCustomer().getName()).append(",");
-            writer.append(String.valueOf(cashier.getCustomer().getId())).append(",");
+            writer.append(String.valueOf(cashier.getCustomer().getIdCard())).append(",");
             writer.append(cashier.getCustomer().getEmail()).append(",");
             writer.append(cashier.getCustomer().getPhoneNumber()).append(",");
 
-            // Escribir los platos y cantidades
             StringBuilder dishes = new StringBuilder();
             StringBuilder quantities = new StringBuilder();
             for (Map.Entry<String, Integer> entry : order.entrySet()) {

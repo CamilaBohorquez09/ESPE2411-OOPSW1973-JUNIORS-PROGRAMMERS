@@ -1,9 +1,5 @@
 package espe.edu.ec.model;
-/**
- * Clase que representa el inventario de bebidas
- * 
- * @author Camila Bohorquez
- */
+
 public class DrinksInventory {
     private int idInventory;
     private String nameDrinks;
@@ -11,7 +7,7 @@ public class DrinksInventory {
     private float price;
     private boolean isAvailable;
     private int quantity;
-    
+
     @Override
     public String toString() {
         return "DrinksInventory{" +
@@ -23,11 +19,9 @@ public class DrinksInventory {
                 '}';
     }
 
-    
     public DrinksInventory() {
     }
 
-    
     public DrinksInventory(int idInventory, String nameDrinks, String addressOfDescription, float price, boolean isAvailable) {
         this.idInventory = idInventory;
         this.nameDrinks = nameDrinks;
@@ -36,7 +30,6 @@ public class DrinksInventory {
         this.isAvailable = isAvailable;
     }
 
-    
     public int getIdInventory() {
         return idInventory;
     }

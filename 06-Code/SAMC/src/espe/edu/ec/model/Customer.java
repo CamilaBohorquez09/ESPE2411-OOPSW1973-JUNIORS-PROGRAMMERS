@@ -3,70 +3,75 @@ package espe.edu.ec.model;
 import java.util.List;
 
 public class Customer {
-    private static int nextId = 1;
     private String name;
-    private int id;
+    private String idCard;
     private String email;
     private String address;
     private String phoneNumber;
     private List<Order> orders;
 
-    // Constructor modificado
-    public Customer(String name, String email, String address, String phoneNumber) {
+    public Customer(String name, String idCard, String email, String address, String phoneNumber) {
         this.name = name;
-        this.id = generateNextId();
+        this.idCard = idCard;
         this.email = email;
         this.address = address;
         this.phoneNumber = phoneNumber;
-    }
-
-    // Método para generar IDs de manera incremental
-    private static synchronized int generateNextId() {
-        return nextId++;
+        this.orders = orders;
     }
 
     @Override
     public String toString() {
-        StringBuilder ordersDetails = new StringBuilder();
-        if (orders != null) {
-            for (Order order : orders) {
-                ordersDetails.append(order).append("\n");
-            }
-        }
-        return "Customer{" +
-                "name='" + name + '\'' +
-                ", id=" + id +
-                ", email='" + email + '\'' +
-                ", address='" + address + '\'' +
-                ", phoneNumber='" + phoneNumber + '\'' +
-                ", orders=\n" + ordersDetails +
-                '}';
-    }
-    public List<Order> getOrders() {
-    return orders;
-    }
-
-    public void setOrders(List<Order> orders) {
-    this.orders = orders;
+        return "Customer{" + "name=" + name + ", idCard=" + idCard + ", email=" + email + ", address=" + address + ", phoneNumber=" + phoneNumber + ", orders=" + orders + '}';
     }
 
     public String getName() {
         return name;
     }
 
-    public int getId() {
-        return id;
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public String getIdCard() {
+        return idCard;
+    }
+
+    public void setIdCard(String idCard) {
+        this.idCard = idCard;
     }
 
     public String getEmail() {
         return email;
     }
 
+    public void setEmail(String email) {
+        this.email = email;
+    }
+
     public String getAddress() {
         return address;
+    }
+
+    public void setAddress(String address) {
+        this.address = address;
     }
 
     public String getPhoneNumber() {
         return phoneNumber;
     }
+
+    public void setPhoneNumber(String phoneNumber) {
+        this.phoneNumber = phoneNumber;
+    }
+
+    public List<Order> getOrders() {
+        return orders;
+    }
+
+    public void setOrders(List<Order> orders) {
+        this.orders = orders;
+    }
+    
+    
 }
+    

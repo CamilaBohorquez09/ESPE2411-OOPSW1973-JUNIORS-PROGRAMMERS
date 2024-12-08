@@ -62,11 +62,9 @@ public class ManageFileJson {
             System.out.println("No se pudo leer el archivo sale_notes.json, se creará uno nuevo.");
         }
 
-        // Verificar si ya existe un cliente con el mismo nombre
         boolean clienteExistente = saleNotes.stream()
             .anyMatch(existingSaleNote -> existingSaleNote.getCustomer().getName().equals(saleNote.getCustomer().getName()));
 
-        // Si no existe, agregar la nota de venta
         if (!clienteExistente) {
             saleNotes.add(saleNote);
             try (FileWriter writer = new FileWriter("sale_notes.json")) {
@@ -89,29 +87,29 @@ public class ManageFileJson {
             System.out.println("Error al guardar el comentario en JSON: " + e.getMessage());
         }
     }
-    public Customer obtenerClientePorId(int customerId) {
-        try (FileReader reader = new FileReader("bills.json")) {
-            List<Bill> bills = gson.fromJson(reader, new TypeToken<List<Bill>>() {}.getType());
-            if (bills != null) {
-                for (Bill bill : bills) {
-                    if (bill.getCustomer().getId() == customerId) {
-                        return bill.getCustomer();
-                    }
+    public Customer obtenerClientePorId(String idCard) { // Cambiar de int a String
+    try (FileReader reader = new FileReader("bills.json")) {
+        List<Bill> bills = gson.fromJson(reader, new TypeToken<List<Bill>>() {}.getType());
+        if (bills != null) {
+            for (Bill bill : bills) {
+                if (bill.getCustomer().getIdCard().equals(idCard)) { // Cambiar de == a .equals()
+                    return bill.getCustomer();
                 }
             }
-        } catch (IOException e) {
-            System.out.println("Error al leer el archivo bills.json: " + e.getMessage());
         }
-        return null;
+    } catch (IOException e) {
+        System.out.println("Error al leer el archivo bills.json: " + e.getMessage());
     }
+    return null;
+}
 
-    public Map<String, Integer> obtenerPedidoPorCliente(int customerId) {
+    public Map<String, Integer> obtenerPedidoPorCliente(String idCard) { // Cambiar de int a String
         try (FileReader reader = new FileReader("bills.json")) {
             List<Bill> bills = gson.fromJson(reader, new TypeToken<List<Bill>>() {}.getType());
             if (bills != null) {
                 for (Bill bill : bills) {
-                    if (bill.getCustomer().getId() == customerId) {
-                        return bill.getOrder();
+                    if (bill.getCustomer().getIdCard().equals(idCard)) { // Cambiar de == a .equals()
+                            return bill.getOrder();
                     }
                 }
             }
@@ -120,19 +118,55 @@ public class ManageFileJson {
         }
         return new HashMap<>();
     }
-    public SaleNote obtenerNotaDeVentaPorCliente(int customerId) {
+    public SaleNote obtenerNotaDeVentaPorCliente(String idCard) {
         try (FileReader reader = new FileReader("sale_notes.json")) {
             List<SaleNote> saleNotes = gson.fromJson(reader, new TypeToken<List<SaleNote>>() {}.getType());
             if (saleNotes != null) {
                 for (SaleNote saleNote : saleNotes) {
-                    if (saleNote.getCustomer().getId() == customerId) {
+                    if (saleNote.getCustomer().getIdCard().equals(idCard)) {
                         return saleNote;
                     }
                 }
             }
-        } catch (IOException e) {
+        }catch (IOException e) {
             System.out.println("Error al leer el archivo sale_notes.json: " + e.getMessage());
         }
         return null;
     }
+    public void saveQuantitiesToJson() {
+    List<Map<String, Object>> quantities = new ArrayList<>();
+    for (MenuItem item : MenuItem.getMenuItems()) {
+        Map<String, Object> itemData = new HashMap<>();
+        itemData.put("id", item.getId());
+        itemData.put("name", item.getName());
+        itemData.put("quantity", item.getInventory());
+        quantities.add(itemData);
+    }
+
+    try (FileWriter writer = new FileWriter("quantity.json")) {
+        gson.toJson(quantities, writer);
+        System.out.println("Inventario guardado correctamente en quantity.json.");
+    }   catch (IOException e) {
+        System.out.println("Error al guardar quantity.json: " + e.getMessage());
+        }
+    }
+    public void loadQuantitiesFromJson() {
+    try (FileReader reader = new FileReader("quantity.json")) {
+        List<Map<String, Object>> quantities = gson.fromJson(reader, new TypeToken<List<Map<String, Object>>>() {}.getType());
+        if (quantities != null) {
+            for (Map<String, Object> itemData : quantities) {
+                int id = ((Double) itemData.get("id")).intValue(); // Gson parsea números como Double
+                int quantity = ((Double) itemData.get("quantity")).intValue();
+                MenuItem item = MenuItem.getMenuItemById(id);
+                if (item != null) {
+                    item.reduceInventory(item.getInventory() - quantity); // Ajustar el inventario
+                }
+            }
+        }
+        System.out.println("Inventario cargado desde quantity.json.");
+        }   catch (IOException e) {
+        System.out.println("Error al cargar quantity.json: " + e.getMessage());
+        }
+    }
+    
 }
