@@ -160,7 +160,5 @@ public boolean esCedulaValida(String cedula) {
     return digitoVerificador == ultimoDigito;
 }
 
-
-
 }
 

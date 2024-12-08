@@ -71,5 +71,34 @@
     },
     "total": 6.0,
     "date": "2024-12-08 00:23:55"
+  },
+  {
+    "customer": {
+      "name": "matoe",
+      "idCard": "1716151392",
+      "email": "mamama@gmail.com",
+      "address": "andres perez",
+      "phoneNumber": "0989543483"
+    },
+    "order": {
+      "Banderas": 4,
+      "Guata pequenia": 3
+    },
+    "total": 31.5,
+    "date": "2024-12-08 13:02:26"
+  },
+  {
+    "customer": {
+      "name": "maskndkd",
+      "idCard": "1716151392",
+      "email": "ma@gmail.com",
+      "address": "andres perez",
+      "phoneNumber": "0989543483"
+    },
+    "order": {
+      "Guata pequenia": 2
+    },
+    "total": 3.0,
+    "date": "2024-12-08 13:26:44"
   }
-]
+]{"customer":{"name":"jshdjhe","cedula":"1716151392","email":"mas@gmial.com","address":"majbjd","phone":"0989543483"},"order":{},"total":0.0}
