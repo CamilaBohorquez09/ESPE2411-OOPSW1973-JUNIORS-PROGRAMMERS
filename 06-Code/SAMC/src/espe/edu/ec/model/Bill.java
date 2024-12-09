@@ -1,29 +1,91 @@
 package espe.edu.ec.model;
 
 import java.util.Map;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 
 public class Bill {
     private Customer customer;
-    private Map<MenuItem, Integer> orderDetails;
+    private Map<String, Integer> order;
     private float total;
+    private String date;
 
-    public Bill(Customer customer, Map<MenuItem, Integer> orderDetails, float total) {
+    public Bill(Customer customer, Map<String, Integer> order, float total) {
         this.customer = customer;
-        this.orderDetails = orderDetails;
+        this.order = order;
         this.total = total;
+        this.date = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss").format(new Date());
     }
 
-    public void printBill() {
-        System.out.println("Factura:");
-        System.out.println("Nombre: " + customer.getName());
-        System.out.println("Cédula: " + customer.getCedula());
-        System.out.println("Correo: " + customer.getEmail());
-        System.out.println("Dirección: " + customer.getAddress());
-        System.out.println("Teléfono: " + customer.getPhone());
-        System.out.println("Detalles del pedido:");
-        for (Map.Entry<MenuItem, Integer> entry : orderDetails.entrySet()) {
-            System.out.println(entry.getKey().getName() + " - Cantidad: " + entry.getValue() + " - Precio: " + entry.getKey().getPrice());
+    public String getDate() {
+        return date;
+    }
+    private float calculateTotal() {
+        float total = 0.0f;
+        for (Map.Entry<String, Integer> entry : order.entrySet()) {
+            MenuItem item = MenuItem.getMenuItemById(getMenuItemIdByName(entry.getKey()));
+            if (item != null) {
+                total += item.getPrice() * entry.getValue();
+            }
         }
-        System.out.println("Total a pagar: " + total);
+        return total;
+    }
+
+    private int getMenuItemIdByName(String name) {
+        for (MenuItem item : MenuItem.getMenuItems()) {
+            if (item.getName().equalsIgnoreCase(name)) {
+                return item.getId();
+            }
+        }
+        return -1;
+    }
+
+    public Customer getCustomer() {
+        return customer;
+    }
+
+    public Map<String, Integer> getOrder() {
+        return order;
+    }
+
+    public float getTotal() {
+        return total;
+    }
+
+   public String getOrderDetails() {
+        StringBuilder details = new StringBuilder();
+        for (Map.Entry<String, Integer> entry : order.entrySet()) {
+            MenuItem item = MenuItem.getMenuItemById(getMenuItemIdByName(entry.getKey()));
+            if (item != null) {
+                details.append(String.format("Nombre: %s, Descripcion: %s, Precio: %.2f, Cantidad: %d\n",
+                        item.getName(), item.getDescription(), item.getPrice(), entry.getValue()));
+            }
+        }
+        return details.toString();
+    }
+    public String getCustomerDetails() {
+    return String.format("ID: %s\nNombre: %s\nEmail: %s\nDireccion: %s\nTelefono: %s",
+            customer.getIdCard(),
+            customer.getName(),
+            customer.getEmail(),
+            customer.getAddress(),
+            customer.getPhoneNumber());
+}
+     @Override
+    public String toString() {
+        return "FACTURA\n" +
+                "-------------------------------------------\n" +
+                "Informacion del Cliente:\n" +
+                "Nombre: " + customer.getName() + "\n" +
+                "Cedula: " + customer.getIdCard() + "\n" +
+                "Telefono: " + customer.getPhoneNumber() + "\n" +
+                "Direccion: " + customer.getAddress() + "\n" +
+                "Correo: " + customer.getEmail() + "\n" +
+                "Fecha: " + date + "\n" +
+                "-------------------------------------------\n" +
+                "Detalles del Pedido:\n" 
+                +getOrderDetails()+ 
+                "-------------------------------------------\n" +
+                "Total: $" + total;
     }
 }

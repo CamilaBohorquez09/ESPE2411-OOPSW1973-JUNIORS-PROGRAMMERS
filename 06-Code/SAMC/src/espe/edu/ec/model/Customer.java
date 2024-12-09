@@ -1,37 +1,77 @@
 package espe.edu.ec.model;
 
+import java.util.List;
+
 public class Customer {
     private String name;
-    private String cedula;
+    private String idCard;
     private String email;
     private String address;
-    private String phone;
+    private String phoneNumber;
+    private List<Order> orders;
 
-    public Customer(String name, String cedula, String email, String address, String phone) {
+    public Customer(String name, String idCard, String email, String address, String phoneNumber) {
         this.name = name;
-        this.cedula = cedula;
+        this.idCard = idCard;
         this.email = email;
         this.address = address;
-        this.phone = phone;
+        this.phoneNumber = phoneNumber;
+        this.orders = orders;
+    }
+
+    @Override
+    public String toString() {
+        return "Customer{" + "name=" + name + ", idCard=" + idCard + ", email=" + email + ", address=" + address + ", phoneNumber=" + phoneNumber + ", orders=" + orders + '}';
     }
 
     public String getName() {
         return name;
     }
 
-    public String getCedula() {
-        return cedula;
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public String getIdCard() {
+        return idCard;
+    }
+
+    public void setIdCard(String idCard) {
+        this.idCard = idCard;
     }
 
     public String getEmail() {
         return email;
     }
 
+    public void setEmail(String email) {
+        this.email = email;
+    }
+
     public String getAddress() {
         return address;
     }
 
-    public String getPhone() {
-        return phone;
+    public void setAddress(String address) {
+        this.address = address;
     }
+
+    public String getPhoneNumber() {
+        return phoneNumber;
+    }
+
+    public void setPhoneNumber(String phoneNumber) {
+        this.phoneNumber = phoneNumber;
+    }
+
+    public List<Order> getOrders() {
+        return orders;
+    }
+
+    public void setOrders(List<Order> orders) {
+        this.orders = orders;
+    }
+    
+    
 }
+    

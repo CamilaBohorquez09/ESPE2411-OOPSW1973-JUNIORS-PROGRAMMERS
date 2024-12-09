@@ -1,44 +1,147 @@
 package espe.edu.ec.model;
 
-import espe.edu.ec.utils.Validations;
+import java.util.ArrayList;
+import java.util.Date;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
-import java.util.Scanner;
 
 public class Order {
+    private Map<String, Integer> items;
+    private int orderId;
+    private int customerId;
+    private String customerName;
+    private List<MenuItem> orderedItems;
+    private String tableNumber;
+    private Date orderDate;
+    private SaleNote saleNote;
 
-    public Map<MenuItem, Integer> makeOrder(Scanner scanner) {
-        Map<MenuItem, Integer> order = new HashMap<>();
-        Validations validations = new Validations();
-
-        while (true) {
-            System.out.print("Ingrese el nombre del plato (0 para terminar): ");
-            String itemName = scanner.nextLine();
-
-            if (itemName.equalsIgnoreCase("0")) {
-                break;
-            }
-
-            MenuItem item = MenuItem.getMenuItemByName(itemName);
-            if (item == null) {
-                System.out.println("Plato no encontrado. Intente de nuevo.");
-                continue;
-            }
-
-            System.out.print("Ingrese la cantidad de " + item.getName() + ": ");
-            int quantity = validations.validarCantidad(); // Usa la validación de cantidad
-            if (quantity <= 0) {
-                System.out.println("Cantidad no válida. Debe ser mayor que 0.");
-                continue;
-            }
-
-            if (item.getInventory() >= quantity) {
-                order.put(item, quantity);
-                item.reduceInventory(quantity);
-            } else {
-                System.out.println("No hay suficiente inventario de " + item.getName());
+    public Order(Map<String, Integer> items) {
+        this.items = items;
+        this.orderId = 0;
+        this.customerId = 0;
+        this.customerName = "";
+        this.orderedItems = new ArrayList<>();
+        for (Map.Entry<String, Integer> entry : items.entrySet()) {
+            MenuItem item = MenuItem.getMenuItemById(getMenuItemIdByName(entry.getKey()));
+            if (item != null) {
+                for (int i = 0; i < entry.getValue(); i++) {
+                    this.orderedItems.add(item);
+                }
             }
         }
-        return order;
+        this.tableNumber = "";
+        this.orderDate = new Date();
+        this.saleNote = null;
+               
+    }
+    
+    public Order(int orderId, int customerId, String customerName, List<MenuItem> orderedItems, 
+                 String tableNumber, Date orderDate, SaleNote saleNote) {
+        this.orderId = orderId;
+        this.customerId = customerId;
+        this.customerName = customerName;
+        this.orderedItems = orderedItems;
+        this.tableNumber = tableNumber;
+        this.orderDate = orderDate;
+        this.saleNote = saleNote;
+    }
+
+    private int getMenuItemIdByName(String name) {
+        for (MenuItem item : MenuItem.getMenuItems()) {
+            if (item.getName().equalsIgnoreCase(name)) {
+                return item.getId();
+            }
+        }
+        return -1;
+    }
+
+    public float calculateOrderTotal() {
+        float total = 0.0f;
+        for (MenuItem item : orderedItems) {
+            total += item.getPrice();
+        }
+        return total;
+    }
+
+    public Map<String, Integer> getItems() {
+        Map<String, Integer> itemsMap = new HashMap<>();
+        for (MenuItem item : orderedItems) {
+            itemsMap.put(item.getName(), 1);
+        }
+        return itemsMap;
+    }
+    
+    public int getOrderId() {
+        return orderId;
+    }
+
+    public void setOrderId(int orderId) {
+        this.orderId = orderId;
+    }
+
+    public int getCustomerId() {
+        return customerId;
+    }
+
+    public void setCustomerId(int customerId) {
+        this.customerId = customerId;
+    }
+
+    public String getCustomerName() {
+        return customerName;
+    }
+
+    public void setCustomerName(String customerName) {
+        this.customerName = customerName;
+    }
+
+    public List<MenuItem> getOrderedItems() {
+        return orderedItems;
+    }
+
+    public void setOrderedItems(List<MenuItem> orderedItems) {
+        this.orderedItems = orderedItems;
+    }
+
+    public String getTableNumber() {
+        return tableNumber;
+    }
+
+    public void setTableNumber(String tableNumber) {
+        this.tableNumber = tableNumber;
+    }
+
+    public Date getOrderDate() {
+        return orderDate;
+    }
+
+    public void setOrderDate(Date orderDate) {
+        this.orderDate = orderDate;
+    }
+
+    public SaleNote getSaleNote() {
+        return saleNote;
+    }
+
+    public void setSaleNote(SaleNote saleNote) {
+        this.saleNote = saleNote;
+    }
+
+    @Override
+    public String toString() {
+        StringBuilder itemsDetails = new StringBuilder();
+        for (MenuItem item : orderedItems) {
+            itemsDetails.append(item.getName()).append("\n");
+        }
+        return "Order{" +
+                "orderId=" + orderId +
+                ", customerId=" + customerId +
+                ", customerName='" + customerName + '\'' +
+                ", orderedItems=\n" + itemsDetails +
+                ", tableNumber='" + tableNumber + '\'' +
+                ", orderDate=" + orderDate +
+                ", saleNote=" + saleNote +
+                '}';
     }
 }

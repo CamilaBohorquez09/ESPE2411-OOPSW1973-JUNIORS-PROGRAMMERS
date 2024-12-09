@@ -3,17 +3,10 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/C:/Users/Gamer/ESPE2411-OOPSW1973-JUNIORS-PROGRAMMERS/06-Code/SAMC/src/espe/edu/ec/model/SaleNote.java</file>
-            <file>file:/C:/Users/Gamer/ESPE2411-OOPSW1973-JUNIORS-PROGRAMMERS/06-Code/SAMC/src/espe/edu/ec/model/Bill.java</file>
-            <file>file:/C:/Users/Gamer/ESPE2411-OOPSW1973-JUNIORS-PROGRAMMERS/06-Code/SAMC/src/espe/edu/ec/view/SAMCApp.java</file>
-            <file>file:/C:/Users/Gamer/ESPE2411-OOPSW1973-JUNIORS-PROGRAMMERS/06-Code/SAMC/sale_notes.json</file>
-            <file>file:/C:/Users/Gamer/ESPE2411-OOPSW1973-JUNIORS-PROGRAMMERS/06-Code/SAMC/src/espe/edu/ec/model/Customer.java</file>
-            <file>file:/C:/Users/Gamer/ESPE2411-OOPSW1973-JUNIORS-PROGRAMMERS/06-Code/SAMC/src/espe/edu/ec/utils/ManageFileJson.java</file>
-            <file>file:/C:/Users/Gamer/ESPE2411-OOPSW1973-JUNIORS-PROGRAMMERS/06-Code/SAMC/src/espe/edu/ec/model/DrinksInventory.java</file>
-            <file>file:/C:/Users/Gamer/ESPE2411-OOPSW1973-JUNIORS-PROGRAMMERS/06-Code/SAMC/src/espe/edu/ec/model/Cashier.java</file>
-            <file>file:/C:/Users/Gamer/ESPE2411-OOPSW1973-JUNIORS-PROGRAMMERS/06-Code/SAMC/bills.json</file>
-            <file>file:/C:/Users/Gamer/ESPE2411-OOPSW1973-JUNIORS-PROGRAMMERS/06-Code/SAMC/src/espe/edu/ec/model/MenuItem.java</file>
-            <file>file:/C:/Users/Gamer/ESPE2411-OOPSW1973-JUNIORS-PROGRAMMERS/06-Code/SAMC/src/espe/edu/ec/utils/AdminPermissions.java</file>
+            <file>file:/C:/Users/Gamer/Desktop/Alan/POO/RESPALDO%20DEL%20PROYECTO/06-Code/06-Code/SAMC/src/espe/edu/ec/model/Order.java</file>
+            <file>file:/C:/Users/Gamer/Desktop/Alan/POO/RESPALDO%20DEL%20PROYECTO/06-Code/06-Code/SAMC/src/espe/edu/ec/view/SAMCApp.java</file>
+            <file>file:/C:/Users/Gamer/Desktop/Alan/POO/RESPALDO%20DEL%20PROYECTO/06-Code/06-Code/SAMC/src/espe/edu/ec/model/DishInventory.java</file>
+            <file>file:/C:/Users/Gamer/Desktop/Alan/POO/RESPALDO%20DEL%20PROYECTO/06-Code/06-Code/SAMC/src/espe/edu/ec/model/DrinksInventory.java</file>
         </group>
     </open-files>
 </project-private>

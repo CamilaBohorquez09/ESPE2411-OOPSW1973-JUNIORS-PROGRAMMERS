@@ -1,6 +1,6 @@
 [
   {
-    "quantity": 39,
+    "quantity": 42,
     "name": "Guata pequenia",
     "id": 1
   },
@@ -10,7 +10,7 @@
     "id": 2
   },
   {
-    "quantity": 36,
+    "quantity": 32,
     "name": "Guata extragrande",
     "id": 3
   },
@@ -90,7 +90,7 @@
     "id": 18
   },
   {
-    "quantity": 11,
+    "quantity": 15,
     "name": "Banderas",
     "id": 19
   }
