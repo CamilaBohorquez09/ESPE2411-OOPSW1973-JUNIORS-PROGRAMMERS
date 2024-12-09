@@ -32,8 +32,8 @@ public class Cashier {
 
         item.reduceInventory(quantity);
 
-        System.out.println("Pedido realizado con éxito: ");
-        System.out.println("Artículo: " + item.getName());
+        System.out.println("Pedido realizado con exito: ");
+        System.out.println("Articulo: " + item.getName());
         System.out.println("Cantidad: " + quantity);
         System.out.println("Total: $" + (item.getPrice() * quantity));
 
