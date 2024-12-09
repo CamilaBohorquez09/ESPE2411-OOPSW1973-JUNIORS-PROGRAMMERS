@@ -1,93 +1,89 @@
 package espe.edu.ec.view;
-
 import espe.edu.ec.model.*;
 import espe.edu.ec.utils.ManageFileJson;
 import espe.edu.ec.utils.Validations;
-import static espe.edu.ec.utils.Validations.validarCedula;
-import static espe.edu.ec.utils.Validations.validarCorreo;
-import static espe.edu.ec.utils.Validations.validarOpcion;
-import static espe.edu.ec.utils.Validations.validarTelefono;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.Scanner;
+import static espe.edu.ec.utils.Validations.validateCi;
+import static espe.edu.ec.utils.Validations.validateGmail;
+import static espe.edu.ec.utils.Validations.validateOption;
+import static espe.edu.ec.utils.Validations.validatePhone;
 
 public class SAMCApp {
     public static void main(String[] args) {
         MenuItem.initializeMenu();
         ManageFileJson manageFileJson = new ManageFileJson();
-        Scanner scanner = new Scanner(System.in);
-        Validations validations = new Validations();
-        boolean running = true;
-
-        manageFileJson.loadQuantitiesFromJson();
-
-        while (running) {
-            System.out.println("******** AGACHADITOS DE LA JAVI ********");
-            System.out.println("1. Realizar un pedido");
-            System.out.println("2. Imprimir factura");
-            System.out.println("3. Imprimir nota de venta");
-            System.out.println("4. Dejar un comentario");
-            System.out.println("5. Modo Administrador");
-            System.out.println("6. Salir");
-            System.out.print("Seleccione una opcion: ");
-            int choice = validarOpcion(1, 6, scanner);
-
-            switch (choice) {
-                case 1:
-                    realizarPedido(scanner, validations, manageFileJson);
-                    break;
-                case 2:
-                    imprimirFactura(scanner);
-                    break;
-                case 3:
-                    imprimirNotaVenta(scanner);
-                    break;
-                case 4:
-                    dejarComentario(scanner);
-                    break;
-                case 5:
-                    adminPermissions(scanner, manageFileJson);
-                    break;
-                case 6:
-                    running = false;
-                    manageFileJson.saveQuantitiesToJson();
-                    System.out.println("Gracias por visitarnos. ¡Hasta pronto!");
-                    break;
-                default:
-                    System.out.println("Opcion no valida.");
+        try (Scanner scanner = new Scanner(System.in)) {
+            Validations validations = new Validations();
+            boolean running = true;
+            
+            manageFileJson.loadQuantitiesFromJson();
+            
+            while (running) {
+                System.out.println("******** AGACHADITOS DE LA JAVI ********");
+                System.out.println("1. Realizar un pedido");
+                System.out.println("2. Imprimir factura");
+                System.out.println("3. Imprimir nota de venta");
+                System.out.println("4. Dejar un comentario");
+                System.out.println("5. Modo Administrador");
+                System.out.println("6. Salir");
+                System.out.print("Seleccione una opcion: ");
+                int choice = validateOption(1, 6, scanner);
+                
+                switch (choice) {
+                    case 1:
+                        placeOrder(scanner, validations, manageFileJson);
+                        break;
+                    case 2:
+                        printFacture(scanner);
+                        break;
+                    case 3:
+                        printSalesnote(scanner);
+                        break;
+                    case 4:
+                        leaveComment(scanner);
+                        break;
+                    case 5:
+                        adminPermissions(scanner, manageFileJson);
+                        break;
+                    case 6:
+                        running = false;
+                        manageFileJson.saveQuantitiesToJson();
+                        System.out.println("Gracias por visitarnos. ¡Hasta pronto!");
+                        break;
+                    default:
+                        System.out.println("Opcion no valida.");
+                }
             }
         }
-        scanner.close();
     }
 
-    private static void realizarPedido(Scanner scanner, Validations validations, ManageFileJson manageFileJson) {
+    private static void placeOrder(Scanner scanner, Validations validations, ManageFileJson manageFileJson) {
         System.out.print("Ingrese su nombre: ");
         String name = scanner.nextLine();
-        System.out.print("Ingrese su cedula (10 digitos): ");
+        System.out.print("Ingrese su cedula: ");
         String idCard = scanner.nextLine();
-        if (validarCedula(idCard)) {
-            System.out.println("Cedula valida.");
+        if (validateCi(idCard)) {
         } else {
-            System.out.println("Cedula no valida. Debe tener 10 digitos.");
+            System.out.println("Cedula no valida.Ingresar denuevo");
         }
 
         System.out.print("Ingrese su correo electronico: ");
         String email = scanner.nextLine();
-        if (validarCorreo(email)) {
-            System.out.println("Correo valido.");
+        if (validateGmail(email)) {
         } else {
             System.out.println("Correo no valido.");
         }
 
         System.out.print("Ingrese su direccion: ");
-        String address = validations.validarCadenaNoVacia();
+        String address = validations.validateNonEmptyString();
 
-        System.out.print("Ingrese su telefono (9 digitos): ");
+        System.out.print("Ingrese su telefono: ");
         String phone = scanner.nextLine();
-        if (validarTelefono(phone)) {
-            System.out.println("Telefono valido.");
+        if (validatePhone(phone)) {
         } else {
-            System.out.println("Telefono no valido. Debe tener 9 digitos.");
+            System.out.println("Telefono no valido.Ingresar nuevamente");
         }
 
         Customer customer = new Customer(name, idCard, email, address, phone);
@@ -98,11 +94,11 @@ public class SAMCApp {
 
         while (true) {
             System.out.print("Ingrese el ID del plato: ");
-            int itemId = validations.validarEntero();
+            int itemId = validations.validateInt();
             if (itemId == 0) break;
 
             System.out.print("Ingrese la cantidad: ");
-            int quantity = validations.validarEntero();
+            int quantity = validations.validateInt();
 
             MenuItem item = MenuItem.getMenuItemById(itemId);
             if (item != null) {
@@ -130,7 +126,7 @@ public class SAMCApp {
         System.out.println("Pedido realizado con exito.");
     }
 
-    private static void imprimirFactura(Scanner scanner) { 
+    private static void printFacture(Scanner scanner) { 
         System.out.print("Ingrese su cedula: ");
         String idCard = scanner.nextLine();
 
@@ -156,7 +152,7 @@ public class SAMCApp {
         System.out.println(bill);
     }
 
-    private static void imprimirNotaVenta(Scanner scanner) {
+    private static void printSalesnote(Scanner scanner) {
         System.out.print("Ingrese su cedula: ");
         String idCard = scanner.nextLine();
 
@@ -178,7 +174,7 @@ public class SAMCApp {
         System.out.println(saleNote);
     }
 
-    private static void dejarComentario(Scanner scanner) {
+    private static void leaveComment(Scanner scanner) {
         System.out.print("Ingrese su comentario: ");
         String comentario = scanner.nextLine();
         ManageFileJson manageFileJson = new ManageFileJson();

@@ -5,25 +5,25 @@ import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 public class Validations {
-    public static boolean validarSoloLetras(String input) {
+    public static boolean validateLetters(String input) {
         return input.matches("[a-zA-ZnN]+");
     }
 
-    public static boolean validarCedula(String idCard) {
+    public static boolean validateCi(String idCard) {
         if (idCard.length() != 10) {
             return false;
         }
         return idCard.matches("\\d{10}");
     }
 
-    public static boolean validarCorreo(String correo) {
+    public static boolean validateGmail(String correo) {
         String regex = "^[a-zA-Z0-9_+&*-]+(?:\\.[a-zA-Z0-9_+&*-]+)*@(?:[a-zA-Z0-9-]+\\.)+[a-zA-Z]{2,7}$";
         Pattern pattern = Pattern.compile(regex);
         Matcher matcher = pattern.matcher(correo);
         return matcher.matches();
     }
 
-    public static int validarOpcion(int min, int max, Scanner scanner) {
+    public static int validateOption(int min, int max, Scanner scanner) {
         int opcion;
         while (true) {
             try {
@@ -39,11 +39,11 @@ public class Validations {
         }
     }
 
-    public static boolean validarTelefono(String telefono) {
+    public static boolean validatePhone(String telefono) {
         return telefono.matches("\\d{10}");
     }
     
-    public void validarOpcion(int choice) {
+    public void validateOption(int choice) {
         while (choice < 1 || choice > 5) {
             System.out.println("Opcion no valida. Por favor, ingrese una opcion valida entre 1 y 5.");
             Scanner scanner = new Scanner(System.in);
@@ -52,7 +52,7 @@ public class Validations {
         }
     }
     
-     public void validarOpcionMenu(int choice) {
+     public void validateOptionMenu(int choice) {
         while (choice < 1 || choice >= 19) {
             System.out.println("Opcion no valida. Por favor, ingrese una opcion valida entre 1-19");
             Scanner scanner = new Scanner(System.in);
@@ -62,7 +62,7 @@ public class Validations {
     }
 
     
-    public int validarEntero() {
+    public int validateInt() {
         Scanner scanner = new Scanner(System.in);
         int number = -1;
         boolean isValid = false;
@@ -78,7 +78,7 @@ public class Validations {
     }
 
    
-    public String validarCadenaNoVacia() {
+    public String validateNonEmptyString() {
         Scanner scanner = new Scanner(System.in);
         String input = "";
         while (input.isEmpty()) {
@@ -91,7 +91,7 @@ public class Validations {
     }
 
     
-    public String validarEmail() {
+    public String validateGmail() {
         Scanner scanner = new Scanner(System.in);
         String email = "";
         while (true) {
@@ -106,7 +106,7 @@ public class Validations {
     }
     
     
-    public int validarCantidad() {
+    public int validateCant() {
         Scanner scanner = new Scanner(System.in);
         int cantidad = -1;
         while (cantidad <= 0) {
@@ -123,7 +123,7 @@ public class Validations {
     }
     
 
- public String validarTelefono() {
+ public String validatePhone() {
         Scanner scanner = new Scanner(System.in);
         String phone;
         while (true) {
@@ -138,7 +138,7 @@ public class Validations {
 
 
 
-public boolean esCedulaValida(String cedula) {
+public boolean validateId(String cedula) {
     int[] coeficientes = {2, 1, 2, 1, 2, 1, 2, 1, 2};
     int total = 0;
     int digitoVerificador;
