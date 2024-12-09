@@ -1,41 +1,50 @@
 package espe.edu.ec.model;
 
-import java.util.Map;
+import espe.edu.ec.utils.Validations;
+import espe.edu.ec.utils.ManageFileJson;
+
+import java.util.Scanner;
 
 public class Cashier {
-    private Customer customer;
-    private float totalToPay;
 
-    public Cashier(Customer customer) {
-        this.customer = customer;
-        this.totalToPay = 0;
-    }
 
-    public void calculateTotal(Map<String, Integer> order, Map<String, Float> menuItems) {
-        for (Map.Entry<String, Integer> entry : order.entrySet()) {
-            String dishName = entry.getKey();
-            int quantity = entry.getValue();
-            Float price = menuItems.get(dishName);
-            if (price != null) {
-                totalToPay += price * quantity;
-            }
+
+   
+    public static void placeOrder(Scanner scanner, Validations validations, ManageFileJson manageFileJson) {
+        MenuItem.displayMenu();
+
+        System.out.print("Seleccione el ID del artículo para su pedido: ");
+        int itemId = validations.validateInt(); 
+
+        MenuItem item = MenuItem.getMenuItemById(itemId);
+        if (item == null) {
+            System.out.println("El artículo seleccionado no existe.");
+            return;
         }
-    }
-    public void updateInventory(Map<String, Integer> order, Map<String, Integer> inventory) {
-    for (Map.Entry<String, Integer> entry : order.entrySet()) {
-        String item = entry.getKey();
-        int quantity = entry.getValue();
-        if (inventory.containsKey(item)) {
-            inventory.put(item, inventory.get(item) - quantity);
+
+        System.out.print("¿Cuántas unidades desea?: ");
+        int quantity = validations.validateInt();
+
+        if (quantity > item.getInventory()) {
+            System.out.println("No hay suficiente inventario para el artículo seleccionado.");
+            return;
         }
-    }
-}
 
-    public float getTotalToPay() {
-        return totalToPay;
-    }
+        item.reduceInventory(quantity);
 
-    public Customer getCustomer() {
-        return customer;
+        System.out.println("Pedido realizado con éxito: ");
+        System.out.println("Artículo: " + item.getName());
+        System.out.println("Cantidad: " + quantity);
+        System.out.println("Total: $" + (item.getPrice() * quantity));
+
+        System.out.print("¿Desea una factura (1) o una nota de venta (2)? ");
+        int option = validations.validateOption(1, 2, scanner);
+
+        if (option == 1) {
+            Customer customer = Customer.createCustomer();
+            Bill.printBill(customer, item, quantity);
+        } else if (option == 2) {
+            SaleNote.printSaleNote(item, quantity);
+        }
     }
 }

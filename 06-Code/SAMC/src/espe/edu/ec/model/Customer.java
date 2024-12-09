@@ -1,6 +1,8 @@
 package espe.edu.ec.model;
 
-import java.util.List;
+import espe.edu.ec.utils.Validations;
+
+import java.util.Scanner;
 
 public class Customer {
     private String name;
@@ -8,7 +10,6 @@ public class Customer {
     private String email;
     private String address;
     private String phoneNumber;
-    private List<Order> orders;
 
     public Customer(String name, String idCard, String email, String address, String phoneNumber) {
         this.name = name;
@@ -16,59 +17,71 @@ public class Customer {
         this.email = email;
         this.address = address;
         this.phoneNumber = phoneNumber;
-        this.orders = orders;
     }
 
-    @Override
-    public String toString() {
-        return "Customer{" + "name=" + name + ", idCard=" + idCard + ", email=" + email + ", address=" + address + ", phoneNumber=" + phoneNumber + ", orders=" + orders + '}';
+    public static Customer createCustomer() {
+        Scanner scanner = new Scanner(System.in);
+
+        System.out.print("Ingrese el nombre del cliente: ");
+        String name = scanner.nextLine();
+
+        String idCard = null;
+        while (idCard == null) {
+            System.out.print("Ingrese la cédula del cliente (10 dígitos): ");
+            String inputIdCard = scanner.nextLine();
+            if (Validations.validateIDCard(inputIdCard)) {
+                idCard = inputIdCard;
+            } else {
+                System.out.println("Cédula inválida. Debe tener 10 dígitos.");
+            }
+        }
+
+        String email = null;
+        while (email == null) {
+            System.out.print("Ingrese el correo del cliente: ");
+            String inputEmail = scanner.nextLine();
+            if (Validations.validateEmail(inputEmail)) {
+                email = inputEmail;
+            } else {
+                System.out.println("Correo electrónico inválido.");
+            }
+        }
+
+        System.out.print("Ingrese la dirección del cliente: ");
+        String address = scanner.nextLine();
+
+        String phoneNumber = null;
+        while (phoneNumber == null) {
+            System.out.print("Ingrese el número de teléfono del cliente (10 dígitos): ");
+            String inputPhoneNumber = scanner.nextLine();
+            if (Validations.validatePhone(inputPhoneNumber)) {
+                phoneNumber = inputPhoneNumber;
+            } else {
+                System.out.println("Número de teléfono inválido. Debe tener 10 dígitos.");
+            }
+        }
+
+        return new Customer(name, idCard, email, address, phoneNumber);
     }
 
     public String getName() {
         return name;
     }
 
-    public void setName(String name) {
-        this.name = name;
-    }
-
     public String getIdCard() {
         return idCard;
-    }
-
-    public void setIdCard(String idCard) {
-        this.idCard = idCard;
     }
 
     public String getEmail() {
         return email;
     }
 
-    public void setEmail(String email) {
-        this.email = email;
-    }
-
     public String getAddress() {
         return address;
-    }
-
-    public void setAddress(String address) {
-        this.address = address;
     }
 
     public String getPhoneNumber() {
         return phoneNumber;
     }
-
-    public void setPhoneNumber(String phoneNumber) {
-        this.phoneNumber = phoneNumber;
-    }
-
-    public List<Order> getOrders() {
-        return orders;
-    }
-
-    public void setOrders(List<Order> orders) {
-        this.orders = orders;
-    }  
 }
+

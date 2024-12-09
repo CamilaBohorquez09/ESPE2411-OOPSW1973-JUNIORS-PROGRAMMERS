@@ -1,91 +1,22 @@
 package espe.edu.ec.model;
 
-import java.util.Map;
-import java.text.SimpleDateFormat;
-import java.util.Date;
-
 public class Bill {
-    private Customer customer;
-    private Map<String, Integer> order;
-    private float total;
-    private String date;
 
-    public Bill(Customer customer, Map<String, Integer> order, float total) {
-        this.customer = customer;
-        this.order = order;
-        this.total = total;
-        this.date = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss").format(new Date());
-    }
-
-    public String getDate() {
-        return date;
-    }
-    private float calculateTotal() {
-        float total = 0.0f;
-        for (Map.Entry<String, Integer> entry : order.entrySet()) {
-            MenuItem item = MenuItem.getMenuItemById(getMenuItemIdByName(entry.getKey()));
-            if (item != null) {
-                total += item.getPrice() * entry.getValue();
-            }
-        }
-        return total;
-    }
-
-    private int getMenuItemIdByName(String name) {
-        for (MenuItem item : MenuItem.getMenuItems()) {
-            if (item.getName().equalsIgnoreCase(name)) {
-                return item.getId();
-            }
-        }
-        return -1;
-    }
-
-    public Customer getCustomer() {
-        return customer;
-    }
-
-    public Map<String, Integer> getOrder() {
-        return order;
-    }
-
-    public float getTotal() {
-        return total;
-    }
-
-   public String getOrderDetails() {
-        StringBuilder details = new StringBuilder();
-        for (Map.Entry<String, Integer> entry : order.entrySet()) {
-            MenuItem item = MenuItem.getMenuItemById(getMenuItemIdByName(entry.getKey()));
-            if (item != null) {
-                details.append(String.format("Nombre: %s, Descripcion: %s, Precio: %.2f, Cantidad: %d\n",
-                        item.getName(), item.getDescription(), item.getPrice(), entry.getValue()));
-            }
-        }
-        return details.toString();
-    }
-    public String getCustomerDetails() {
-    return String.format("ID: %s\nNombre: %s\nEmail: %s\nDireccion: %s\nTelefono: %s",
-            customer.getIdCard(),
-            customer.getName(),
-            customer.getEmail(),
-            customer.getAddress(),
-            customer.getPhoneNumber());
-}
-     @Override
-    public String toString() {
-        return "FACTURA\n" +
-                "-------------------------------------------\n" +
-                "Informacion del Cliente:\n" +
-                "Nombre: " + customer.getName() + "\n" +
-                "Cedula: " + customer.getIdCard() + "\n" +
-                "Telefono: " + customer.getPhoneNumber() + "\n" +
-                "Direccion: " + customer.getAddress() + "\n" +
-                "Correo: " + customer.getEmail() + "\n" +
-                "Fecha: " + date + "\n" +
-                "-------------------------------------------\n" +
-                "Detalles del Pedido:\n" 
-                +getOrderDetails()+ 
-                "-------------------------------------------\n" +
-                "Total: $" + total;
+    // Método para imprimir la factura, que recibe el cliente, el artículo y la cantidad
+    public static void printBill(Customer customer, MenuItem item, int quantity) {
+        double total = item.getPrice() * quantity; // Calcula el total del pedido
+        System.out.println("******** FACTURA ********");
+        System.out.println("Artículo: " + item.getName());
+        System.out.println("Descripción: " + item.getDescription());
+        System.out.println("Cantidad: " + quantity);
+        System.out.println("Precio Unitario: $" + item.getPrice());
+        System.out.println("Total: $" + total);
+        System.out.println("Datos del cliente:");
+        System.out.println("Nombre: " + customer.getName());
+        System.out.println("Cédula: " + customer.getIdCard());
+        System.out.println("Correo: " + customer.getEmail());
+        System.out.println("Dirección: " + customer.getAddress());
+        System.out.println("Teléfono: " + customer.getPhoneNumber());
+        System.out.println("**************************");
     }
 }
