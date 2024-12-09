@@ -1,19 +1,45 @@
 package espe.edu.ec.model;
 
+import java.util.ArrayList;
 import java.util.Date;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 public class Order {
+    private Map<String, Integer> items;
     private int orderId;
+    private int customerId;
     private String customerName;
     private List<MenuItem> orderedItems;
     private String tableNumber;
     private Date orderDate;
     private SaleNote saleNote;
 
-    public Order(int orderId, String customerName, List<MenuItem> orderedItems, 
+    public Order(Map<String, Integer> items) {
+        this.items = items;
+        this.orderId = 0;
+        this.customerId = 0;
+        this.customerName = "";
+        this.orderedItems = new ArrayList<>();
+        for (Map.Entry<String, Integer> entry : items.entrySet()) {
+            MenuItem item = MenuItem.getMenuItemById(getMenuItemIdByName(entry.getKey()));
+            if (item != null) {
+                for (int i = 0; i < entry.getValue(); i++) {
+                    this.orderedItems.add(item);
+                }
+            }
+        }
+        this.tableNumber = "";
+        this.orderDate = new Date();
+        this.saleNote = null;
+               
+    }
+    
+    public Order(int orderId, int customerId, String customerName, List<MenuItem> orderedItems, 
                  String tableNumber, Date orderDate, SaleNote saleNote) {
         this.orderId = orderId;
+        this.customerId = customerId;
         this.customerName = customerName;
         this.orderedItems = orderedItems;
         this.tableNumber = tableNumber;
@@ -21,61 +47,45 @@ public class Order {
         this.saleNote = saleNote;
     }
 
-    @Override
-    public String toString() {
-        StringBuilder itemsDetails = new StringBuilder();
-        for (MenuItem item : orderedItems) {
-            itemsDetails.append(item).append("\n");
+    private int getMenuItemIdByName(String name) {
+        for (MenuItem item : MenuItem.getMenuItems()) {
+            if (item.getName().equalsIgnoreCase(name)) {
+                return item.getId();
+            }
         }
-        return "Order{" +
-                "orderId=" + orderId +
-                ", customerName='" + customerName + '\'' +
-                ", orderedItems=\n" + itemsDetails +
-                ", tableNumber='" + tableNumber + '\'' +
-                ", orderDate=" + orderDate +
-                ", saleNote=" + saleNote +
-                '}';
+        return -1;
     }
 
-    // Métodos vacíos para implementar en el futuro
-
-    /**
-     * Calcula el total de la orden basándose en los ítems ordenados.
-     *
-     * @return El total calculado.
-     */
     public float calculateOrderTotal() {
-        // Implementación futura
-        return 0.0f;
+        float total = 0.0f;
+        for (MenuItem item : orderedItems) {
+            total += item.getPrice();
+        }
+        return total;
     }
 
-    /**
-     * Asigna la orden a un número de mesa específico.
-     *
-     * @param tableNumber El número de la mesa.
-     */
-    public void assignTable(String tableNumber) {
-        // Implementación futura
+    public Map<String, Integer> getItems() {
+        Map<String, Integer> itemsMap = new HashMap<>();
+        for (MenuItem item : orderedItems) {
+            itemsMap.put(item.getName(), 1);
+        }
+        return itemsMap;
     }
-
-    /**
-     * Procesa el pago de la orden.
-     *
-     * @param paymentMethod El método de pago (Efectivo, Tarjeta, etc.).
-     * @return true si el pago fue exitoso, de lo contrario false.
-     */
-    public boolean processPayment(String paymentMethod) {
-        // Implementación futura
-        return false;
-    }
-
-    // Getters y Setters
+    
     public int getOrderId() {
         return orderId;
     }
 
     public void setOrderId(int orderId) {
         this.orderId = orderId;
+    }
+
+    public int getCustomerId() {
+        return customerId;
+    }
+
+    public void setCustomerId(int customerId) {
+        this.customerId = customerId;
     }
 
     public String getCustomerName() {
@@ -116,5 +126,22 @@ public class Order {
 
     public void setSaleNote(SaleNote saleNote) {
         this.saleNote = saleNote;
+    }
+
+    @Override
+    public String toString() {
+        StringBuilder itemsDetails = new StringBuilder();
+        for (MenuItem item : orderedItems) {
+            itemsDetails.append(item.getName()).append("\n");
+        }
+        return "Order{" +
+                "orderId=" + orderId +
+                ", customerId=" + customerId +
+                ", customerName='" + customerName + '\'' +
+                ", orderedItems=\n" + itemsDetails +
+                ", tableNumber='" + tableNumber + '\'' +
+                ", orderDate=" + orderDate +
+                ", saleNote=" + saleNote +
+                '}';
     }
 }

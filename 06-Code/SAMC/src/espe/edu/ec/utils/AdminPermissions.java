@@ -1,5 +1,3 @@
-
-
 package espe.edu.ec.utils;
 
 import espe.edu.ec.model.MenuItem;

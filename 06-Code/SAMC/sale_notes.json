@@ -86,19 +86,5 @@
     },
     "total": 13.0,
     "date": "2024-12-08 13:52:10"
-  },
-  {
-    "customer": {
-      "name": "12",
-      "idCard": "1725591802",
-      "email": "camil@",
-      "address": "camila@hotmail.com",
-      "phoneNumber": "0995646604"
-    },
-    "order": {
-      "Guata pequenia": 1
-    },
-    "total": 1.5,
-    "date": "2024-12-08 21:27:28"
   }
 ]

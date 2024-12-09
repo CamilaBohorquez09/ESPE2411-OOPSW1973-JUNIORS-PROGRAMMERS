@@ -1,16 +1,13 @@
 package espe.edu.ec.model;
-/**
- * Clase que representa el inventario de bebidas
- * 
- * @author Camila Bohorquez
- */
+
 public class DrinksInventory {
     private int idInventory;
     private String nameDrinks;
     private String addressOfDescription;
     private float price;
     private boolean isAvailable;
-    
+    private int quantity;
+
     @Override
     public String toString() {
         return "DrinksInventory{" +
@@ -22,11 +19,9 @@ public class DrinksInventory {
                 '}';
     }
 
-    
     public DrinksInventory() {
     }
 
-    
     public DrinksInventory(int idInventory, String nameDrinks, String addressOfDescription, float price, boolean isAvailable) {
         this.idInventory = idInventory;
         this.nameDrinks = nameDrinks;
@@ -35,7 +30,6 @@ public class DrinksInventory {
         this.isAvailable = isAvailable;
     }
 
-    
     public int getIdInventory() {
         return idInventory;
     }
@@ -75,4 +69,12 @@ public class DrinksInventory {
     public void setAvailable(boolean isAvailable) {
         this.isAvailable = isAvailable;
     }
+    public void reduceInventory(int quantity) {
+    if (isAvailable && quantity > 0) {
+        isAvailable = isAvailable && quantity <= this.quantity;
+        this.quantity -= quantity;
+    } else {
+        System.out.println("No hay suficiente stock.");
+    }
+}
 }
