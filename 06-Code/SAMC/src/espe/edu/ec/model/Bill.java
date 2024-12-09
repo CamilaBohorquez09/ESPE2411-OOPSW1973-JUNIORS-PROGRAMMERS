@@ -4,8 +4,8 @@ public class Bill {
 
     public static void printBill(Customer customer, MenuItem item, int quantity) {
         double total = item.getPrice() * quantity; 
-        System.out.println("******** FACTURA ********");
-        System.out.println("Articulo: " + item.getName());
+        System.out.println("********** FACTURA ***********");
+        System.out.println("Combo: " + item.getName());
         System.out.println("Descripcion: " + item.getDescription());
         System.out.println("Cantidad: " + quantity);
         System.out.println("Precio Unitario: $" + item.getPrice());
