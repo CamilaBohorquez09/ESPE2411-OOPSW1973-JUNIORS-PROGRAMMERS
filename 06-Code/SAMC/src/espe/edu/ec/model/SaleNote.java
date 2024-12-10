@@ -11,6 +11,7 @@ public class SaleNote {
         System.out.println("Precio Unitario: $" + item.getPrice());
         System.out.println("Total: $" + total);
         System.out.println("******************************");
+        
     }
 }
 

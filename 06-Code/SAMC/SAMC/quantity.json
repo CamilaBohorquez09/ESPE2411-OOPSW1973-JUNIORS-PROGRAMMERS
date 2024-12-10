@@ -1,21 +1,21 @@
 [
   {
-    "quantity": 50,
+    "quantity": 40,
     "name": "Guata pequenia",
     "id": 1
   },
   {
-    "quantity": 30,
+    "quantity": 25,
     "name": "Guata mediana",
     "id": 2
   },
   {
-    "quantity": 20,
+    "quantity": 32,
     "name": "Guata extragrande",
     "id": 3
   },
   {
-    "quantity": 25,
+    "quantity": 23,
     "name": "Papas con cuero",
     "id": 4
   },
@@ -35,7 +35,7 @@
     "id": 7
   },
   {
-    "quantity": 15,
+    "quantity": 14,
     "name": "Seco de pollo",
     "id": 8
   },
