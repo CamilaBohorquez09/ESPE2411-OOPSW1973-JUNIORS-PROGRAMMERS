@@ -1,5 +1,4 @@
 package espe.edu.ec.model;
-
 import espe.edu.ec.utils.ManageFileJson;
 import espe.edu.ec.utils.Validations;
 import static espe.edu.ec.utils.Validations.validateEmail;
@@ -51,10 +50,9 @@ public Order() {
         
         System.out.print("Ingrese su nombre: ");
         String name = scanner.nextLine();
-        System.out.print("Ingrese su cedula (10 digitos): ");
+        System.out.print("Ingrese su cedula: ");
         String idCard = scanner.nextLine();
         if (validateIDCard(idCard)) {
-            System.out.println("Cedula valida.");
         } else {
             System.out.println("Cedula no valida. Debe tener 10 digitos.");
         }
@@ -62,7 +60,6 @@ public Order() {
         System.out.print("Ingrese su correo electronico: ");
         String email = scanner.nextLine();
         if (validateEmail(email)) {
-            System.out.println("Correo valido.");
         } else {
             System.out.println("Correo no valido.");
         }
@@ -70,12 +67,11 @@ public Order() {
         System.out.print("Ingrese su direccion: ");
         String address = validations.validateNonNullString();
 
-        System.out.print("Ingrese su telefono (9 digitos): ");
+        System.out.print("Ingrese su telefono : ");
         String phone = scanner.nextLine();
         if (validatePhone(phone)) {
-            System.out.println("Telefono valido.");
         } else {
-            System.out.println("Telefono no valido. Debe tener 9 digitos.");
+            System.out.println("Telefono no valido. Debe tener 10 digitos.");
         }
 
         Customer customer = new Customer(name, idCard, email, address, phone);

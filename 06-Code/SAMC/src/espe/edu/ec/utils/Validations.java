@@ -47,7 +47,7 @@ public class Validations {
         while (choice < 1 || choice > 5) {
             System.out.println("Opcion no valida. Por favor, ingrese una opcion valida entre 1 y 5.");
             Scanner scanner = new Scanner(System.in);
-            System.out.print("Seleccione una opción: ");
+            System.out.print("Seleccione una opcion: ");
             choice = Integer.parseInt(scanner.nextLine());
         }
     }
@@ -84,7 +84,7 @@ public class Validations {
         while (input.isEmpty()) {
             input = scanner.nextLine();
             if (input.isEmpty()) {
-                System.out.println("El campo no puede estar vacio. Por favor ingrese un valor.");
+                System.out.println("El campo no puede estar vacio. Por favor ingrese el dato solicitado.");
             }
         }
         return input;
@@ -113,7 +113,7 @@ public class Validations {
             try {
                 cantidad = Integer.parseInt(scanner.nextLine());
                 if (cantidad <= 0) {
-                    System.out.println("La cantidad debe ser un número mayor que 0. Intente de nuevo.");
+                    System.out.println("La cantidad debe ser un numero mayor que 0. Intente de nuevo.");
                 }
             } catch (NumberFormatException e) {
                 System.out.println("Dato inválido. Ingrese un número entero positivo.");

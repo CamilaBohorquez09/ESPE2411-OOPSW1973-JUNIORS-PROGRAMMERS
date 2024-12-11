@@ -1,5 +1,4 @@
 package espe.edu.ec.model;
-
 import java.util.ArrayList;
 import java.util.List;
 
@@ -42,12 +41,27 @@ public class MenuItem {
         new MenuItem(19, "Banderas", "Plato especial de banderas", 6.75f, 15);
         }
     }
-    public static void displayMenu() {
-        System.out.println("ID\tNombre\t\tDescripcion\t\tPrecio\tInventario");
+        public static void displayMenu() {
+   
+        System.out.println("\n\n===============================================================");
+        System.out.println(String.format("%-50s", "MENU DE PLATOS"));
+        System.out.println("===============================================================");
+
+        System.out.printf("| %-12s | %-12s | %-12s | %-12s | %-12s |\n", 
+                      "ID", "Nombre", "Descripcion", "Precio", "Inventario");
+        System.out.println("---------------------------------------------------------------");
+
         for (MenuItem item : menuItems) {
-            System.out.printf("%d\t%s\t%s\t%.2f\t%d\n", item.id, item.name, item.description, item.price, item.inventory);
+                          System.out.printf("| %-4d | %-22s | %-30s | $%-9.2f | %-12d |\n",
+                          item.id,
+                          item.name,
+                          item.description,
+                          item.price,
+                          item.inventory);
         }
+            System.out.println("===============================================================\n\n");
     }
+
 
     public static MenuItem getMenuItemById(int id) {
         for (MenuItem item : menuItems) {
