@@ -76,7 +76,7 @@ public class AdminControl {
                     System.out.println("Saliendo del menu administrador...");
                     break;
                 default:
-                    System.out.println("Opción no valida.");
+                    System.out.println("Opcion no valida.");
             }
         }
     }
