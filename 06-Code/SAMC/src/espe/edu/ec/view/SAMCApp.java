@@ -1,14 +1,16 @@
 package espe.edu.ec.view;
 
 import espe.edu.ec.model.*;
-import espe.edu.ec.utils.AdminPermissions;
+import espe.edu.ec.utils.ManageFileCsv;
 import espe.edu.ec.utils.ManageFileJson;
 import espe.edu.ec.utils.Validations;
+import java.util.Map;
+import java.util.HashMap;
 import java.util.Scanner;
 
 public class SAMCApp {
     public static void main(String[] args) {
- 
+
         MenuItem.initializeMenu();
         ManageFileJson manageFileJson = new ManageFileJson();
         Scanner scanner = new Scanner(System.in);
@@ -22,12 +24,16 @@ public class SAMCApp {
 
             switch (choice) {
                 case 1:
-                    new Order().placeOrder(scanner, new Validations(), manageFileJson);
+                    Map<String, Integer> items = new HashMap<>();
+                    Order order = new Order(items);
+                    order.placeOrder(scanner, new Validations(), manageFileJson, new ManageFileCsv());
                     break;
-                case 2:new Customer("", "", "", "", "").leaveComment(scanner, manageFileJson);
+                case 2:
+                    new Customer("", "", "", "", "").leaveComment(scanner, manageFileJson);
                     break;
                 case 3:
-                    new AdminPermissions().adminPermissions(scanner, manageFileJson);
+                    AdminControl adminControl = new AdminControl();
+                    adminControl.adminPermissions(scanner, manageFileJson);
                     break;
                 case 4:
                     running = false;
@@ -40,6 +46,7 @@ public class SAMCApp {
         }
         scanner.close();
     }
+
     private static void displayMenu() {
         System.out.println("******** AGACHADITOS DE LA JAVI ********");
         System.out.println("1. Realizar un pedido");
