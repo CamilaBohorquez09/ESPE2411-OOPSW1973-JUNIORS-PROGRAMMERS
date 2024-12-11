@@ -1,5 +1,4 @@
 package espe.edu.ec.model;
-
 import java.util.Map;
 
 public class Counter {

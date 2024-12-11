@@ -1,5 +1,4 @@
 package espe.edu.ec.model;
-
 import espe.edu.ec.utils.ManageFileJson;
 import java.util.ArrayList;
 import java.util.List;

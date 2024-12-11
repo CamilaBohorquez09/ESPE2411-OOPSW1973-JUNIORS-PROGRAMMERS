@@ -1,9 +1,4 @@
 package espe.edu.ec.model;
-
-/**
- *
- * @author Alan
- */
 public class DishInventory {
     private int idDishInventory;
     private String nameDish;

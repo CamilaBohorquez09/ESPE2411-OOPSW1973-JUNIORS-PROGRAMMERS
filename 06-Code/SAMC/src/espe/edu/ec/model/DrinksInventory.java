@@ -1,5 +1,4 @@
 package espe.edu.ec.model;
-
 public class DrinksInventory {
     private int idInventory;
     private String nameDrinks;

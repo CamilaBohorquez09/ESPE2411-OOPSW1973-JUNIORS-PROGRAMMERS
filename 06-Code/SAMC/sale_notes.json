@@ -14,5 +14,20 @@
     },
     "total": 10.0,
     "date": "2024-12-09 22:05:44"
+  },
+  {
+    "customer": {
+      "name": "Camila",
+      "idCard": "1725591802",
+      "email": "4",
+      "address": "4",
+      "phoneNumber": "4",
+      "orders": []
+    },
+    "order": {
+      "Papas con cuero": 0
+    },
+    "total": 0.0,
+    "date": "2024-12-10 21:37:56"
   }
 ]

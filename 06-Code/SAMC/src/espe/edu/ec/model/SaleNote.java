@@ -79,8 +79,6 @@ public class SaleNote {
     public String toString() {
     return "NOTA DE VENTA\n" +
            "-------------------------------------------\n" +
-           "Cliente: " + customer.getName() + "\n" +
-           "Cedula: " + customer.getIdCard() + "\n" +
            "Fecha: " + date + "\n" +
            "-------------------------------------------\n" +
            "Detalles del Pedido:\n" + getOrderDetails() +

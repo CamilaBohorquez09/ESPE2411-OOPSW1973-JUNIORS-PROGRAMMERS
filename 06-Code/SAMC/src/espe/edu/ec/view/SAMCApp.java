@@ -24,8 +24,7 @@ public class SAMCApp {
                 case 1:
                     new Order().placeOrder(scanner, new Validations(), manageFileJson);
                     break;
-                case 2:
-                    new Customer("", "", "", "", "").leaveComment(scanner, manageFileJson);
+                case 2:new Customer("", "", "", "", "").leaveComment(scanner, manageFileJson);
                     break;
                 case 3:
                     new AdminPermissions().adminPermissions(scanner, manageFileJson);
@@ -33,7 +32,7 @@ public class SAMCApp {
                 case 4:
                     running = false;
                     manageFileJson.saveQuantitiesToJson();
-                    System.out.println("Gracias por visitarnos. ¡Hasta pronto!");
+                    System.out.println("Gracias por visitarnos. ¡Vuelva Pronto!");
                     break;
                 default:
                     System.out.println("Opcion no valida.");

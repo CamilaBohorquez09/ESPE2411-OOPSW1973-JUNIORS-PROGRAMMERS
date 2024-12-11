@@ -1,5 +1,4 @@
 package espe.edu.ec.utils;
-
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 import com.google.gson.reflect.TypeToken;
@@ -30,7 +29,7 @@ public class ManageFileJson {
                 bills = new ArrayList<>();
             }
         } catch (IOException e) {
-            System.out.println("No se pudo leer el archivo bills.json, se creará uno nuevo.");
+            System.out.println("No se pudo leer el archivo bills.json, se creara uno nuevo.");
         }
          boolean clienteExistente = bills.stream()
             .anyMatch(existingBill -> existingBill.getCustomer().getName().equals(bill.getCustomer().getName()));
@@ -58,7 +57,7 @@ public class ManageFileJson {
                 saleNotes = new ArrayList<>();
             }
         } catch (IOException e) {
-            System.out.println("No se pudo leer el archivo sale_notes.json, se creará uno nuevo.");
+            System.out.println("No se pudo leer el archivo sale_notes.json, se creara uno nuevo.");
         }
 
         boolean clienteExistente = saleNotes.stream()
