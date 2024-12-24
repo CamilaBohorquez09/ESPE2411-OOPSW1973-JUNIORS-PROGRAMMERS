@@ -29,21 +29,5 @@
     },
     "total": 0.0,
     "date": "2024-12-10 21:37:56"
-  },
-  {
-    "customer": {
-      "name": "mateo camacho",
-      "idCard": "1723922967",
-      "email": "mateo@gmail.com",
-      "address": "andresperes",
-      "phoneNumber": "0989543483",
-      "orders": []
-    },
-    "order": {
-      "Guata mediana": 3,
-      "Guata pequenia": 3
-    },
-    "total": 10.5,
-    "date": "2024-12-11 09:58:21"
   }
 ]

@@ -1,10 +1,10 @@
 package espe.edu.ec.model;
 import espe.edu.ec.utils.ManageFileJson;
-import espe.edu.ec.utils.ManageFileCsv; // Añadido
 import espe.edu.ec.utils.Validations;
 import static espe.edu.ec.utils.Validations.validateEmail;
 import static espe.edu.ec.utils.Validations.validateIDCard;
 import static espe.edu.ec.utils.Validations.validatePhone;
+import espe.edu.ec.utils.exceptions.InvalidIDCardException;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.HashMap;
@@ -22,7 +22,7 @@ public class Order {
     private Date orderDate;
     private SaleNote saleNote;
 
-    public Order() {
+public Order() {
         this.items = new HashMap<>();
         this.orderedItems = new ArrayList<>();
         this.orderDate = new Date();
@@ -45,18 +45,29 @@ public class Order {
         this.tableNumber = "";
         this.orderDate = new Date();
         this.saleNote = null;
-    }
-
-    public void placeOrder(Scanner scanner, Validations validations, ManageFileJson manageFileJson, ManageFileCsv manageFileCsv) {
+    }    
+    
+    public void placeOrder(Scanner scanner, Validations validations, ManageFileJson manageFileJson) {
         
         System.out.print("Ingrese su nombre: ");
         String name = scanner.nextLine();
         System.out.print("Ingrese su cedula: ");
-        String idCard = scanner.nextLine();
-        if (validateIDCard(idCard)) {
-        } else {
-            System.out.println("Cedula no valida. Debe tener 10 digitos.");
+        String idCard;
+        boolean isValid = false;
+
+        do {
+        idCard = scanner.nextLine();
+        try {
+        if (!validateIDCard(idCard)) {
+            throw new InvalidIDCardException("Cedula no valida.");
         }
+        isValid = true;
+        } catch (InvalidIDCardException e) {
+        System.out.println(e.getMessage());
+        System.out.print("Por favor, reingrese su cedula: ");
+        }
+        } while (!isValid);
+
 
         System.out.print("Ingrese su correo electronico: ");
         String email = scanner.nextLine();
@@ -109,16 +120,12 @@ public class Order {
 
         Bill bill = new Bill(customer, order, total);
         
-        manageFileJson.saveSaleNoteToJson(saleNote); 
+        manageFileJson.saveSaleNoteToJson(saleNote);
         manageFileJson.saveBillToJson(bill);
         manageFileJson.saveQuantitiesToJson();
-        
-        // Guardar en archivo CSV
-        manageFileCsv.saveOrderToCsv(this); // Llamada para guardar el pedido en CSV
 
         System.out.println("Pedido realizado con exito.");
     }
-
     private int getMenuItemIdByName(String name) {
         for (MenuItem item : MenuItem.getMenuItems()) {
             if (item.getName().equalsIgnoreCase(name)) {
@@ -143,7 +150,7 @@ public class Order {
         }
         return itemsMap;
     }
-
+    
     public int getOrderId() {
         return orderId;
     }

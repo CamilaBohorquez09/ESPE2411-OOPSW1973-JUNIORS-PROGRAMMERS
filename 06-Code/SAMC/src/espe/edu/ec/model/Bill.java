@@ -19,11 +19,11 @@ public class Bill {
         this.date = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss").format(new Date());
     }
 
+
     public String getDate() {
         return date;
     }
-
-    public void printBill(Scanner scanner, ManageFileJson manageFileJson) {
+       public void printBill(Scanner scanner, ManageFileJson manageFileJson) {
         System.out.print("Ingrese su cedula: ");
         String idCard = scanner.nextLine();
 
@@ -48,6 +48,26 @@ public class Bill {
         System.out.println(bill);
     }
 
+    private float calculateTotal() {
+        float total = 0.0f;
+        for (Map.Entry<String, Integer> entry : order.entrySet()) {
+            MenuItem item = MenuItem.getMenuItemById(getMenuItemIdByName(entry.getKey()));
+            if (item != null) {
+                total += item.getPrice() * entry.getValue();
+            }
+        }
+        return total;
+    }
+    
+    private int getMenuItemIdByName(String name) {
+        for (MenuItem item : MenuItem.getMenuItems()) {
+            if (item.getName().equalsIgnoreCase(name)) {
+                return item.getId();
+            }
+        }
+        return -1;
+    }
+
     public Customer getCustomer() {
         return customer;
     }
@@ -60,10 +80,10 @@ public class Bill {
         return total;
     }
 
-    public String getOrderDetails() {
+   public String getOrderDetails() {
         StringBuilder details = new StringBuilder();
         for (Map.Entry<String, Integer> entry : order.entrySet()) {
-            MenuItem item = MenuItem.getMenuItemById(new Counter().getMenuItemIdByName(entry.getKey()));
+            MenuItem item = MenuItem.getMenuItemById(getMenuItemIdByName(entry.getKey()));
             if (item != null) {
                 details.append(String.format("Nombre: %s, Descripcion: %s, Precio: %.2f, Cantidad: %d\n",
                         item.getName(), item.getDescription(), item.getPrice(), entry.getValue()));
@@ -71,17 +91,15 @@ public class Bill {
         }
         return details.toString();
     }
-
     public String getCustomerDetails() {
-        return String.format("ID: %s\nNombre: %s\nEmail: %s\nDireccion: %s\nTelefono: %s",
-                customer.getIdCard(),
-                customer.getName(),
-                customer.getEmail(),
-                customer.getAddress(),
-                customer.getPhoneNumber());
-    }
-
-    @Override
+    return String.format("ID: %s\nNombre: %s\nEmail: %s\nDireccion: %s\nTelefono: %s",
+            customer.getIdCard(),
+            customer.getName(),
+            customer.getEmail(),
+            customer.getAddress(),
+            customer.getPhoneNumber());
+}
+     @Override
     public String toString() {
         return "FACTURA\n" +
                 "-------------------------------------------\n" +
@@ -93,8 +111,8 @@ public class Bill {
                 "Correo: " + customer.getEmail() + "\n" +
                 "Fecha: " + date + "\n" +
                 "-------------------------------------------\n" +
-                "Detalles del Pedido:\n" +
-                getOrderDetails() +
+                "Detalles del Pedido:\n" 
+                +getOrderDetails()+ 
                 "-------------------------------------------\n" +
                 "Total: $" + total;
     }

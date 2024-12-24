@@ -18,7 +18,7 @@ public class MethodOfPayment {
             case 2:
                 return "Transferencia";
             default:
-                System.out.println("Opción invalida. Por defecto: Efectivo.");
+                System.out.println("Opcion invalida. Por defecto: Efectivo.");
                 return "Efectivo";
         }
     }

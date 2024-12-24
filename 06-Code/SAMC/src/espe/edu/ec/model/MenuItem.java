@@ -42,25 +42,22 @@ public class MenuItem {
         }
     }
         public static void displayMenu() {
-   
-        System.out.println("\n\n===============================================================");
-        System.out.println(String.format("%-50s", "MENU DE PLATOS"));
-        System.out.println("===============================================================");
-
-        System.out.printf("| %-12s | %-12s | %-12s | %-12s | %-12s |\n", 
-                      "ID", "Nombre", "Descripcion", "Precio", "Inventario");
-        System.out.println("---------------------------------------------------------------");
+        System.out.println("\n+----+----------------------+--------------------------------------------+---------+------------+");
+        System.out.printf("| %-2s | %-20s | %-44s | %-7s | %-10s |\n", "ID", "Nombre", "Descripcion", "Precio", "Inventario");
+        System.out.println("+----+----------------------+--------------------------------------------+---------+------------+");
 
         for (MenuItem item : menuItems) {
-                          System.out.printf("| %-4d | %-22s | %-30s | $%-9.2f | %-12d |\n",
-                          item.id,
-                          item.name,
-                          item.description,
-                          item.price,
-                          item.inventory);
+        System.out.printf("| %-2d | %-20s | %-44s | $%-6.2f | %-10d |\n",
+                item.id,
+                item.name, 
+                item.description, 
+                item.price,
+                item.inventory);
         }
-            System.out.println("===============================================================\n\n");
+        System.out.println("+----+----------------------+--------------------------------------------+---------+------------+\n");
     }
+
+
 
 
     public static MenuItem getMenuItemById(int id) {

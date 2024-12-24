@@ -1,9 +1,7 @@
 package espe.edu.ec.model;
-
 import java.util.Map;
 
 public class Counter {
-    
     public float calculateTotal(Map<String, Integer> order) {
         float total = 0.0f;
         for (Map.Entry<String, Integer> entry : order.entrySet()) {
@@ -14,8 +12,8 @@ public class Counter {
         }
         return total;
     }
-    
-    public int getMenuItemIdByName(String name) {
+
+    private int getMenuItemIdByName(String name) {
         for (MenuItem item : MenuItem.getMenuItems()) {
             if (item.getName().equalsIgnoreCase(name)) {
                 return item.getId();

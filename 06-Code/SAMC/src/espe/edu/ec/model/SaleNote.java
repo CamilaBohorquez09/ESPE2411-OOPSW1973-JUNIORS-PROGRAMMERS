@@ -1,5 +1,4 @@
 package espe.edu.ec.model;
-
 import espe.edu.ec.utils.ManageFileJson;
 import java.text.SimpleDateFormat;
 import java.util.Date;
@@ -85,8 +84,4 @@ public class SaleNote {
            "-------------------------------------------\n" +
            "Total: $" + total;
 }
-
-    public String getDetails() {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
-    }
 }

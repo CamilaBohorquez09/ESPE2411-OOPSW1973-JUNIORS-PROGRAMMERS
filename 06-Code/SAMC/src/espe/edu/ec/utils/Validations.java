@@ -1,8 +1,8 @@
 package espe.edu.ec.utils;
-
 import java.util.Scanner;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
+import espe.edu.ec.utils.exceptions.InvalidIDCardException;
 
 public class Validations {
     public static boolean validateOnlyLetters(String input) {
@@ -116,7 +116,7 @@ public class Validations {
                     System.out.println("La cantidad debe ser un numero mayor que 0. Intente de nuevo.");
                 }
             } catch (NumberFormatException e) {
-                System.out.println("Dato inválido. Ingrese un número entero positivo.");
+                System.out.println("Dato invalido. Ingrese un numero entero positivo.");
             }
         }
         return cantidad;
@@ -138,28 +138,40 @@ public class Validations {
 
 
 
-public boolean isValidIDCard(String cedula) {
-    int[] coeficientes = {2, 1, 2, 1, 2, 1, 2, 1, 2};
-    int total = 0;
-    int digitoVerificador;
-    int ultimoDigito = Integer.parseInt(cedula.substring(9, 10));
+ public boolean isValidIDCard(String cedula) throws InvalidIDCardException {
+        if (cedula == null || cedula.length() != 10) {
+            throw new InvalidIDCardException("La cedula debe tener exactamente 10 digitos.");
+        }
+        if (!cedula.matches("\\d+")) {
+            throw new InvalidIDCardException("La cedula solo puede contener dígitos numericos.");
+        }
 
-    for (int i = 0; i < 9; i++) {
-        total += Integer.parseInt(String.valueOf(cedula.charAt(i))) * coeficientes[i];
+        int[] coeficientes = {2, 1, 2, 1, 2, 1, 2, 1, 2};
+        int total = 0;
+        int digitoVerificador;
+        int ultimoDigito = Integer.parseInt(cedula.substring(9, 10));
+
+        for (int i = 0; i < 9; i++) {
+            int valor = Integer.parseInt(String.valueOf(cedula.charAt(i))) * coeficientes[i];
+            if (valor > 9) {
+                valor -= 9; 
+            }
+            total += valor;
+        }
+
+        int modulo = total % 10;
+        if (modulo == 0) {
+            digitoVerificador = 0;
+        } else {
+            digitoVerificador = 10 - modulo;
+        }
+
+        if (digitoVerificador != ultimoDigito) {
+            throw new InvalidIDCardException("El dígito verificador de la cedula no coincide.");
+        }
+
+        return true;
     }
-
-  
-    int modulo = total % 10;
-    if (modulo == 0) {
-        digitoVerificador = 0;
-    } else {
-        digitoVerificador = 10 - modulo;
-    }
-
-  
-    return digitoVerificador == ultimoDigito;
-}
-
 
 
 }
