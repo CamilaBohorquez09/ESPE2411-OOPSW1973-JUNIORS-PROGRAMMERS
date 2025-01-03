@@ -6,24 +6,19 @@ import java.util.Date;
 import java.util.Map;
 import java.util.Scanner;
 
-public class Bill {
-    private Customer customer;
-    private Map<String, Integer> order;
-    private float total;
-    private String date;
+public class Bill extends TransactionReceipt {
 
     public Bill(Customer customer, Map<String, Integer> order, float total) {
-        this.customer = customer;
-        this.order = order;
-        this.total = total;
-        this.date = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss").format(new Date());
+        super(customer, order, total);
     }
 
 
+
+    @Override
     public String getDate() {
         return date;
     }
-       public void printBill(Scanner scanner, ManageFileJson manageFileJson) {
+        public void printBill(Scanner scanner, ManageFileJson manageFileJson) {
         System.out.print("Ingrese su cedula: ");
         String idCard = scanner.nextLine();
 
@@ -47,7 +42,6 @@ public class Bill {
 
         System.out.println(bill);
     }
-
     private float calculateTotal() {
         float total = 0.0f;
         for (Map.Entry<String, Integer> entry : order.entrySet()) {
@@ -68,18 +62,22 @@ public class Bill {
         return -1;
     }
 
+    @Override
     public Customer getCustomer() {
         return customer;
     }
 
+    @Override
     public Map<String, Integer> getOrder() {
         return order;
     }
 
+    @Override
     public float getTotal() {
         return total;
     }
 
+    @Override
    public String getOrderDetails() {
         StringBuilder details = new StringBuilder();
         for (Map.Entry<String, Integer> entry : order.entrySet()) {
@@ -111,8 +109,7 @@ public class Bill {
                 "Correo: " + customer.getEmail() + "\n" +
                 "Fecha: " + date + "\n" +
                 "-------------------------------------------\n" +
-                "Detalles del Pedido:\n" 
-                +getOrderDetails()+ 
+                "Detalles del Pedido:\n" + getOrderDetails() +
                 "-------------------------------------------\n" +
                 "Total: $" + total;
     }

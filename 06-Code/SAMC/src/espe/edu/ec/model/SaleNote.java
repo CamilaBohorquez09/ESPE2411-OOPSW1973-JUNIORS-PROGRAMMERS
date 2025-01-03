@@ -1,25 +1,16 @@
 package espe.edu.ec.model;
+
 import espe.edu.ec.utils.ManageFileJson;
-import java.text.SimpleDateFormat;
-import java.util.Date;
 import java.util.Map;
 import java.util.Scanner;
 
-public class SaleNote {
-    private Customer customer;
-    private Map<String, Integer> order;
-    private float total;
-    private String date;
+public class SaleNote extends TransactionReceipt {
 
     public SaleNote(Customer customer, Map<String, Integer> order, float total) {
-        this.customer = customer;
-        this.order = order;
-        this.total = total;
-        this.date = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss").format(new Date());
+        super(customer, order, total);
     }
 
-
-    public void printSaleNote(Scanner scanner,ManageFileJson manageFileJson) {
+    public void printSaleNote(Scanner scanner, ManageFileJson manageFileJson) {
         System.out.print("Ingrese su cedula: ");
         String idCard = scanner.nextLine();
 
@@ -39,21 +30,26 @@ public class SaleNote {
         System.out.println("Detalles de la Nota de Venta:");
         System.out.println(saleNote);
     }
+    @Override
     public Customer getCustomer() {
         return customer;
     }
 
+    @Override
     public Map<String, Integer> getOrder() {
         return order;
     }
 
+    @Override
     public float getTotal() {
         return total;
     }
 
+    @Override
     public String getDate() {
         return date;
     }
+    @Override
     public String getOrderDetails() {
     StringBuilder details = new StringBuilder();
     for (Map.Entry<String, Integer> entry : order.entrySet()) {
@@ -76,12 +72,12 @@ public class SaleNote {
     }
     @Override
     public String toString() {
-    return "NOTA DE VENTA\n" +
-           "-------------------------------------------\n" +
-           "Fecha: " + date + "\n" +
-           "-------------------------------------------\n" +
-           "Detalles del Pedido:\n" + getOrderDetails() +
-           "-------------------------------------------\n" +
-           "Total: $" + total;
-}
+        return "NOTA DE VENTA\n" +
+               "-------------------------------------------\n" +
+               "Fecha: " + getDate() + "\n" +
+               "-------------------------------------------\n" +
+               "Detalles del Pedido:\n" + getOrderDetails() +
+               "-------------------------------------------\n" +
+               "Total: $" + getTotal();
+    }
 }
