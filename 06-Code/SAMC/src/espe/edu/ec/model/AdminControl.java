@@ -1,5 +1,4 @@
 package espe.edu.ec.model;
-
 import espe.edu.ec.model.Bill;
 import espe.edu.ec.model.MenuItem;
 import espe.edu.ec.model.SaleNote;

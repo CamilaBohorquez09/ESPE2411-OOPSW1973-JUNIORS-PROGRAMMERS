@@ -25,7 +25,7 @@ public class AdminPermissions {
         return encrypted.toString();
     }
 
-    private boolean validatePassword(String inputPassword) {
+    public boolean validatePassword(String inputPassword) {
         String encryptedInput = encryptPassword(inputPassword);
         return encryptedInput.equals(encryptedPassword);
     }

@@ -4,18 +4,18 @@
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
             <file>file:/C:/Users/bohor/ESPE2411-OOPSW1973-JUNIORS-PROGRAMMERS/ESPE2411-OOPSW1973-JUNIORS-PROGRAMMERS/06-Code/SAMC/src/espe/edu/ec/model/DrinksInventory.java</file>
+            <file>file:/C:/Users/bohor/ESPE2411-OOPSW1973-JUNIORS-PROGRAMMERS/ESPE2411-OOPSW1973-JUNIORS-PROGRAMMERS/06-Code/SAMC/src/espe/edu/ec/model/AdminControl.java</file>
             <file>file:/C:/Users/bohor/ESPE2411-OOPSW1973-JUNIORS-PROGRAMMERS/ESPE2411-OOPSW1973-JUNIORS-PROGRAMMERS/06-Code/SAMC/src/espe/edu/ec/model/Order.java</file>
             <file>file:/C:/Users/bohor/ESPE2411-OOPSW1973-JUNIORS-PROGRAMMERS/ESPE2411-OOPSW1973-JUNIORS-PROGRAMMERS/06-Code/SAMC/src/espe/edu/ec/utils/exceptions/InvalidIDCardException.java</file>
             <file>file:/C:/Users/bohor/ESPE2411-OOPSW1973-JUNIORS-PROGRAMMERS/ESPE2411-OOPSW1973-JUNIORS-PROGRAMMERS/06-Code/SAMC/src/espe/edu/ec/model/Counter.java</file>
             <file>file:/C:/Users/bohor/ESPE2411-OOPSW1973-JUNIORS-PROGRAMMERS/ESPE2411-OOPSW1973-JUNIORS-PROGRAMMERS/06-Code/SAMC/src/espe/edu/ec/model/Cashier.java</file>
             <file>file:/C:/Users/bohor/ESPE2411-OOPSW1973-JUNIORS-PROGRAMMERS/ESPE2411-OOPSW1973-JUNIORS-PROGRAMMERS/06-Code/SAMC/src/espe/edu/ec/utils/AdminPermissions.java</file>
-            <file>file:/C:/Users/bohor/ESPE2411-OOPSW1973-JUNIORS-PROGRAMMERS/ESPE2411-OOPSW1973-JUNIORS-PROGRAMMERS/06-Code/SAMC/src/espe/edu/ec/view/SAMCApp.java</file>
-            <file>file:/C:/Users/bohor/ESPE2411-OOPSW1973-JUNIORS-PROGRAMMERS/ESPE2411-OOPSW1973-JUNIORS-PROGRAMMERS/06-Code/SAMC/src/espe/edu/ec/model/Customer.java</file>
             <file>file:/C:/Users/bohor/ESPE2411-OOPSW1973-JUNIORS-PROGRAMMERS/ESPE2411-OOPSW1973-JUNIORS-PROGRAMMERS/06-Code/SAMC/src/espe/edu/ec/model/MethodOfPayment.java</file>
-            <file>file:/C:/Users/bohor/ESPE2411-OOPSW1973-JUNIORS-PROGRAMMERS/ESPE2411-OOPSW1973-JUNIORS-PROGRAMMERS/06-Code/SAMC/src/espe/edu/ec/model/DishInventory.java</file>
+            <file>file:/C:/Users/bohor/ESPE2411-OOPSW1973-JUNIORS-PROGRAMMERS/ESPE2411-OOPSW1973-JUNIORS-PROGRAMMERS/06-Code/SAMC/src/espe/edu/ec/model/Customer.java</file>
             <file>file:/C:/Users/bohor/ESPE2411-OOPSW1973-JUNIORS-PROGRAMMERS/ESPE2411-OOPSW1973-JUNIORS-PROGRAMMERS/06-Code/SAMC/src/espe/edu/ec/model/MenuItem.java</file>
+            <file>file:/C:/Users/bohor/ESPE2411-OOPSW1973-JUNIORS-PROGRAMMERS/ESPE2411-OOPSW1973-JUNIORS-PROGRAMMERS/06-Code/SAMC/src/espe/edu/ec/model/DishInventory.java</file>
             <file>file:/C:/Users/bohor/ESPE2411-OOPSW1973-JUNIORS-PROGRAMMERS/ESPE2411-OOPSW1973-JUNIORS-PROGRAMMERS/06-Code/SAMC/src/espe/edu/ec/model/Bill.java</file>
-            <file>file:/C:/Users/bohor/ESPE2411-OOPSW1973-JUNIORS-PROGRAMMERS/ESPE2411-OOPSW1973-JUNIORS-PROGRAMMERS/06-Code/SAMC/src/espe/edu/ec/utils/ManageFileJson.java</file>
+            <file>file:/C:/Users/bohor/ESPE2411-OOPSW1973-JUNIORS-PROGRAMMERS/ESPE2411-OOPSW1973-JUNIORS-PROGRAMMERS/06-Code/SAMC/src/espe/edu/ec/utils/ValidationException.java</file>
             <file>file:/C:/Users/bohor/ESPE2411-OOPSW1973-JUNIORS-PROGRAMMERS/ESPE2411-OOPSW1973-JUNIORS-PROGRAMMERS/06-Code/SAMC/src/espe/edu/ec/model/SaleNote.java</file>
             <file>file:/C:/Users/bohor/ESPE2411-OOPSW1973-JUNIORS-PROGRAMMERS/ESPE2411-OOPSW1973-JUNIORS-PROGRAMMERS/06-Code/SAMC/src/espe/edu/ec/utils/Validations.java</file>
         </group>

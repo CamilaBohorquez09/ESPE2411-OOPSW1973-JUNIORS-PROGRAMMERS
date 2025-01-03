@@ -6,104 +6,135 @@ import espe.edu.ec.utils.exceptions.InvalidIDCardException;
 
 public class Validations {
     public static boolean validateOnlyLetters(String input) {
-        return input.matches("[a-zA-ZnN]+");
-    }
-
-    public static boolean validateIDCard(String idCard) {
-        if (idCard.length() != 10) {
-            return false;
+    try {
+        if (!input.matches("[a-zA-ZñÑ]+")) {
+            throw new ValidationException("El dato ingresado  debe contener solo letras.");
         }
-        return idCard.matches("\\d{10}");
+        return true;
+    } catch (ValidationException e) {
+        System.out.println(e.getMessage());
+        return false;
     }
+}
 
-    public static boolean validateEmail(String correo) {
+public static boolean validateIDCard(String idCard) {
+    try {
+        if (idCard.length() != 10 || !idCard.matches("\\d{10}")) {
+            throw new ValidationException("El ID debe tener 10 digitos.");
+        }
+        return true;
+    } catch (ValidationException e) {
+        System.out.println(e.getMessage());
+        return false;
+    }
+}
+
+public static boolean validateEmail(String correo) {
+    try {
         String regex = "^[a-zA-Z0-9_+&*-]+(?:\\.[a-zA-Z0-9_+&*-]+)*@(?:[a-zA-Z0-9-]+\\.)+[a-zA-Z]{2,7}$";
         Pattern pattern = Pattern.compile(regex);
         Matcher matcher = pattern.matcher(correo);
-        return matcher.matches();
-    }
-
-    public static int validateOption(int min, int max, Scanner scanner) {
-        int option;
-        while (true) {
-            try {
-                option = Integer.parseInt(scanner.nextLine());
-                if (option >= min && option <= max) {
-                    return option;
-                } else {
-                    System.out.println("Opcion fuera de rango. Ingrese una opcion valida entre " + min + " y " + max + ": ");
-                }
-            } catch (NumberFormatException e) {
-                System.out.println("Por favor, ingrese un numero valido.");
-            }
+        if (!matcher.matches()) {
+            throw new ValidationException("Correo electronico no valido.");
         }
+        return true;
+    } catch (ValidationException e) {
+        System.out.println(e.getMessage());
+        return false;
     }
+}
 
-    public static boolean validatePhone(String telefono) {
-        return telefono.matches("\\d{10}");
-    }
-    
-    public void validateOption(int choice) {
-        while (choice < 1 || choice > 5) {
-            System.out.println("Opcion no valida. Por favor, ingrese una opcion valida entre 1 y 5.");
-            Scanner scanner = new Scanner(System.in);
-            System.out.print("Seleccione una opcion: ");
-            choice = Integer.parseInt(scanner.nextLine());
-        }
-    }
-    
-     public void validateMenuOption(int choice) {
-        while (choice < 1 || choice >= 19) {
-            System.out.println("Opcion no valida. Por favor, ingrese una opcion valida entre 1-19");
-            Scanner scanner = new Scanner(System.in);
-            System.out.print("Seleccione una opcion: ");
-            choice = Integer.parseInt(scanner.nextLine());
-        }
-    }
-
-    
-    public int validateInt() {
-        Scanner scanner = new Scanner(System.in);
-        int number = -1;
-        boolean isValid = false;
-        while (!isValid) {
-            try {
-                number = Integer.parseInt(scanner.nextLine());
-                isValid = true;
-            } catch (NumberFormatException e) {
-                System.out.println("Dato invalido. Por favor, ingrese un numero entero.");
-            }
-        }
-        return number;
-    }
-
-   
-    public String validateNonNullString() {
-        Scanner scanner = new Scanner(System.in);
-        String input = "";
-        while (input.isEmpty()) {
-            input = scanner.nextLine();
-            if (input.isEmpty()) {
-                System.out.println("El campo no puede estar vacio. Por favor ingrese el dato solicitado.");
-            }
-        }
-        return input;
-    }
-
-    
-    public String validateEmail() {
-        Scanner scanner = new Scanner(System.in);
-        String email = "";
-        while (true) {
-            email = scanner.nextLine();
-            if (email.contains("@") && email.contains(".")) {
-                break;
+public static int validateOption(int min, int max, Scanner scanner) {
+    while (true) {
+        try {
+            int option = Integer.parseInt(scanner.nextLine());
+            if (option >= min && option <= max) {
+                return option;
             } else {
-                System.out.println("Correo invalido. Ingrese un correo electronico valido.");
+                throw new ValidationException("Opcion fuera de rango. Ingrese una opcion valida entre " + min + " y " + max + ".");
             }
+        } catch (NumberFormatException e) {
+            System.out.println("Por favor, ingrese un número válido.");
+        } catch (ValidationException e) {
+            System.out.println(e.getMessage());
         }
-        return email;
     }
+}
+
+public static boolean validatePhone(String telefono) {
+    try {
+        if (!telefono.matches("\\d{10}")) {
+            throw new ValidationException("El telefono debe contener 10 digitos.");
+        }
+        return true;
+    } catch (ValidationException e) {
+        System.out.println(e.getMessage());
+        return false;
+    }
+}
+
+public void validateOption(int choice) {
+    try {
+        if (choice < 1 || choice > 5) {
+            throw new ValidationException("Opcion no valida. Ingrese una opcion valida entre 1 y 5.");
+        }
+    } catch (ValidationException e) {
+        System.out.println(e.getMessage());
+    }
+}
+
+public void validateMenuOption(int choice) {
+    try {
+        if (choice < 1 || choice >= 19) {
+            throw new ValidationException("Opcion no valida. Ingrese una opcion valida entre 1 y 19.");
+        }
+    } catch (ValidationException e) {
+        System.out.println(e.getMessage());
+    }
+}
+
+public int validateInt() {
+    Scanner scanner = new Scanner(System.in);
+    while (true) {
+        try {
+            int number = Integer.parseInt(scanner.nextLine());
+            return number;
+        } catch (NumberFormatException e) {
+            System.out.println("Dato invalido. Ingrese un numero entero.");
+        }
+    }
+}
+
+public String validateNonNullString() {
+    Scanner scanner = new Scanner(System.in);
+    while (true) {
+        String input = scanner.nextLine();
+        try {
+            if (input.isEmpty()) {
+                throw new ValidationException("El campo no puede estar vacío.");
+            }
+            return input;
+        } catch (ValidationException e) {
+            System.out.println(e.getMessage());
+        }
+    }
+}
+
+public String validateEmailInput() {
+    Scanner scanner = new Scanner(System.in);
+    while (true) {
+        String email = scanner.nextLine();
+        try {
+            if (!email.contains("@") || !email.contains(".")) {
+                throw new ValidationException("Correo invalido. Ingrese un correo electronico valido.");
+            }
+            return email;
+        } catch (ValidationException e) {
+            System.out.println(e.getMessage());
+        }
+    }
+}
+
     
     
     public int validateQuantity() {
@@ -167,7 +198,7 @@ public class Validations {
         }
 
         if (digitoVerificador != ultimoDigito) {
-            throw new InvalidIDCardException("El dígito verificador de la cedula no coincide.");
+            throw new InvalidIDCardException("El digito verificador de la cedula no coincide.");
         }
 
         return true;
