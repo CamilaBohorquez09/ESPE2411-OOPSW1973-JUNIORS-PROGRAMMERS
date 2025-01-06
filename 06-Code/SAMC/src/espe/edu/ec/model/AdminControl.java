@@ -1,4 +1,5 @@
 package espe.edu.ec.model;
+
 import espe.edu.ec.model.Bill;
 import espe.edu.ec.model.MenuItem;
 import espe.edu.ec.model.SaleNote;
@@ -58,7 +59,7 @@ public class AdminControl {
 
         while (adminRunning) {
             displayAdminMenu();
-            int adminChoice = Validations.validateOption(1, 5, scanner);
+            int adminChoice = Validations.validateOption(1, 6, scanner); // Cambiado a 6 opciones.
 
             switch (adminChoice) {
                 case 1:
@@ -71,6 +72,11 @@ public class AdminControl {
                     refillMenuInventory(scanner, manageFileJson);
                     break;
                 case 4:
+                    System.out.println("Llamando a ScreenOfChef...");
+                    ScreenOfChef screenOfChef = new ScreenOfChef(new Order());
+                    screenOfChef.displayOrderedDishes();
+                    break;
+                case 5:
                     adminRunning = false;
                     System.out.println("Saliendo del menu administrador...");
                     break;
@@ -85,8 +91,10 @@ public class AdminControl {
         System.out.println("1. Imprimir Factura");
         System.out.println("2. Imprimir Nota de Venta");
         System.out.println("3. Hacer refill de inventario");
-        System.out.println("4. Salir");
+        System.out.println("4. Pantalla del cocinero2");
+        System.out.println("5. Salir");
         System.out.print("Seleccione una opcion: ");
     }
 }
+
 

@@ -135,14 +135,6 @@ public Order() {
         return -1;
     }
 
-    public float calculateOrderTotal() {
-        float total = 0.0f;
-        for (MenuItem item : orderedItems) {
-            total += item.getPrice();
-        }
-        return total;
-    }
-
     public Map<String, Integer> getItems() {
         Map<String, Integer> itemsMap = new HashMap<>();
         for (MenuItem item : orderedItems) {
