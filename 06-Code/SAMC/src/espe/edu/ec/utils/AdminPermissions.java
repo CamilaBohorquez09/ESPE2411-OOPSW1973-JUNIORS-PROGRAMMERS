@@ -89,27 +89,26 @@ public class AdminPermissions {
                     break;
                 case 4:
                     System.out.println("Pantalla del cocinero");
-                    // Corregido: usar constructor sin parámetros
                     ScreenOfChef screenOfChef = new ScreenOfChef();
                     screenOfChef.displayOrderedDishes();
                     break;
                 case 5:
                     adminRunning = false;
-                    System.out.println("Saliendo del menú administrador...");
+                    System.out.println("Saliendo del menu administrador...");
                     break;
                 default:
-                    System.out.println("Opción no válida.");
+                    System.out.println("Opción no valida.");
             }
         }
     }
 
     private void displayAdminMenu() {
-        System.out.println("\n=== Menú Administrador ===");
+        System.out.println("\n=== Menu Administrador ===");
         System.out.println("1. Imprimir factura");
         System.out.println("2. Imprimir nota de venta");
         System.out.println("3. Reabastecer inventario");
         System.out.println("4. Mostrar platos solicitados (Pantalla del chef)");
         System.out.println("5. Salir");
-        System.out.print("Seleccione una opción: ");
+        System.out.print("Seleccione una opcion: ");
     }
 }

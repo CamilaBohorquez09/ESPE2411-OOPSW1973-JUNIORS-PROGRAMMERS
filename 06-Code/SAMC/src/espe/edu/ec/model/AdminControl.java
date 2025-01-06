@@ -72,8 +72,9 @@ public class AdminControl {
                     refillMenuInventory(scanner, manageFileJson);
                     break;
                 case 4:
-                    System.out.println("Llamando a ScreenOfChef...");
-                    ScreenOfChef screenOfChef = new ScreenOfChef(new Order());
+                    System.out.println("Pantalla del cocinero");
+                    // Corregido: usar constructor sin parámetros
+                    ScreenOfChef screenOfChef = new ScreenOfChef();
                     screenOfChef.displayOrderedDishes();
                     break;
                 case 5:
@@ -91,10 +92,11 @@ public class AdminControl {
         System.out.println("1. Imprimir Factura");
         System.out.println("2. Imprimir Nota de Venta");
         System.out.println("3. Hacer refill de inventario");
-        System.out.println("4. Pantalla del cocinero2");
+        System.out.println("4. Pantalla del cocinero");
         System.out.println("5. Salir");
         System.out.print("Seleccione una opcion: ");
     }
 }
+
 
 
