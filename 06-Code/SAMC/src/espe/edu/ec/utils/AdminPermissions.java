@@ -89,7 +89,8 @@ public class AdminPermissions {
                     break;
                 case 4:
                     System.out.println("Pantalla del cocinero");
-                    ScreenOfChef screenOfChef = new ScreenOfChef(manageFileJson);
+                    // Corregido: usar constructor sin parámetros
+                    ScreenOfChef screenOfChef = new ScreenOfChef();
                     screenOfChef.displayOrderedDishes();
                     break;
                 case 5:
@@ -112,4 +113,3 @@ public class AdminPermissions {
         System.out.print("Seleccione una opción: ");
     }
 }
-
