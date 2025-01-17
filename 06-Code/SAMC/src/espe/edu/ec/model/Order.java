@@ -22,7 +22,7 @@ public class Order {
     private Date orderDate;
     private SaleNote saleNote;
 
-public Order() {
+    public Order() {
         this.items = new HashMap<>();
         this.orderedItems = new ArrayList<>();
         this.orderDate = new Date();
@@ -48,45 +48,6 @@ public Order() {
     }    
     
     public void placeOrder(Scanner scanner, Validations validations, ManageFileJson manageFileJson) {
-        
-        System.out.print("Ingrese su nombre: ");
-        String name = scanner.nextLine();
-        System.out.print("Ingrese su cedula: ");
-        String idCard;
-        boolean isValid = false;
-
-        do {
-        idCard = scanner.nextLine();
-        try {
-        if (!validateIDCard(idCard)) {
-            throw new InvalidIDCardException("Cedula no valida.");
-        }
-        isValid = true;
-        } catch (InvalidIDCardException e) {
-        System.out.println(e.getMessage());
-        System.out.print("Por favor, reingrese su cedula: ");
-        }
-        } while (!isValid);
-
-
-        System.out.print("Ingrese su correo electronico: ");
-        String email = scanner.nextLine();
-        if (validateEmail(email)) {
-        } else {
-            System.out.println("Correo no valido.");
-        }
-
-        System.out.print("Ingrese su direccion: ");
-        String address = validations.validateNonNullString();
-
-        System.out.print("Ingrese su telefono : ");
-        String phone = scanner.nextLine();
-        if (validatePhone(phone)) {
-        } else {
-            System.out.println("Telefono no valido. Debe tener 10 digitos.");
-        }
-
-        Customer customer = new Customer(name, idCard, email, address, phone);
         Map<String, Integer> order = new HashMap<>();
 
         System.out.println("Seleccione los platos (ingrese '0' para terminar): ");
@@ -113,19 +74,56 @@ public Order() {
             }
         }
 
+        System.out.print("Ingrese su nombre: ");
+        String name = scanner.nextLine();
+        System.out.print("Ingrese su cedula: ");
+        String idCard;
+        boolean isValid = false;
+
+        do {
+            idCard = scanner.nextLine();
+            try {
+                if (!validateIDCard(idCard)) {
+                    throw new InvalidIDCardException("Cedula no valida.");
+                }
+                isValid = true;
+            } catch (InvalidIDCardException e) {
+                System.out.println(e.getMessage());
+                System.out.print("Por favor, reingrese su cedula: ");
+            }
+        } while (!isValid);
+
+        System.out.print("Ingrese su correo electronico: ");
+        String email = scanner.nextLine();
+        if (!validateEmail(email)) {
+            System.out.println("Correo no valido.");
+        }
+
+        System.out.print("Ingrese su direccion: ");
+        String address = validations.validateNonNullString();
+
+        System.out.print("Ingrese su telefono: ");
+        String phone = scanner.nextLine();
+        if (!validatePhone(phone)) {
+            System.out.println("Telefono no valido. Debe tener 10 digitos.");
+        }
+
+        Customer customer = new Customer(name, idCard, email, address, phone);
+
         float total = new Counter().calculateTotal(order);
         SaleNote saleNote = new SaleNote(customer, order, total);
 
         manageFileJson.saveSaleNoteToJson(saleNote);
 
         Bill bill = new Bill(customer, order, total);
-        
+
         manageFileJson.saveSaleNoteToJson(saleNote);
         manageFileJson.saveBillToJson(bill);
         manageFileJson.saveQuantitiesToJson();
 
         System.out.println("Pedido realizado con exito.");
     }
+
     private int getMenuItemIdByName(String name) {
         for (MenuItem item : MenuItem.getMenuItems()) {
             if (item.getName().equalsIgnoreCase(name)) {
@@ -142,7 +140,7 @@ public Order() {
         }
         return itemsMap;
     }
-    
+
     public int getOrderId() {
         return orderId;
     }
