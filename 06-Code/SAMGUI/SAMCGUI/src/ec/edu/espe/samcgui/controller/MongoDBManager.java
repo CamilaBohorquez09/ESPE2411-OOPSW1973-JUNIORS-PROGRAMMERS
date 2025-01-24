@@ -15,7 +15,7 @@ public class MongoDBManager {
     private static MongoClient mongoClient = null;
     
     // URI de conexión a MongoDB Atlas
-    private static final String URI = "mongodb+srv://rchapigo:clave12345@cluster0.0etpp.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0/";
+    private static final String URI = "mongodb+srv://rchapigo:1234@cluster0.0etpp.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0/";
     private static final String DATABASE_NAME = "bd_restaurante";
 
     public static MongoClient getMongoClient() {
