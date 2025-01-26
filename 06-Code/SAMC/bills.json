@@ -1,12 +1,11 @@
 [
   {
     "customer": {
-      "name": "Ismael",
-      "idCard": "1753597796",
-      "email": "ismael@gamil.com",
+      "name": "Danna",
+      "idCard": "1777777777",
+      "email": "danna@gamil.com",
       "address": "Quito",
-      "phoneNumber": "0999999999",
-      "orders": []
+      "phoneNumber": "0999999999"
     },
     "order": {
       "Guata pequenia": 2

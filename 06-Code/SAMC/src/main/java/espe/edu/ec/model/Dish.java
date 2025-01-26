@@ -8,7 +8,6 @@ public class Dish {
     private int quantity;
     private double price;
 
-    // Mapa estático para gestionar los platillos en la orden
     private static Map<String, Dish> dishes = new HashMap<>();
 
     public Dish(String name, int quantity, double price) {
@@ -34,14 +33,10 @@ public class Dish {
         return price;
     }
 
-    // Métodos estáticos para gestionar los platillos
-
-    // Buscar un platillo por nombre
     public static Dish getDishByName(String name) {
-        return dishes.get(name); // Retorna el platillo si existe, o null si no
+        return dishes.get(name); 
     }
 
-    // Agregar o actualizar un platillo en la orden
     public static void addDish(Dish dish) {
         if (dishes.containsKey(dish.getName())) {
             Dish existingDish = dishes.get(dish.getName());

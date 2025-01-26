@@ -11,13 +11,13 @@ import com.mongodb.client.MongoDatabase;
 import ec.edu.espe.controller.MongoDBManager;
 import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 import javax.swing.JOptionPane;
 import org.bson.Document;
+import static espe.edu.ec.model.ChefOrderList.generateOrderList;
 
 /**
  *
- * @author Camila Bohorquez 
+ * @author Camila Bohorquez
  */
 public class FrmChefMenu extends javax.swing.JFrame {
 
@@ -43,7 +43,6 @@ public class FrmChefMenu extends javax.swing.JFrame {
         FindIterable<Document> documents = collection.find();
 
         HashMap<String, Integer> platillosMap = new HashMap<>();
-
         for (Document doc : documents) {
             List<Document> platillos = (List<Document>) doc.get("platillos");
 
@@ -55,14 +54,10 @@ public class FrmChefMenu extends javax.swing.JFrame {
             }
         }
 
-        StringBuilder sb = new StringBuilder();
-        sb.append("-----------Platillos a preparar--------------:\n");
-        for (Map.Entry<String, Integer> entry : platillosMap.entrySet()) {
-            sb.append(entry.getKey()).append(": ").append(entry.getValue()).append("\n");
-        }
-
-        jTextArea1.setText(sb.toString());
+        String platillosString = generateOrderList(platillosMap);
+        jTextArea1.setText(platillosString);
     }
+
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -195,4 +190,5 @@ public class FrmChefMenu extends javax.swing.JFrame {
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTextArea jTextArea1;
     // End of variables declaration//GEN-END:variables
+
 }
