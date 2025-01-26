@@ -1,49 +1,17 @@
 [
   {
     "customer": {
-      "name": "Alan Arias",
-      "idCard": "1726392515",
-      "email": "ariasalan634@gmail.com",
-      "address": "Turubamba Bajo",
-      "phoneNumber": "0991541777",
+      "name": "Ismael",
+      "idCard": "1753597796",
+      "email": "ismael@gamil.com",
+      "address": "Quito",
+      "phoneNumber": "0999999999",
       "orders": []
     },
     "order": {
-      "Mixto seco de costilla y guata": 2,
       "Guata pequenia": 2
     },
-    "total": 10.0,
-    "date": "2024-12-09 22:05:44"
-  },
-  {
-    "customer": {
-      "name": "Camila",
-      "idCard": "1725591802",
-      "email": "4",
-      "address": "4",
-      "phoneNumber": "4",
-      "orders": []
-    },
-    "order": {
-      "Papas con cuero": 0
-    },
-    "total": 0.0,
-    "date": "2024-12-10 21:37:56"
-  },
-  {
-    "customer": {
-      "name": "mateocamacho",
-      "idCard": "1723922967",
-      "email": "ma@gmail.com",
-      "address": "andres perez",
-      "phoneNumber": "0989543483",
-      "orders": []
-    },
-    "order": {
-      "Guata mediana": 4,
-      "Guata pequenia": 4
-    },
-    "total": 14.0,
-    "date": "2025-01-05 18:38:20"
+    "total": 3.0,
+    "date": "2025-01-24 20:31:44"
   }
 ]

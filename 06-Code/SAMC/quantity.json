@@ -1,21 +1,21 @@
 [
   {
-    "quantity": 37,
+    "quantity": 48,
     "name": "Guata pequenia",
     "id": 1
   },
   {
-    "quantity": 18,
+    "quantity": 30,
     "name": "Guata mediana",
     "id": 2
   },
   {
-    "quantity": 32,
+    "quantity": 20,
     "name": "Guata extragrande",
     "id": 3
   },
   {
-    "quantity": 23,
+    "quantity": 25,
     "name": "Papas con cuero",
     "id": 4
   },
@@ -35,7 +35,7 @@
     "id": 7
   },
   {
-    "quantity": 14,
+    "quantity": 15,
     "name": "Seco de pollo",
     "id": 8
   },
@@ -45,7 +45,7 @@
     "id": 9
   },
   {
-    "quantity": 13,
+    "quantity": 15,
     "name": "Mixto seco de costilla y guata",
     "id": 10
   },
@@ -55,7 +55,7 @@
     "id": 11
   },
   {
-    "quantity": 13,
+    "quantity": 15,
     "name": "Mixto seco de chivo y guata",
     "id": 12
   },
@@ -85,7 +85,7 @@
     "id": 17
   },
   {
-    "quantity": 13,
+    "quantity": 15,
     "name": "Mixto con doble carne; pollo, chivo, chancho, costilla",
     "id": 18
   },
