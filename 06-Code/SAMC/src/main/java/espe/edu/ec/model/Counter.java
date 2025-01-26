@@ -8,8 +8,6 @@ import ec.edu.espe.controller.MongoDBManager;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
-import javax.swing.JOptionPane;
-import javax.swing.table.DefaultTableModel;
 import org.bson.Document;
 
 public class Counter {

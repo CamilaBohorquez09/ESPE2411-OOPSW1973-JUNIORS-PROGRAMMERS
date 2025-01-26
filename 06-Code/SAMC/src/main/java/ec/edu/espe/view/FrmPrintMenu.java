@@ -5,12 +5,14 @@
 package ec.edu.espe.view;
 
 import com.mongodb.client.FindIterable;
-import com.mongodb.client.MongoClient;
 import com.mongodb.client.MongoCollection;
 import com.mongodb.client.MongoDatabase;
 import ec.edu.espe.controller.MongoDBManager;
+import espe.edu.ec.model.Bill;
 import espe.edu.ec.model.Counter;
+import espe.edu.ec.model.Customer;
 import espe.edu.ec.model.MenuItem;
+import espe.edu.ec.model.SaleNote;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import java.util.HashMap;
@@ -21,7 +23,7 @@ import org.bson.Document;
 
 /**
  *
- * @author Camila Bohorquez 
+ * @author Camila Bohorquez
  */
 public class FrmPrintMenu extends javax.swing.JFrame {
 
@@ -55,7 +57,11 @@ public class FrmPrintMenu extends javax.swing.JFrame {
         jLabel1.setForeground(new java.awt.Color(255, 255, 255));
         jLabel1.setText("Ingrese numero de cedula:");
 
-        txCedula.setText("1753597796");
+        txCedula.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txCedulaActionPerformed(evt);
+            }
+        });
 
         btCancelar.setText("Cancelar");
         btCancelar.addActionListener(new java.awt.event.ActionListener() {
@@ -141,18 +147,20 @@ public class FrmPrintMenu extends javax.swing.JFrame {
 
         Document query = new Document("cedulaCliente", id);
         Document order = ordersCollection.find(query).first();
-        
+
         LocalDateTime date = LocalDateTime.now();
         DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss");
         String formattedDate = date.format(formatter);
-        
+
         FindIterable<Document> documents = ordersCollection.find(query);
-        
+
         StringBuilder resultString = new StringBuilder();
+        Map<String, Integer> orderedItems = new HashMap<>();
+
         if (order != null) {
             int selectedOption = JOptionPane.showOptionDialog(
                     null,
-                    "¿Que desea Imprmir?",
+                    "¿Qué desea imprimir?",
                     "Cliente Encontrado",
                     JOptionPane.YES_NO_OPTION,
                     JOptionPane.QUESTION_MESSAGE,
@@ -161,70 +169,50 @@ public class FrmPrintMenu extends javax.swing.JFrame {
                     "Factura");
 
             if (selectedOption == JOptionPane.YES_OPTION) {
-
-                
                 List<MenuItem> menuItems = Counter.loadMenuItems();
-                Map<String, Integer> orderedItems = new HashMap<>();
-
-                resultString.append("FACTURA").append("\n");
-                resultString.append("-------------------------------------------\n");
-                resultString.append(formattedDate).append("\n");
-                resultString.append("-------------------------------------------\n");
+                Customer customer = new Customer(
+                        order.getString("nombreCliente"),
+                        order.getString("cedulaCliente"),
+                        order.getString("correoCliente"),
+                        order.getString("direccionCliente"),
+                        order.getString("telefonoCliente")
+                );
 
                 for (Document doc : documents) {
-                    String nombreCliente = doc.getString("nombreCliente");
-                    String cedulaCliente = doc.getString("cedulaCliente");
-                    String correoCliente = doc.getString("correoCliente");
-                    String telefonoCliente = doc.getString("telefonoCliente");
-                    String direccionCliente = doc.getString("direccionCliente");
-
-                    resultString.append("Nombre: ").append(nombreCliente).append("\n");
-                    resultString.append("Cédula: ").append(cedulaCliente).append("\n");
-                    resultString.append("Correo: ").append(correoCliente).append("\n");
-                    resultString.append("Teléfono: ").append(telefonoCliente).append("\n");
-                    resultString.append("Dirección: ").append(direccionCliente).append("\n");
-
-                    resultString.append("-------------------------------------------\n");
-
                     List<Document> platillos = (List<Document>) doc.get("platillos");
                     for (Document platillo : platillos) {
                         String nombrePlatillo = platillo.getString("nombre");
                         int cantidadPlatillo = platillo.getInteger("cantidad");
                         orderedItems.put(nombrePlatillo, cantidadPlatillo);
-                        resultString.append("Nombre: ").append(nombrePlatillo).append(", Cantidad: ").append(cantidadPlatillo).append("\n");
                     }
-
-                    resultString.append("-------------------------------------------\n");
-                    float total = new Counter().calculateTotal(orderedItems, menuItems);
-                    resultString.append("Total: ").append(total).append("\n");
-                    resultString.append("-------------------------------------------\n");
                 }
 
-                String result = resultString.toString();
-                new FrmPrintOutput(result).setVisible(true);
+                float total = new Counter().calculateTotal(orderedItems, menuItems);
+                Bill bill = new Bill(customer, orderedItems, total);
+                new FrmPrintOutput(bill.toString()).setVisible(true);
                 dispose();
-
             } else if (selectedOption == JOptionPane.NO_OPTION) {
-                
-                resultString.append("FACTURA").append("\n");
-                resultString.append("-------------------------------------------\n");
-                resultString.append(formattedDate).append("\n");
-                resultString.append("-------------------------------------------\n");
-                
-                new FrmPrintOutput("nada");
+                List<MenuItem> menuItems = Counter.loadMenuItems();
+                Customer customer = new Customer(
+                        order.getString("nombreCliente"),
+                        order.getString("cedulaCliente"),
+                        order.getString("correoCliente"),
+                        order.getString("direccionCliente"),
+                        order.getString("telefonoCliente")
+                );
+
                 for (Document doc : documents) {
-                    
                     List<Document> platillos = (List<Document>) doc.get("platillos");
                     for (Document platillo : platillos) {
                         String nombrePlatillo = platillo.getString("nombre");
                         int cantidadPlatillo = platillo.getInteger("cantidad");
-                        resultString.append("Nombre: ").append(nombrePlatillo).append(", Cantidad: ").append(cantidadPlatillo).append("\n");
+                        orderedItems.put(nombrePlatillo, cantidadPlatillo);
                     }
-
-                    resultString.append("-------------------------------------------\n");
                 }
-                String result = resultString.toString();
-                new FrmPrintOutput(result).setVisible(true);
+
+                float total = new Counter().calculateTotal(orderedItems, menuItems);
+                SaleNote saleNote = new SaleNote(customer, orderedItems, total);
+                new FrmPrintOutput(saleNote.toString()).setVisible(true);
                 dispose();
             }
 
@@ -234,6 +222,10 @@ public class FrmPrintMenu extends javax.swing.JFrame {
 
 
     }//GEN-LAST:event_btBuscarActionPerformed
+
+    private void txCedulaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txCedulaActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txCedulaActionPerformed
 
     /**
      * @param args the command line arguments

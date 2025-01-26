@@ -9,10 +9,10 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-public class ScreenOfChef {
+public class ChefOrderList {
     private final Gson gson;
 
-    public ScreenOfChef() {
+    public ChefOrderList() {
         this.gson = new Gson();
     }
 

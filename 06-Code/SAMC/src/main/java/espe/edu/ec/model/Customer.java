@@ -1,8 +1,6 @@
 package espe.edu.ec.model;
-import espe.edu.ec.utils.ManageFileJson;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Scanner;
 
 public class Customer {
     private String name;
@@ -19,13 +17,6 @@ public class Customer {
         this.address = address;
         this.phoneNumber = phoneNumber;
         this.orders = new ArrayList<>();
-    }
-
-    public void leaveComment(Scanner scanner, ManageFileJson manageFileJson) {
-        System.out.print("Ingrese su comentario: ");
-        String comentario = scanner.nextLine();
-        //manageFileJson.saveCommentToJson(comentario);
-        System.out.println("Comentario guardado con exito.");
     }
     @Override
     public String toString() {

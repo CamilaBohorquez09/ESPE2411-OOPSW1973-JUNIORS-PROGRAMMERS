@@ -1,6 +1,5 @@
 package espe.edu.ec.model;
 
-import java.util.ArrayList;
 import java.util.List;
 
 public class MenuItem {
@@ -18,25 +17,6 @@ public class MenuItem {
         this.description = description;
         this.price = price;
         this.inventory = inventory;
-//        menuItems.add(this);
-    }
-
-
-
-    public static void displayMenu(List<MenuItem> menuItems) {
-        System.out.println("\n+----+----------------------+--------------------------------------------+---------+------------+");
-        System.out.printf("| %-2s | %-20s | %-44s | %-7s | %-10s |\n", "ID", "Nombre", "Descripcion", "Precio", "Inventario");
-        System.out.println("+----+----------------------+--------------------------------------------+---------+------------+");
-
-        for (MenuItem item : menuItems) {
-            System.out.printf("| %-2d | %-20s | %-44s | $%-6.2f | %-10d |\n",
-                    item.id,
-                    item.name,
-                    item.description,
-                    item.price,
-                    item.inventory);
-        }
-        System.out.println("+----+----------------------+--------------------------------------------+---------+------------+\n");
     }
 
     public static MenuItem getMenuItemById(int id, List<MenuItem> menuItems) {
@@ -56,15 +36,7 @@ public class MenuItem {
         }
         return null;
     }
-
-    public void reduceInventory(int quantity) {
-        if (quantity <= inventory) {
-            inventory -= quantity;
-        } else {
-            System.out.println("No hay suficiente inventario para " + name);
-        }
-    }
-
+    
     public String getName() {
         return name;
     }
@@ -80,10 +52,6 @@ public class MenuItem {
     public int getInventory() {
         return inventory;
     }
-
-//    public static List<MenuItem> getMenuItems() {
-//        return menuItems;
-//    }
 
     public int getId() {
         return id;
