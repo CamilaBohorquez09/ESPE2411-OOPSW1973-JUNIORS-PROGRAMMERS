@@ -10,7 +10,6 @@ import com.mongodb.client.MongoCollection;
 import com.mongodb.client.MongoDatabase;
 import ec.edu.espe.controller.MongoDBManager;
 import espe.edu.ec.model.Counter;
-import espe.edu.ec.model.Dish;
 import espe.edu.ec.model.MenuItem;
 import espe.edu.ec.model.Order;
 import java.util.ArrayList;
@@ -489,7 +488,6 @@ public class FrmMenuOrder extends javax.swing.JFrame {
             txDireccion.setText("");
             cbPlatillo.setSelectedIndex(0);
             spCantidad.setValue(0);
-            Dish.clearDishes();
             orderedItems.clear();
 
         } catch (NumberFormatException e) {

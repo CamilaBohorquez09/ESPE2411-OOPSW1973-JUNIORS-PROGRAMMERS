@@ -169,7 +169,7 @@ public class FrmPrintMenu extends javax.swing.JFrame {
                     "Factura");
 
             if (selectedOption == JOptionPane.YES_OPTION) {
-                List<MenuItem> menuItems = Counter.loadMenuItems();
+                List<MenuItem> menuItems = MenuItem.loadMenuItems();
                 Customer customer = new Customer(
                         order.getString("nombreCliente"),
                         order.getString("cedulaCliente"),
@@ -192,7 +192,7 @@ public class FrmPrintMenu extends javax.swing.JFrame {
                 new FrmPrintOutput(bill.toString()).setVisible(true);
                 dispose();
             } else if (selectedOption == JOptionPane.NO_OPTION) {
-                List<MenuItem> menuItems = Counter.loadMenuItems();
+                List<MenuItem> menuItems = MenuItem.loadMenuItems();
                 Customer customer = new Customer(
                         order.getString("nombreCliente"),
                         order.getString("cedulaCliente"),

@@ -2,9 +2,9 @@ package espe.edu.ec.model;
 
 import java.util.Map;
 
-public class Bill extends TransactionReceipt 
-{
-public Bill(Customer customer, Map<String, Integer> order, float total) {
+public class Bill extends TransactionReceipt {
+
+    public Bill(Customer customer, Map<String, Integer> order, float total) {
         super(customer, order, total);
     }
 
@@ -21,7 +21,7 @@ public Bill(Customer customer, Map<String, Integer> order, float total) {
 
         for (Map.Entry<String, Integer> entry : getOrder().entrySet()) {
             receipt.append(" - Platillo: ").append(entry.getKey())
-                   .append(", Cantidad: ").append(entry.getValue()).append("\n");
+                    .append(", Cantidad: ").append(entry.getValue()).append("\n");
         }
 
         receipt.append("----- Total -----\n");

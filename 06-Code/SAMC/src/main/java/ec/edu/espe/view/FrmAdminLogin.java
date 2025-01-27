@@ -8,12 +8,13 @@ import com.mongodb.client.MongoClient;
 import com.mongodb.client.MongoCollection;
 import com.mongodb.client.MongoDatabase;
 import ec.edu.espe.controller.MongoDBManager;
+import espe.edu.ec.model.AdminPassword;
 import javax.swing.JOptionPane;
 import org.bson.Document;
 
 /**
  *
- * @author Camila Bohorquez 
+ * @author Camila Bohorquez
  */
 public class FrmAdminLogin extends javax.swing.JFrame {
 
@@ -107,6 +108,7 @@ public class FrmAdminLogin extends javax.swing.JFrame {
         MongoClient client = MongoDBManager.getMongoClient();
         char[] inputPassword = txContraseña.getPassword();
         String inputPasswordString = new String(inputPassword);
+        String storedPassword = null;
 
         if (client == null) {
             JOptionPane.showMessageDialog(this, "No se pudo conectar a MongoDB", "Error", JOptionPane.ERROR_MESSAGE);
@@ -119,18 +121,20 @@ public class FrmAdminLogin extends javax.swing.JFrame {
         Document adminDoc = collection.find().first();
 
         if (adminDoc != null) {
-            String storedPassword = adminDoc.getString("password");
-
-            if (inputPasswordString.equals(storedPassword)) {
-                JOptionPane.showMessageDialog(this, "Acceso concedido");
-                new FrmAdminMenu().setVisible(true); 
-                this.dispose();
-            } else {
-                JOptionPane.showMessageDialog(this, "Contraseña incorrecta. Inténtalo de nuevo.");
-                txContraseña.setText("");
-            }
+            storedPassword = adminDoc.getString("password");
         } else {
             JOptionPane.showMessageDialog(this, "Administrador no encontrado");
+        }
+
+        boolean correctPassword = AdminPassword.checkPassword(inputPasswordString, storedPassword);
+
+        if (correctPassword) {
+            JOptionPane.showMessageDialog(this, "Acceso concedido");
+            new FrmAdminMenu().setVisible(true);
+            this.dispose();
+        } else {
+            JOptionPane.showMessageDialog(this, "Contraseña incorrecta. Inténtalo de nuevo.");
+            txContraseña.setText("");
         }
     }//GEN-LAST:event_btAccederActionPerformed
 

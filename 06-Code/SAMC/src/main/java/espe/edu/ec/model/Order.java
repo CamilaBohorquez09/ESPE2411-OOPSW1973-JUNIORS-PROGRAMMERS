@@ -1,7 +1,6 @@
 package espe.edu.ec.model;
 
 import java.util.ArrayList;
-import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -19,17 +18,6 @@ public class Order {
         
         this.orderedItems = new ArrayList<>();
     }    
-    
-
-    
-    private int getMenuItemIdByName(String name) {
-//        for (MenuItem item : MenuItem.getMenuItems()) {
-//            if (item.getName().equalsIgnoreCase(name)) {
-//                return item.getId();
-//            }
-//        }
-        return -1;
-    }
 
     public Map<String, Integer> getItems() {
         Map<String, Integer> itemsMap = new HashMap<>();
