@@ -8,11 +8,11 @@ import com.mongodb.client.FindIterable;
 import com.mongodb.client.MongoCollection;
 import com.mongodb.client.MongoDatabase;
 import ec.edu.espe.controller.MongoDBManager;
-import espe.edu.ec.model.Bill;
-import espe.edu.ec.model.Counter;
-import espe.edu.ec.model.Customer;
-import espe.edu.ec.model.MenuItem;
-import espe.edu.ec.model.SaleNote;
+import ec.edu.espe.model.Bill;
+import ec.edu.espe.model.Counter;
+import ec.edu.espe.model.Customer;
+import ec.edu.espe.model.MenuItem;
+import ec.edu.espe.model.SaleNote;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import java.util.HashMap;
@@ -188,7 +188,9 @@ public class FrmPrintMenu extends javax.swing.JFrame {
                 }
 
                 float total = new Counter().calculateTotal(orderedItems, menuItems);
+                
                 Bill bill = new Bill(customer, orderedItems, total);
+                
                 new FrmPrintOutput(bill.toString()).setVisible(true);
                 dispose();
             } else if (selectedOption == JOptionPane.NO_OPTION) {
@@ -211,7 +213,9 @@ public class FrmPrintMenu extends javax.swing.JFrame {
                 }
 
                 float total = new Counter().calculateTotal(orderedItems, menuItems);
+                
                 SaleNote saleNote = new SaleNote(customer, orderedItems, total);
+                
                 new FrmPrintOutput(saleNote.toString()).setVisible(true);
                 dispose();
             }

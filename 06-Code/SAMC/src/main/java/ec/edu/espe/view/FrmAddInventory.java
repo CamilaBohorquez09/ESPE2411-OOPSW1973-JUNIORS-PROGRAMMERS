@@ -5,6 +5,7 @@ import com.mongodb.client.MongoClient;
 import com.mongodb.client.MongoCollection;
 import com.mongodb.client.MongoDatabase;
 import ec.edu.espe.controller.MongoDBManager;
+import ec.edu.espe.model.Dish;
 import javax.swing.JOptionPane;
 import org.bson.Document;
 
@@ -34,8 +35,8 @@ public class FrmAddInventory extends javax.swing.JFrame {
         jTextField3 = new javax.swing.JTextField();
         jLabel5 = new javax.swing.JLabel();
         jTextField4 = new javax.swing.JTextField();
-        jButton1 = new javax.swing.JButton();
-        jButton7 = new javax.swing.JButton();
+        btAniadir = new javax.swing.JButton();
+        btAtras = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -69,21 +70,21 @@ public class FrmAddInventory extends javax.swing.JFrame {
         jTextField4.setBackground(new java.awt.Color(0, 102, 102));
         jTextField4.setForeground(new java.awt.Color(255, 255, 255));
 
-        jButton1.setBackground(new java.awt.Color(0, 51, 51));
-        jButton1.setForeground(new java.awt.Color(255, 255, 255));
-        jButton1.setText("Añadir");
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
+        btAniadir.setBackground(new java.awt.Color(0, 51, 51));
+        btAniadir.setForeground(new java.awt.Color(255, 255, 255));
+        btAniadir.setText("Añadir");
+        btAniadir.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
+                btAniadirActionPerformed(evt);
             }
         });
 
-        jButton7.setBackground(new java.awt.Color(0, 51, 51));
-        jButton7.setForeground(new java.awt.Color(255, 255, 255));
-        jButton7.setText("Atras");
-        jButton7.addActionListener(new java.awt.event.ActionListener() {
+        btAtras.setBackground(new java.awt.Color(0, 51, 51));
+        btAtras.setForeground(new java.awt.Color(255, 255, 255));
+        btAtras.setText("Atras");
+        btAtras.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton7ActionPerformed(evt);
+                btAtrasActionPerformed(evt);
             }
         });
 
@@ -100,7 +101,7 @@ public class FrmAddInventory extends javax.swing.JFrame {
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGap(62, 62, 62)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(jButton1)
+                            .addComponent(btAniadir)
                             .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
                                 .addGroup(jPanel1Layout.createSequentialGroup()
                                     .addComponent(jLabel5)
@@ -118,13 +119,13 @@ public class FrmAddInventory extends javax.swing.JFrame {
                                         .addComponent(jTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, 274, javax.swing.GroupLayout.PREFERRED_SIZE))))))
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addContainerGap()
-                        .addComponent(jButton7)))
+                        .addComponent(btAtras)))
                 .addContainerGap(94, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addComponent(jButton7)
+                .addComponent(btAtras)
                 .addGap(12, 12, 12)
                 .addComponent(jLabel1)
                 .addGap(18, 18, 18)
@@ -144,7 +145,7 @@ public class FrmAddInventory extends javax.swing.JFrame {
                     .addComponent(jLabel5)
                     .addComponent(jTextField4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
-                .addComponent(jButton1)
+                .addComponent(btAniadir)
                 .addContainerGap(61, Short.MAX_VALUE))
         );
 
@@ -162,7 +163,7 @@ public class FrmAddInventory extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+    private void btAniadirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btAniadirActionPerformed
 
         String name = jTextField1.getText();
         String description = jTextField2.getText();
@@ -192,7 +193,7 @@ public class FrmAddInventory extends javax.swing.JFrame {
                 JOptionPane.showMessageDialog(this, "El nombre del platillo ya existe. Intente con otro.", "Error", JOptionPane.ERROR_MESSAGE);
                 return;
             }
-
+            
             Document lastItem = collection.find().sort(new Document("ID", -1)).first();
             int newID = (lastItem != null) ? lastItem.getInteger("ID") + 1 : 1;
 
@@ -216,12 +217,12 @@ public class FrmAddInventory extends javax.swing.JFrame {
         } catch (Exception e) {
             JOptionPane.showMessageDialog(this, "Error al añadir el platillo: " + e.getMessage(), "Error", JOptionPane.ERROR_MESSAGE);
         }
-    }//GEN-LAST:event_jButton1ActionPerformed
+    }//GEN-LAST:event_btAniadirActionPerformed
 
-    private void jButton7ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton7ActionPerformed
+    private void btAtrasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btAtrasActionPerformed
         new FrmInventoryMenu().setVisible(true);
         dispose();
-    }//GEN-LAST:event_jButton7ActionPerformed
+    }//GEN-LAST:event_btAtrasActionPerformed
 
     /**
      * @param args the command line arguments
@@ -262,8 +263,8 @@ public class FrmAddInventory extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton7;
+    private javax.swing.JButton btAniadir;
+    private javax.swing.JButton btAtras;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;

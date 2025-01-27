@@ -1,4 +1,4 @@
-package espe.edu.ec.model;
+package ec.edu.espe.model;
 
 public class AdminPassword {
 

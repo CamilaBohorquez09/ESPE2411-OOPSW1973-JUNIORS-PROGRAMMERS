@@ -3,21 +3,14 @@
  */
 package ec.edu.espe.view;
 
-import espe.edu.ec.model.Customer;
-import espe.edu.ec.model.MenuItem;
-import espe.edu.ec.model.Order;
-import espe.edu.ec.model.AdminPassword;
-import espe.edu.ec.utils.ManageFileJson;
-import espe.edu.ec.utils.Validations;
-import java.util.Scanner;
-
 /**
  *
  * @author Camila Bohorquez
  */
 public class SAMCApp {
-
+    
     public static void main(String[] args) {
+        //PRIMERA VENTANA MENU PRINCIPAL
         new FrmMainMenu().setVisible(true);
     }
 }

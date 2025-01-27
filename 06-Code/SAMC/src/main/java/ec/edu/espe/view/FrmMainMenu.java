@@ -144,11 +144,13 @@ public class FrmMainMenu extends javax.swing.JFrame {
     }//GEN-LAST:event_btDejarComentarioActionPerformed
 
     private void btVerMenuActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btVerMenuActionPerformed
-        // TODO add your handling code here:
+        new FrmDishList().setVisible(true);
+        dispose();
     }//GEN-LAST:event_btVerMenuActionPerformed
 
     private void btUbicacionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btUbicacionActionPerformed
-        // TODO add your handling code here:
+        new FrmLocation().setVisible(true);
+        dispose();
     }//GEN-LAST:event_btUbicacionActionPerformed
 
     /**

@@ -9,9 +9,9 @@ import com.mongodb.client.MongoClient;
 import com.mongodb.client.MongoCollection;
 import com.mongodb.client.MongoDatabase;
 import ec.edu.espe.controller.MongoDBManager;
-import espe.edu.ec.model.Counter;
-import espe.edu.ec.model.MenuItem;
-import espe.edu.ec.model.Order;
+import ec.edu.espe.model.Counter;
+import ec.edu.espe.model.MenuItem;
+import ec.edu.espe.model.Order;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -38,6 +38,7 @@ public class FrmMenuOrder extends javax.swing.JFrame {
         order = new Order(new HashMap<>());
     }
 
+    //CARGAR DATOS DE MONGO
     private void loadDataMongoDB() {
         MongoClient client = MongoDBManager.getMongoClient();
         if (client == null) {
@@ -46,13 +47,16 @@ public class FrmMenuOrder extends javax.swing.JFrame {
         }
         MongoDatabase database = client.getDatabase("bd_restaurante");
         MongoCollection<Document> collection = database.getCollection("comida");
+        
         documents = collection.find();
+        
         DefaultTableModel model = new DefaultTableModel();
         model.addColumn("ID");
         model.addColumn("Nombre");
         model.addColumn("Descripción");
         model.addColumn("Precio");
         model.addColumn("Inventario");
+        
         for (Document doc : documents) {
             Object[] row = new Object[5];
             row[0] = doc.getInteger("ID");
@@ -62,6 +66,7 @@ public class FrmMenuOrder extends javax.swing.JFrame {
             row[3] = price != null ? price.doubleValue() : null;
             row[4] = doc.getInteger("Inventario");
             model.addRow(row);
+            
             int id = doc.getInteger("ID");
             String name = doc.getString("Nombre");
             String descrition = doc.getString("Descripcion");
@@ -73,16 +78,22 @@ public class FrmMenuOrder extends javax.swing.JFrame {
         tbContenido.setModel(model);
     }
 
+    //CARGAR NOMBRES DE PLATILLOS EN COMBO BOX
     private void loadNamesInComboBox() {
         MongoClient client = MongoDBManager.getMongoClient();
+        
         if (client == null) {
             JOptionPane.showMessageDialog(this, "No se pudo conectar a MongoDB", "Error", JOptionPane.ERROR_MESSAGE);
             return;
         }
+        
         MongoDatabase database = client.getDatabase("bd_restaurante");
         MongoCollection<Document> collection = database.getCollection("comida");
+        
         FindIterable<Document> documents = collection.find();
+        
         cbPlatillo.removeAllItems();
+        
         for (Document doc : documents) {
             String nombre = doc.getString("Nombre");
             if (nombre != null) {
@@ -175,25 +186,18 @@ public class FrmMenuOrder extends javax.swing.JFrame {
         jLabel7.setForeground(new java.awt.Color(255, 255, 255));
         jLabel7.setText("Direccion");
 
-        txNombre.setText("Juan");
         txNombre.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 txNombreActionPerformed(evt);
             }
         });
 
-        txCedula.setText("1777777777");
         txCedula.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 txCedulaActionPerformed(evt);
             }
         });
 
-        txCorreoElectronico.setText("juan@gmail.com");
-
-        txTelefono.setText("0999999999");
-
-        txDireccion.setText("Quito");
         txDireccion.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 txDireccionActionPerformed(evt);
@@ -302,7 +306,7 @@ public class FrmMenuOrder extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    //BOTON AÑADIR
+    //ANIADE LOS PRODUCTOS A LA LISTA
     private void btAnadirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btAnadirActionPerformed
         String dishName = (String) cbPlatillo.getSelectedItem();
         int quantity = (int) spCantidad.getValue();
@@ -352,6 +356,7 @@ public class FrmMenuOrder extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_txNombreActionPerformed
 
+    //REVISA LOS DATOS DEL CLIENTE, AÑADE TODOS LOS PEDIDOS AL CLIENTE, GENERA LA ORDEN Y RESTA EL INVENTARIO, ACTUALIZA EL MONGO
     private void btOrdenarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btOrdenarActionPerformed
 
         String customerName = txNombre.getText().trim();

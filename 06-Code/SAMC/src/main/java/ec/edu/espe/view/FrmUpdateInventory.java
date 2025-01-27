@@ -55,18 +55,18 @@ public class FrmUpdateInventory extends javax.swing.JFrame {
             row[2] = doc.getInteger("Inventario");
             model.addRow(row);
         }
-        jTable1.setModel(model);
+        tbListaInventario.setModel(model);
     }
     private void configureTableSelection() {
   
-        jTable1.getSelectionModel().addListSelectionListener(new ListSelectionListener() {
+        tbListaInventario.getSelectionModel().addListSelectionListener(new ListSelectionListener() {
             @Override
             public void valueChanged(ListSelectionEvent e) {
                 if (!e.getValueIsAdjusting()) {
-                    int selectedRow = jTable1.getSelectedRow();
+                    int selectedRow = tbListaInventario.getSelectedRow();
                     if (selectedRow != -1) {
-                        Object inventario = jTable1.getValueAt(selectedRow, 2);
-                        jTextField1.setText(inventario.toString());
+                        Object inventario = tbListaInventario.getValueAt(selectedRow, 2);
+                        txCantidad.setText(inventario.toString());
                     }
                 }
             }
@@ -84,18 +84,18 @@ public class FrmUpdateInventory extends javax.swing.JFrame {
 
         jPanel1 = new javax.swing.JPanel();
         jScrollPane1 = new javax.swing.JScrollPane();
-        jTable1 = new javax.swing.JTable();
+        tbListaInventario = new javax.swing.JTable();
         jLabel1 = new javax.swing.JLabel();
-        jTextField1 = new javax.swing.JTextField();
+        txCantidad = new javax.swing.JTextField();
         jLabel2 = new javax.swing.JLabel();
-        jToggleButton1 = new javax.swing.JToggleButton();
-        jToggleButton2 = new javax.swing.JToggleButton();
+        btGuardar = new javax.swing.JToggleButton();
+        btVolver = new javax.swing.JToggleButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
         jPanel1.setBackground(new java.awt.Color(0, 153, 153));
 
-        jTable1.setModel(new javax.swing.table.DefaultTableModel(
+        tbListaInventario.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {},
                 {},
@@ -106,7 +106,7 @@ public class FrmUpdateInventory extends javax.swing.JFrame {
 
             }
         ));
-        jScrollPane1.setViewportView(jTable1);
+        jScrollPane1.setViewportView(tbListaInventario);
 
         jLabel1.setForeground(new java.awt.Color(255, 255, 255));
         jLabel1.setText("Ingrese la nueva cantidad");
@@ -114,17 +114,17 @@ public class FrmUpdateInventory extends javax.swing.JFrame {
         jLabel2.setForeground(new java.awt.Color(255, 255, 255));
         jLabel2.setText("Seleccione el producto");
 
-        jToggleButton1.setText("Guardar");
-        jToggleButton1.addActionListener(new java.awt.event.ActionListener() {
+        btGuardar.setText("Guardar");
+        btGuardar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jToggleButton1ActionPerformed(evt);
+                btGuardarActionPerformed(evt);
             }
         });
 
-        jToggleButton2.setText("Volver");
-        jToggleButton2.addActionListener(new java.awt.event.ActionListener() {
+        btVolver.setText("Volver");
+        btVolver.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jToggleButton2ActionPerformed(evt);
+                btVolverActionPerformed(evt);
             }
         });
 
@@ -145,12 +145,12 @@ public class FrmUpdateInventory extends javax.swing.JFrame {
                             .addComponent(jLabel1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                                 .addGap(0, 0, Short.MAX_VALUE)
-                                .addComponent(jToggleButton1))
-                            .addComponent(jTextField1, javax.swing.GroupLayout.Alignment.TRAILING))
+                                .addComponent(btGuardar))
+                            .addComponent(txCantidad, javax.swing.GroupLayout.Alignment.TRAILING))
                         .addContainerGap())
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(jToggleButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 96, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(btVolver, javax.swing.GroupLayout.PREFERRED_SIZE, 96, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(18, 18, 18))))
         );
         jPanel1Layout.setVerticalGroup(
@@ -161,11 +161,11 @@ public class FrmUpdateInventory extends javax.swing.JFrame {
                 .addGap(18, 18, 18)
                 .addComponent(jLabel1)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(txCantidad, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
-                .addComponent(jToggleButton1)
+                .addComponent(btGuardar)
                 .addGap(215, 215, 215)
-                .addComponent(jToggleButton2)
+                .addComponent(btVolver)
                 .addGap(23, 23, 23))
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addContainerGap()
@@ -187,15 +187,15 @@ public class FrmUpdateInventory extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jToggleButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jToggleButton1ActionPerformed
-        int selectedRow = jTable1.getSelectedRow();
+    private void btGuardarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btGuardarActionPerformed
+        int selectedRow = tbListaInventario.getSelectedRow();
         if (selectedRow == -1) {
             JOptionPane.showMessageDialog(this, "Por favor, selecciona un registro en la tabla.", "Advertencia", JOptionPane.WARNING_MESSAGE);
             return;
         }
 
-        String id = jTable1.getValueAt(selectedRow, 0).toString();
-        String newInventoryText = jTextField1.getText();
+        String id = tbListaInventario.getValueAt(selectedRow, 0).toString();
+        String newInventoryText = txCantidad.getText();
 
         if (newInventoryText.isEmpty()) {
             JOptionPane.showMessageDialog(this, "Por favor, ingresa un valor de inventario.", "Error", JOptionPane.ERROR_MESSAGE);
@@ -228,12 +228,12 @@ public class FrmUpdateInventory extends javax.swing.JFrame {
         } catch (Exception e) {
             JOptionPane.showMessageDialog(this, "Error al actualizar el inventario: " + e.getMessage(), "Error", JOptionPane.ERROR_MESSAGE);
         }
-    }//GEN-LAST:event_jToggleButton1ActionPerformed
+    }//GEN-LAST:event_btGuardarActionPerformed
 
-    private void jToggleButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jToggleButton2ActionPerformed
+    private void btVolverActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btVolverActionPerformed
         new FrmInventoryMenu().setVisible(true);
         dispose();
-    }//GEN-LAST:event_jToggleButton2ActionPerformed
+    }//GEN-LAST:event_btVolverActionPerformed
 
     /**
      * @param args the command line arguments
@@ -271,13 +271,13 @@ public class FrmUpdateInventory extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JToggleButton btGuardar;
+    private javax.swing.JToggleButton btVolver;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTable jTable1;
-    private javax.swing.JTextField jTextField1;
-    private javax.swing.JToggleButton jToggleButton1;
-    private javax.swing.JToggleButton jToggleButton2;
+    private javax.swing.JTable tbListaInventario;
+    private javax.swing.JTextField txCantidad;
     // End of variables declaration//GEN-END:variables
 }

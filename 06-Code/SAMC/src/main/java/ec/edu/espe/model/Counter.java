@@ -1,4 +1,4 @@
-package espe.edu.ec.model;
+package ec.edu.espe.model;
 
 import java.util.List;
 import java.util.Map;

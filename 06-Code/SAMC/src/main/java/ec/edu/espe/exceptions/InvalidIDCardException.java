@@ -1,4 +1,4 @@
-package espe.edu.ec.utils.exceptions;
+package ec.edu.espe.exceptions;
 
 public class InvalidIDCardException extends Exception {
     public InvalidIDCardException(String message) {

@@ -8,7 +8,7 @@ import com.mongodb.client.MongoClient;
 import com.mongodb.client.MongoCollection;
 import com.mongodb.client.MongoDatabase;
 import ec.edu.espe.controller.MongoDBManager;
-import espe.edu.ec.model.AdminPassword;
+import ec.edu.espe.model.AdminPassword;
 import javax.swing.JOptionPane;
 import org.bson.Document;
 

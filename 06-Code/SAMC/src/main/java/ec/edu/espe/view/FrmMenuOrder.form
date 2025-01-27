@@ -253,35 +253,20 @@
           </Properties>
         </Component>
         <Component class="javax.swing.JTextField" name="txNombre">
-          <Properties>
-            <Property name="text" type="java.lang.String" value="Juan"/>
-          </Properties>
           <Events>
             <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="txNombreActionPerformed"/>
           </Events>
         </Component>
         <Component class="javax.swing.JTextField" name="txCedula">
-          <Properties>
-            <Property name="text" type="java.lang.String" value="1777777777"/>
-          </Properties>
           <Events>
             <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="txCedulaActionPerformed"/>
           </Events>
         </Component>
         <Component class="javax.swing.JTextField" name="txCorreoElectronico">
-          <Properties>
-            <Property name="text" type="java.lang.String" value="juan@gmail.com"/>
-          </Properties>
         </Component>
         <Component class="javax.swing.JTextField" name="txTelefono">
-          <Properties>
-            <Property name="text" type="java.lang.String" value="0999999999"/>
-          </Properties>
         </Component>
         <Component class="javax.swing.JTextField" name="txDireccion">
-          <Properties>
-            <Property name="text" type="java.lang.String" value="Quito"/>
-          </Properties>
           <Events>
             <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="txDireccionActionPerformed"/>
           </Events>

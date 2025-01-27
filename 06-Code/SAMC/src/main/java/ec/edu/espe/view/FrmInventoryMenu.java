@@ -22,10 +22,10 @@ public class FrmInventoryMenu extends javax.swing.JFrame {
 
         jPanel1 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
-        jButton1 = new javax.swing.JButton();
-        jButton2 = new javax.swing.JButton();
-        jButton3 = new javax.swing.JButton();
-        jButton4 = new javax.swing.JButton();
+        btAgregarStock = new javax.swing.JButton();
+        btAniadirPlatillos = new javax.swing.JButton();
+        btEditarPlatillos = new javax.swing.JButton();
+        btVolver = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -35,43 +35,43 @@ public class FrmInventoryMenu extends javax.swing.JFrame {
         jLabel1.setForeground(new java.awt.Color(255, 255, 255));
         jLabel1.setText("Menu Inventario");
 
-        jButton1.setBackground(new java.awt.Color(0, 51, 51));
-        jButton1.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
-        jButton1.setForeground(new java.awt.Color(255, 255, 255));
-        jButton1.setText("Agregar Stock");
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
+        btAgregarStock.setBackground(new java.awt.Color(0, 51, 51));
+        btAgregarStock.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        btAgregarStock.setForeground(new java.awt.Color(255, 255, 255));
+        btAgregarStock.setText("Agregar Stock");
+        btAgregarStock.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
+                btAgregarStockActionPerformed(evt);
             }
         });
 
-        jButton2.setBackground(new java.awt.Color(0, 51, 51));
-        jButton2.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
-        jButton2.setForeground(new java.awt.Color(255, 255, 255));
-        jButton2.setText("Añadir Platillos");
-        jButton2.addActionListener(new java.awt.event.ActionListener() {
+        btAniadirPlatillos.setBackground(new java.awt.Color(0, 51, 51));
+        btAniadirPlatillos.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        btAniadirPlatillos.setForeground(new java.awt.Color(255, 255, 255));
+        btAniadirPlatillos.setText("Añadir Platillos");
+        btAniadirPlatillos.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton2ActionPerformed(evt);
+                btAniadirPlatillosActionPerformed(evt);
             }
         });
 
-        jButton3.setBackground(new java.awt.Color(0, 51, 51));
-        jButton3.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
-        jButton3.setForeground(new java.awt.Color(255, 255, 255));
-        jButton3.setText("Editar Platillos");
-        jButton3.addActionListener(new java.awt.event.ActionListener() {
+        btEditarPlatillos.setBackground(new java.awt.Color(0, 51, 51));
+        btEditarPlatillos.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        btEditarPlatillos.setForeground(new java.awt.Color(255, 255, 255));
+        btEditarPlatillos.setText("Editar Platillos");
+        btEditarPlatillos.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton3ActionPerformed(evt);
+                btEditarPlatillosActionPerformed(evt);
             }
         });
 
-        jButton4.setBackground(new java.awt.Color(0, 51, 51));
-        jButton4.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
-        jButton4.setForeground(new java.awt.Color(255, 255, 255));
-        jButton4.setText("Regresar al menu");
-        jButton4.addActionListener(new java.awt.event.ActionListener() {
+        btVolver.setBackground(new java.awt.Color(0, 51, 51));
+        btVolver.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        btVolver.setForeground(new java.awt.Color(255, 255, 255));
+        btVolver.setText("Regresar al menu");
+        btVolver.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton4ActionPerformed(evt);
+                btVolverActionPerformed(evt);
             }
         });
 
@@ -83,10 +83,10 @@ public class FrmInventoryMenu extends javax.swing.JFrame {
                 .addContainerGap(109, Short.MAX_VALUE)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                        .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 300, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 300, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(jButton3, javax.swing.GroupLayout.PREFERRED_SIZE, 300, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(jButton4, javax.swing.GroupLayout.PREFERRED_SIZE, 300, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(btAgregarStock, javax.swing.GroupLayout.PREFERRED_SIZE, 300, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(btAniadirPlatillos, javax.swing.GroupLayout.PREFERRED_SIZE, 300, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(btEditarPlatillos, javax.swing.GroupLayout.PREFERRED_SIZE, 300, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(btVolver, javax.swing.GroupLayout.PREFERRED_SIZE, 300, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addComponent(jLabel1))
                 .addGap(101, 101, 101))
         );
@@ -96,13 +96,13 @@ public class FrmInventoryMenu extends javax.swing.JFrame {
                 .addGap(70, 70, 70)
                 .addComponent(jLabel1)
                 .addGap(18, 18, 18)
-                .addComponent(jButton1)
+                .addComponent(btAgregarStock)
                 .addGap(18, 18, 18)
-                .addComponent(jButton2)
+                .addComponent(btAniadirPlatillos)
                 .addGap(18, 18, 18)
-                .addComponent(jButton3)
+                .addComponent(btEditarPlatillos)
                 .addGap(18, 18, 18)
-                .addComponent(jButton4)
+                .addComponent(btVolver)
                 .addContainerGap(35, Short.MAX_VALUE))
         );
 
@@ -120,25 +120,25 @@ public class FrmInventoryMenu extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+    private void btAgregarStockActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btAgregarStockActionPerformed
         new FrmUpdateInventory().setVisible(true);
         dispose();
-    }//GEN-LAST:event_jButton1ActionPerformed
+    }//GEN-LAST:event_btAgregarStockActionPerformed
 
-    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+    private void btAniadirPlatillosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btAniadirPlatillosActionPerformed
         new FrmAddInventory().setVisible(true);
         dispose();
-    }//GEN-LAST:event_jButton2ActionPerformed
+    }//GEN-LAST:event_btAniadirPlatillosActionPerformed
 
-    private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
+    private void btEditarPlatillosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btEditarPlatillosActionPerformed
         new FrmDishUpdate().setVisible(true);
         dispose();
-    }//GEN-LAST:event_jButton3ActionPerformed
+    }//GEN-LAST:event_btEditarPlatillosActionPerformed
 
-    private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
+    private void btVolverActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btVolverActionPerformed
         new FrmAdminMenu().setVisible(true);
         dispose();
-    }//GEN-LAST:event_jButton4ActionPerformed
+    }//GEN-LAST:event_btVolverActionPerformed
 
     /**
      * @param args the command line arguments
@@ -183,10 +183,10 @@ public class FrmInventoryMenu extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton2;
-    private javax.swing.JButton jButton3;
-    private javax.swing.JButton jButton4;
+    private javax.swing.JButton btAgregarStock;
+    private javax.swing.JButton btAniadirPlatillos;
+    private javax.swing.JButton btEditarPlatillos;
+    private javax.swing.JButton btVolver;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JPanel jPanel1;
     // End of variables declaration//GEN-END:variables

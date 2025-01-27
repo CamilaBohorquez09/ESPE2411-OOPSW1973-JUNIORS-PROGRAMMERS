@@ -1,8 +1,8 @@
-package espe.edu.ec.utils;
+package ec.edu.espe.utils;
 import java.util.Scanner;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
-import espe.edu.ec.utils.exceptions.InvalidIDCardException;
+import ec.edu.espe.exceptions.InvalidIDCardException;
 
 public class Validations {
     public static boolean validateOnlyLetters(String input) {
