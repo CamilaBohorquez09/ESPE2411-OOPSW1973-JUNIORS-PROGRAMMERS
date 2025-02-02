@@ -8,7 +8,7 @@ import com.mongodb.client.MongoClient;
 import com.mongodb.client.MongoCollection;
 import com.mongodb.client.MongoDatabase;
 import ec.edu.espe.controller.MongoDBManager;
-import ec.edu.espe.model.AdminPassword;
+import ec.edu.espe.controller.AccountController;
 import javax.swing.JOptionPane;
 import org.bson.Document;
 
@@ -126,7 +126,7 @@ public class FrmAdminLogin extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(this, "Administrador no encontrado");
         }
 
-        boolean correctPassword = AdminPassword.checkPassword(inputPasswordString, storedPassword);
+        boolean correctPassword = AccountController.checkPassword(inputPasswordString, storedPassword);
 
         if (correctPassword) {
             JOptionPane.showMessageDialog(this, "Acceso concedido");

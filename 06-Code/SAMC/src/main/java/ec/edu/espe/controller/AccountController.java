@@ -1,6 +1,6 @@
-package ec.edu.espe.model;
+package ec.edu.espe.controller;
 
-public class AdminPassword {
+public class AccountController {
 
     public static String encryptPassword(String password) {
         StringBuilder encrypted = new StringBuilder();

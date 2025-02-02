@@ -1,13 +1,5 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
- */
 package ec.edu.espe.view;
 
-/**
- *
- * @author Ismael Travez, The Java Bandits, DCCO-ESPE
- */
 public class FrmMainMenu extends javax.swing.JFrame {
 
     /**
@@ -28,12 +20,14 @@ public class FrmMainMenu extends javax.swing.JFrame {
 
         jPanel1 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
+        jTabbedPane1 = new javax.swing.JTabbedPane();
         jMenuBar1 = new javax.swing.JMenuBar();
         jMenu1 = new javax.swing.JMenu();
         mitmLeaveOrder = new javax.swing.JMenuItem();
         mitmLeaveComment = new javax.swing.JMenuItem();
         mitmShowMenu = new javax.swing.JMenuItem();
         mitmShowLocation = new javax.swing.JMenuItem();
+        mitmLogOut = new javax.swing.JMenuItem();
         jMenu2 = new javax.swing.JMenu();
         btnAdminMode = new javax.swing.JMenuItem();
 
@@ -49,7 +43,7 @@ public class FrmMainMenu extends javax.swing.JFrame {
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+            .addGroup(jPanel1Layout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(jLabel1)
                 .addContainerGap())
@@ -95,6 +89,14 @@ public class FrmMainMenu extends javax.swing.JFrame {
             }
         });
         jMenu1.add(mitmShowLocation);
+
+        mitmLogOut.setText("Cerrar Seción");
+        mitmLogOut.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                mitmLogOutActionPerformed(evt);
+            }
+        });
+        jMenu1.add(mitmLogOut);
 
         jMenuBar1.add(jMenu1);
 
@@ -151,6 +153,11 @@ public class FrmMainMenu extends javax.swing.JFrame {
         dispose();
     }//GEN-LAST:event_btnAdminModeActionPerformed
 
+    private void mitmLogOutActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mitmLogOutActionPerformed
+        new FrmLogin().setVisible(true);
+        dispose();
+    }//GEN-LAST:event_mitmLogOutActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -193,8 +200,10 @@ public class FrmMainMenu extends javax.swing.JFrame {
     private javax.swing.JMenu jMenu2;
     private javax.swing.JMenuBar jMenuBar1;
     private javax.swing.JPanel jPanel1;
+    private javax.swing.JTabbedPane jTabbedPane1;
     private javax.swing.JMenuItem mitmLeaveComment;
     private javax.swing.JMenuItem mitmLeaveOrder;
+    private javax.swing.JMenuItem mitmLogOut;
     private javax.swing.JMenuItem mitmShowLocation;
     private javax.swing.JMenuItem mitmShowMenu;
     // End of variables declaration//GEN-END:variables
