@@ -147,6 +147,11 @@ public class FrmMainMenu extends javax.swing.JFrame {
         jMenu1.add(mitmShowMenu);
 
         mitmShowLocation.setText("Ubicación");
+        mitmShowLocation.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                mitmShowLocationActionPerformed(evt);
+            }
+        });
         jMenu1.add(mitmShowLocation);
 
         jMenuBar1.add(jMenu1);
@@ -209,6 +214,11 @@ public class FrmMainMenu extends javax.swing.JFrame {
         new FrmDishList().setVisible(true);
         dispose();
     }//GEN-LAST:event_mitmShowMenuActionPerformed
+
+    private void mitmShowLocationActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mitmShowLocationActionPerformed
+        new FrmLocation().setVisible(true);
+        dispose();
+    }//GEN-LAST:event_mitmShowLocationActionPerformed
 
     /**
      * @param args the command line arguments
