@@ -33,6 +33,13 @@ public class FrmMainMenu extends javax.swing.JFrame {
         btModoAdmin = new javax.swing.JToggleButton();
         btVerMenu = new javax.swing.JToggleButton();
         btUbicacion = new javax.swing.JToggleButton();
+        jMenuBar1 = new javax.swing.JMenuBar();
+        jMenu1 = new javax.swing.JMenu();
+        mitmLeaveOrder = new javax.swing.JMenuItem();
+        mitmLeaveComment = new javax.swing.JMenuItem();
+        mitmShowMenu = new javax.swing.JMenuItem();
+        mitmShowLocation = new javax.swing.JMenuItem();
+        btnAdminMode = new javax.swing.JMenu();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -82,26 +89,25 @@ public class FrmMainMenu extends javax.swing.JFrame {
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addContainerGap()
-                        .addComponent(jLabel1))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(161, 161, 161)
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(btDejarComentario, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(btRealizarPedido, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(btModoAdmin, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(btVerMenu, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(btUbicacion, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
+                .addGap(161, 161, 161)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(btDejarComentario, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(btRealizarPedido, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(btModoAdmin, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(btVerMenu, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(btUbicacion, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jLabel1)
+                .addContainerGap())
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(30, 30, 30)
+                .addGap(44, 44, 44)
                 .addComponent(jLabel1)
-                .addGap(26, 26, 26)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(btRealizarPedido)
                 .addGap(18, 18, 18)
                 .addComponent(btDejarComentario)
@@ -111,8 +117,39 @@ public class FrmMainMenu extends javax.swing.JFrame {
                 .addComponent(btVerMenu)
                 .addGap(18, 18, 18)
                 .addComponent(btUbicacion)
-                .addContainerGap(29, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
+
+        jMenu1.setText("Cliente");
+
+        mitmLeaveOrder.setText("Realizar Pedido");
+        mitmLeaveOrder.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                mitmLeaveOrderActionPerformed(evt);
+            }
+        });
+        jMenu1.add(mitmLeaveOrder);
+
+        mitmLeaveComment.setText("Dejar un Comentario");
+        mitmLeaveComment.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                mitmLeaveCommentActionPerformed(evt);
+            }
+        });
+        jMenu1.add(mitmLeaveComment);
+
+        mitmShowMenu.setText("Ver Menú");
+        jMenu1.add(mitmShowMenu);
+
+        mitmShowLocation.setText("Ubicación");
+        jMenu1.add(mitmShowLocation);
+
+        jMenuBar1.add(jMenu1);
+
+        btnAdminMode.setText("Modo Administración");
+        jMenuBar1.add(btnAdminMode);
+
+        setJMenuBar(jMenuBar1);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -152,6 +189,16 @@ public class FrmMainMenu extends javax.swing.JFrame {
         new FrmLocation().setVisible(true);
         dispose();
     }//GEN-LAST:event_btUbicacionActionPerformed
+
+    private void mitmLeaveOrderActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mitmLeaveOrderActionPerformed
+        new FrmMenuOrder().setVisible(true);
+        dispose();
+    }//GEN-LAST:event_mitmLeaveOrderActionPerformed
+
+    private void mitmLeaveCommentActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mitmLeaveCommentActionPerformed
+       new FrmMakeComent().setVisible(true);
+       dispose();
+    }//GEN-LAST:event_mitmLeaveCommentActionPerformed
 
     /**
      * @param args the command line arguments
@@ -194,7 +241,14 @@ public class FrmMainMenu extends javax.swing.JFrame {
     private javax.swing.JButton btRealizarPedido;
     private javax.swing.JToggleButton btUbicacion;
     private javax.swing.JToggleButton btVerMenu;
+    private javax.swing.JMenu btnAdminMode;
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JMenu jMenu1;
+    private javax.swing.JMenuBar jMenuBar1;
     private javax.swing.JPanel jPanel1;
+    private javax.swing.JMenuItem mitmLeaveComment;
+    private javax.swing.JMenuItem mitmLeaveOrder;
+    private javax.swing.JMenuItem mitmShowLocation;
+    private javax.swing.JMenuItem mitmShowMenu;
     // End of variables declaration//GEN-END:variables
 }
