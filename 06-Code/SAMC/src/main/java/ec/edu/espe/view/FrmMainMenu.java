@@ -34,7 +34,8 @@ public class FrmMainMenu extends javax.swing.JFrame {
         mitmLeaveComment = new javax.swing.JMenuItem();
         mitmShowMenu = new javax.swing.JMenuItem();
         mitmShowLocation = new javax.swing.JMenuItem();
-        btnAdminMode = new javax.swing.JMenu();
+        jMenu2 = new javax.swing.JMenu();
+        btnAdminMode = new javax.swing.JMenuItem();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -97,13 +98,17 @@ public class FrmMainMenu extends javax.swing.JFrame {
 
         jMenuBar1.add(jMenu1);
 
+        jMenu2.setText("Administración");
+
         btnAdminMode.setText("Modo Administración");
         btnAdminMode.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnAdminModeActionPerformed(evt);
             }
         });
-        jMenuBar1.add(btnAdminMode);
+        jMenu2.add(btnAdminMode);
+
+        jMenuBar1.add(jMenu2);
 
         setJMenuBar(jMenuBar1);
 
@@ -182,9 +187,10 @@ public class FrmMainMenu extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JMenu btnAdminMode;
+    private javax.swing.JMenuItem btnAdminMode;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JMenu jMenu1;
+    private javax.swing.JMenu jMenu2;
     private javax.swing.JMenuBar jMenuBar1;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JMenuItem mitmLeaveComment;
