@@ -51,15 +51,15 @@
               <Group type="102" alignment="1" attributes="0">
                   <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
                   <Group type="103" groupAlignment="0" attributes="0">
-                      <Component id="btImprimir" min="-2" pref="221" max="-2" attributes="0"/>
-                      <Component id="btInventario" min="-2" pref="221" max="-2" attributes="0"/>
-                      <Component id="btMostrarOrdenes" min="-2" pref="221" max="-2" attributes="0"/>
+                      <Component id="btnPrint" min="-2" pref="221" max="-2" attributes="0"/>
+                      <Component id="btnInventory" min="-2" pref="221" max="-2" attributes="0"/>
+                      <Component id="btnShowOrders" min="-2" pref="221" max="-2" attributes="0"/>
                   </Group>
                   <EmptySpace min="-2" pref="91" max="-2" attributes="0"/>
               </Group>
               <Group type="102" alignment="1" attributes="0">
                   <EmptySpace max="32767" attributes="0"/>
-                  <Component id="btCerrarSecion" min="-2" max="-2" attributes="0"/>
+                  <Component id="btnSignOut" min="-2" max="-2" attributes="0"/>
                   <EmptySpace min="-2" pref="134" max="-2" attributes="0"/>
               </Group>
           </Group>
@@ -70,13 +70,13 @@
                   <EmptySpace min="-2" pref="21" max="-2" attributes="0"/>
                   <Component id="jLabel1" min="-2" max="-2" attributes="0"/>
                   <EmptySpace min="-2" pref="64" max="-2" attributes="0"/>
-                  <Component id="btImprimir" min="-2" max="-2" attributes="0"/>
+                  <Component id="btnPrint" min="-2" max="-2" attributes="0"/>
                   <EmptySpace max="-2" attributes="0"/>
-                  <Component id="btInventario" min="-2" max="-2" attributes="0"/>
+                  <Component id="btnInventory" min="-2" max="-2" attributes="0"/>
                   <EmptySpace max="-2" attributes="0"/>
-                  <Component id="btMostrarOrdenes" min="-2" max="-2" attributes="0"/>
+                  <Component id="btnShowOrders" min="-2" max="-2" attributes="0"/>
                   <EmptySpace pref="49" max="32767" attributes="0"/>
-                  <Component id="btCerrarSecion" min="-2" max="-2" attributes="0"/>
+                  <Component id="btnSignOut" min="-2" max="-2" attributes="0"/>
                   <EmptySpace min="-2" pref="30" max="-2" attributes="0"/>
               </Group>
           </Group>
@@ -94,36 +94,36 @@
             <Property name="text" type="java.lang.String" value="Menu Administrador"/>
           </Properties>
         </Component>
-        <Component class="javax.swing.JToggleButton" name="btImprimir">
+        <Component class="javax.swing.JToggleButton" name="btnPrint">
           <Properties>
             <Property name="text" type="java.lang.String" value="Imprimir Factura o Nota de venta"/>
           </Properties>
           <Events>
-            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btImprimirActionPerformed"/>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnPrintActionPerformed"/>
           </Events>
         </Component>
-        <Component class="javax.swing.JToggleButton" name="btInventario">
+        <Component class="javax.swing.JToggleButton" name="btnInventory">
           <Properties>
             <Property name="text" type="java.lang.String" value="Modificar Inventario"/>
           </Properties>
           <Events>
-            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btInventarioActionPerformed"/>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnInventoryActionPerformed"/>
           </Events>
         </Component>
-        <Component class="javax.swing.JToggleButton" name="btMostrarOrdenes">
+        <Component class="javax.swing.JToggleButton" name="btnShowOrders">
           <Properties>
             <Property name="text" type="java.lang.String" value="Mostrar Ordenes"/>
           </Properties>
           <Events>
-            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btMostrarOrdenesActionPerformed"/>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnShowOrdersActionPerformed"/>
           </Events>
         </Component>
-        <Component class="javax.swing.JToggleButton" name="btCerrarSecion">
+        <Component class="javax.swing.JToggleButton" name="btnSignOut">
           <Properties>
             <Property name="text" type="java.lang.String" value="Cerrar sesi&#xf3;n y Salir"/>
           </Properties>
           <Events>
-            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btCerrarSecionActionPerformed"/>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnSignOutActionPerformed"/>
           </Events>
         </Component>
       </SubComponents>

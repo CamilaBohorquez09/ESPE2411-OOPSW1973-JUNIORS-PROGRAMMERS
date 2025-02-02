@@ -36,8 +36,8 @@ public class FrmAdminLogin extends javax.swing.JFrame {
 
         jPanel1 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
-        txContraseña = new javax.swing.JPasswordField();
-        btAcceder = new javax.swing.JToggleButton();
+        txtPassword = new javax.swing.JPasswordField();
+        btnAccess = new javax.swing.JToggleButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -48,16 +48,16 @@ public class FrmAdminLogin extends javax.swing.JFrame {
         jLabel1.setForeground(new java.awt.Color(255, 255, 255));
         jLabel1.setText("Ingrese la contraseña:");
 
-        txContraseña.addActionListener(new java.awt.event.ActionListener() {
+        txtPassword.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txContraseñaActionPerformed(evt);
+                txtPasswordActionPerformed(evt);
             }
         });
 
-        btAcceder.setText("Acceder");
-        btAcceder.addActionListener(new java.awt.event.ActionListener() {
+        btnAccess.setText("Acceder");
+        btnAccess.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btAccederActionPerformed(evt);
+                btnAccessActionPerformed(evt);
             }
         });
 
@@ -68,9 +68,9 @@ public class FrmAdminLogin extends javax.swing.JFrame {
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGap(37, 37, 37)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(btAcceder)
+                    .addComponent(btnAccess)
                     .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                        .addComponent(txContraseña, javax.swing.GroupLayout.PREFERRED_SIZE, 331, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(txtPassword, javax.swing.GroupLayout.PREFERRED_SIZE, 331, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 244, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap(32, Short.MAX_VALUE))
         );
@@ -80,9 +80,9 @@ public class FrmAdminLogin extends javax.swing.JFrame {
                 .addGap(61, 61, 61)
                 .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
-                .addComponent(txContraseña, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(txtPassword, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(43, 43, 43)
-                .addComponent(btAcceder)
+                .addComponent(btnAccess)
                 .addContainerGap(95, Short.MAX_VALUE))
         );
 
@@ -100,13 +100,13 @@ public class FrmAdminLogin extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void txContraseñaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txContraseñaActionPerformed
+    private void txtPasswordActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtPasswordActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_txContraseñaActionPerformed
+    }//GEN-LAST:event_txtPasswordActionPerformed
 
-    private void btAccederActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btAccederActionPerformed
+    private void btnAccessActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAccessActionPerformed
         MongoClient client = MongoDBManager.getMongoClient();
-        char[] inputPassword = txContraseña.getPassword();
+        char[] inputPassword = txtPassword.getPassword();
         String inputPasswordString = new String(inputPassword);
         String storedPassword = null;
 
@@ -134,9 +134,9 @@ public class FrmAdminLogin extends javax.swing.JFrame {
             this.dispose();
         } else {
             JOptionPane.showMessageDialog(this, "Contraseña incorrecta. Inténtalo de nuevo.");
-            txContraseña.setText("");
+            txtPassword.setText("");
         }
-    }//GEN-LAST:event_btAccederActionPerformed
+    }//GEN-LAST:event_btnAccessActionPerformed
 
     /**
      * @param args the command line arguments
@@ -174,9 +174,9 @@ public class FrmAdminLogin extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JToggleButton btAcceder;
+    private javax.swing.JToggleButton btnAccess;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JPanel jPanel1;
-    private javax.swing.JPasswordField txContraseña;
+    private javax.swing.JPasswordField txtPassword;
     // End of variables declaration//GEN-END:variables
 }

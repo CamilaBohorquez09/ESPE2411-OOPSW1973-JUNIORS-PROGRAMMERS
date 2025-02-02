@@ -28,10 +28,10 @@ public class FrmAdminMenu extends javax.swing.JFrame {
 
         jPanel1 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
-        btImprimir = new javax.swing.JToggleButton();
-        btInventario = new javax.swing.JToggleButton();
-        btMostrarOrdenes = new javax.swing.JToggleButton();
-        btCerrarSecion = new javax.swing.JToggleButton();
+        btnPrint = new javax.swing.JToggleButton();
+        btnInventory = new javax.swing.JToggleButton();
+        btnShowOrders = new javax.swing.JToggleButton();
+        btnSignOut = new javax.swing.JToggleButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -41,31 +41,31 @@ public class FrmAdminMenu extends javax.swing.JFrame {
         jLabel1.setForeground(new java.awt.Color(255, 255, 255));
         jLabel1.setText("Menu Administrador");
 
-        btImprimir.setText("Imprimir Factura o Nota de venta");
-        btImprimir.addActionListener(new java.awt.event.ActionListener() {
+        btnPrint.setText("Imprimir Factura o Nota de venta");
+        btnPrint.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btImprimirActionPerformed(evt);
+                btnPrintActionPerformed(evt);
             }
         });
 
-        btInventario.setText("Modificar Inventario");
-        btInventario.addActionListener(new java.awt.event.ActionListener() {
+        btnInventory.setText("Modificar Inventario");
+        btnInventory.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btInventarioActionPerformed(evt);
+                btnInventoryActionPerformed(evt);
             }
         });
 
-        btMostrarOrdenes.setText("Mostrar Ordenes");
-        btMostrarOrdenes.addActionListener(new java.awt.event.ActionListener() {
+        btnShowOrders.setText("Mostrar Ordenes");
+        btnShowOrders.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btMostrarOrdenesActionPerformed(evt);
+                btnShowOrdersActionPerformed(evt);
             }
         });
 
-        btCerrarSecion.setText("Cerrar sesión y Salir");
-        btCerrarSecion.addActionListener(new java.awt.event.ActionListener() {
+        btnSignOut.setText("Cerrar sesión y Salir");
+        btnSignOut.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btCerrarSecionActionPerformed(evt);
+                btnSignOutActionPerformed(evt);
             }
         });
 
@@ -80,13 +80,13 @@ public class FrmAdminMenu extends javax.swing.JFrame {
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                 .addGap(0, 0, Short.MAX_VALUE)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(btImprimir, javax.swing.GroupLayout.PREFERRED_SIZE, 221, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(btInventario, javax.swing.GroupLayout.PREFERRED_SIZE, 221, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(btMostrarOrdenes, javax.swing.GroupLayout.PREFERRED_SIZE, 221, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(btnPrint, javax.swing.GroupLayout.PREFERRED_SIZE, 221, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btnInventory, javax.swing.GroupLayout.PREFERRED_SIZE, 221, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btnShowOrders, javax.swing.GroupLayout.PREFERRED_SIZE, 221, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(91, 91, 91))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(btCerrarSecion)
+                .addComponent(btnSignOut)
                 .addGap(134, 134, 134))
         );
         jPanel1Layout.setVerticalGroup(
@@ -95,13 +95,13 @@ public class FrmAdminMenu extends javax.swing.JFrame {
                 .addGap(21, 21, 21)
                 .addComponent(jLabel1)
                 .addGap(64, 64, 64)
-                .addComponent(btImprimir)
+                .addComponent(btnPrint)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(btInventario)
+                .addComponent(btnInventory)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(btMostrarOrdenes)
+                .addComponent(btnShowOrders)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 49, Short.MAX_VALUE)
-                .addComponent(btCerrarSecion)
+                .addComponent(btnSignOut)
                 .addGap(30, 30, 30))
         );
 
@@ -119,25 +119,25 @@ public class FrmAdminMenu extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void btInventarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btInventarioActionPerformed
+    private void btnInventoryActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnInventoryActionPerformed
         new FrmInventoryMenu().setVisible(true);
         dispose();
-    }//GEN-LAST:event_btInventarioActionPerformed
+    }//GEN-LAST:event_btnInventoryActionPerformed
 
-    private void btCerrarSecionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btCerrarSecionActionPerformed
+    private void btnSignOutActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSignOutActionPerformed
         new FrmMainMenu().setVisible(true);
         dispose();
-    }//GEN-LAST:event_btCerrarSecionActionPerformed
+    }//GEN-LAST:event_btnSignOutActionPerformed
 
-    private void btImprimirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btImprimirActionPerformed
+    private void btnPrintActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPrintActionPerformed
         new FrmPrintMenu().setVisible(true);
         dispose();
-    }//GEN-LAST:event_btImprimirActionPerformed
+    }//GEN-LAST:event_btnPrintActionPerformed
 
-    private void btMostrarOrdenesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btMostrarOrdenesActionPerformed
+    private void btnShowOrdersActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnShowOrdersActionPerformed
         new FrmChefMenu().setVisible(true);
         dispose();
-    }//GEN-LAST:event_btMostrarOrdenesActionPerformed
+    }//GEN-LAST:event_btnShowOrdersActionPerformed
 
     /**
      * @param args the command line arguments
@@ -175,10 +175,10 @@ public class FrmAdminMenu extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JToggleButton btCerrarSecion;
-    private javax.swing.JToggleButton btImprimir;
-    private javax.swing.JToggleButton btInventario;
-    private javax.swing.JToggleButton btMostrarOrdenes;
+    private javax.swing.JToggleButton btnInventory;
+    private javax.swing.JToggleButton btnPrint;
+    private javax.swing.JToggleButton btnShowOrders;
+    private javax.swing.JToggleButton btnSignOut;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JPanel jPanel1;
     // End of variables declaration//GEN-END:variables

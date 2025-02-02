@@ -49,9 +49,9 @@
               <Group type="102" alignment="0" attributes="0">
                   <EmptySpace min="-2" pref="37" max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="1" attributes="0">
-                      <Component id="btAcceder" min="-2" max="-2" attributes="0"/>
+                      <Component id="btnAccess" min="-2" max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="0" attributes="0">
-                          <Component id="txContraseña" min="-2" pref="331" max="-2" attributes="0"/>
+                          <Component id="txtPassword" min="-2" pref="331" max="-2" attributes="0"/>
                           <Component id="jLabel1" min="-2" pref="244" max="-2" attributes="0"/>
                       </Group>
                   </Group>
@@ -65,9 +65,9 @@
                   <EmptySpace min="-2" pref="61" max="-2" attributes="0"/>
                   <Component id="jLabel1" min="-2" pref="38" max="-2" attributes="0"/>
                   <EmptySpace type="separate" max="-2" attributes="0"/>
-                  <Component id="txContraseña" min="-2" max="-2" attributes="0"/>
+                  <Component id="txtPassword" min="-2" max="-2" attributes="0"/>
                   <EmptySpace min="-2" pref="43" max="-2" attributes="0"/>
-                  <Component id="btAcceder" min="-2" max="-2" attributes="0"/>
+                  <Component id="btnAccess" min="-2" max="-2" attributes="0"/>
                   <EmptySpace pref="95" max="32767" attributes="0"/>
               </Group>
           </Group>
@@ -85,17 +85,17 @@
             <Property name="text" type="java.lang.String" value="Ingrese la contrase&#xf1;a:"/>
           </Properties>
         </Component>
-        <Component class="javax.swing.JPasswordField" name="txContrase&#xf1;a">
+        <Component class="javax.swing.JPasswordField" name="txtPassword">
           <Events>
-            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="txContrase&#xf1;aActionPerformed"/>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="txtPasswordActionPerformed"/>
           </Events>
         </Component>
-        <Component class="javax.swing.JToggleButton" name="btAcceder">
+        <Component class="javax.swing.JToggleButton" name="btnAccess">
           <Properties>
             <Property name="text" type="java.lang.String" value="Acceder"/>
           </Properties>
           <Events>
-            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btAccederActionPerformed"/>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnAccessActionPerformed"/>
           </Events>
         </Component>
       </SubComponents>

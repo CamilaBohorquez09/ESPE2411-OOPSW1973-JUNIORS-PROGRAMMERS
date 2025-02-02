@@ -35,8 +35,8 @@ public class FrmAddInventory extends javax.swing.JFrame {
         jTextField3 = new javax.swing.JTextField();
         jLabel5 = new javax.swing.JLabel();
         jTextField4 = new javax.swing.JTextField();
-        btAniadir = new javax.swing.JButton();
-        btAtras = new javax.swing.JButton();
+        btnAdd = new javax.swing.JButton();
+        btnBack = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -70,21 +70,21 @@ public class FrmAddInventory extends javax.swing.JFrame {
         jTextField4.setBackground(new java.awt.Color(0, 102, 102));
         jTextField4.setForeground(new java.awt.Color(255, 255, 255));
 
-        btAniadir.setBackground(new java.awt.Color(0, 51, 51));
-        btAniadir.setForeground(new java.awt.Color(255, 255, 255));
-        btAniadir.setText("Añadir");
-        btAniadir.addActionListener(new java.awt.event.ActionListener() {
+        btnAdd.setBackground(new java.awt.Color(0, 51, 51));
+        btnAdd.setForeground(new java.awt.Color(255, 255, 255));
+        btnAdd.setText("Añadir");
+        btnAdd.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btAniadirActionPerformed(evt);
+                btnAddActionPerformed(evt);
             }
         });
 
-        btAtras.setBackground(new java.awt.Color(0, 51, 51));
-        btAtras.setForeground(new java.awt.Color(255, 255, 255));
-        btAtras.setText("Atras");
-        btAtras.addActionListener(new java.awt.event.ActionListener() {
+        btnBack.setBackground(new java.awt.Color(0, 51, 51));
+        btnBack.setForeground(new java.awt.Color(255, 255, 255));
+        btnBack.setText("Atras");
+        btnBack.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btAtrasActionPerformed(evt);
+                btnBackActionPerformed(evt);
             }
         });
 
@@ -101,7 +101,7 @@ public class FrmAddInventory extends javax.swing.JFrame {
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGap(62, 62, 62)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(btAniadir)
+                            .addComponent(btnAdd)
                             .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
                                 .addGroup(jPanel1Layout.createSequentialGroup()
                                     .addComponent(jLabel5)
@@ -119,13 +119,13 @@ public class FrmAddInventory extends javax.swing.JFrame {
                                         .addComponent(jTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, 274, javax.swing.GroupLayout.PREFERRED_SIZE))))))
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addContainerGap()
-                        .addComponent(btAtras)))
+                        .addComponent(btnBack)))
                 .addContainerGap(94, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addComponent(btAtras)
+                .addComponent(btnBack)
                 .addGap(12, 12, 12)
                 .addComponent(jLabel1)
                 .addGap(18, 18, 18)
@@ -145,7 +145,7 @@ public class FrmAddInventory extends javax.swing.JFrame {
                     .addComponent(jLabel5)
                     .addComponent(jTextField4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
-                .addComponent(btAniadir)
+                .addComponent(btnAdd)
                 .addContainerGap(61, Short.MAX_VALUE))
         );
 
@@ -163,7 +163,7 @@ public class FrmAddInventory extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void btAniadirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btAniadirActionPerformed
+    private void btnAddActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAddActionPerformed
 
         String name = jTextField1.getText();
         String description = jTextField2.getText();
@@ -217,12 +217,12 @@ public class FrmAddInventory extends javax.swing.JFrame {
         } catch (Exception e) {
             JOptionPane.showMessageDialog(this, "Error al añadir el platillo: " + e.getMessage(), "Error", JOptionPane.ERROR_MESSAGE);
         }
-    }//GEN-LAST:event_btAniadirActionPerformed
+    }//GEN-LAST:event_btnAddActionPerformed
 
-    private void btAtrasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btAtrasActionPerformed
+    private void btnBackActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBackActionPerformed
         new FrmInventoryMenu().setVisible(true);
         dispose();
-    }//GEN-LAST:event_btAtrasActionPerformed
+    }//GEN-LAST:event_btnBackActionPerformed
 
     /**
      * @param args the command line arguments
@@ -263,8 +263,8 @@ public class FrmAddInventory extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton btAniadir;
-    private javax.swing.JButton btAtras;
+    private javax.swing.JButton btnAdd;
+    private javax.swing.JButton btnBack;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
