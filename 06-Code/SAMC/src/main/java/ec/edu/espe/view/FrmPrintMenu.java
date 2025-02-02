@@ -45,9 +45,9 @@ public class FrmPrintMenu extends javax.swing.JFrame {
 
         jPanel1 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
-        txCedula = new javax.swing.JTextField();
-        btCancelar = new javax.swing.JToggleButton();
-        btBuscar = new javax.swing.JToggleButton();
+        txtIdCard = new javax.swing.JTextField();
+        btnCancel = new javax.swing.JToggleButton();
+        btnSearch = new javax.swing.JToggleButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -57,23 +57,23 @@ public class FrmPrintMenu extends javax.swing.JFrame {
         jLabel1.setForeground(new java.awt.Color(255, 255, 255));
         jLabel1.setText("Ingrese numero de cedula:");
 
-        txCedula.addActionListener(new java.awt.event.ActionListener() {
+        txtIdCard.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txCedulaActionPerformed(evt);
+                txtIdCardActionPerformed(evt);
             }
         });
 
-        btCancelar.setText("Cancelar");
-        btCancelar.addActionListener(new java.awt.event.ActionListener() {
+        btnCancel.setText("Cancelar");
+        btnCancel.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btCancelarActionPerformed(evt);
+                btnCancelActionPerformed(evt);
             }
         });
 
-        btBuscar.setText("Buscar");
-        btBuscar.addActionListener(new java.awt.event.ActionListener() {
+        btnSearch.setText("Buscar");
+        btnSearch.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btBuscarActionPerformed(evt);
+                btnSearchActionPerformed(evt);
             }
         });
 
@@ -85,14 +85,14 @@ public class FrmPrintMenu extends javax.swing.JFrame {
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addContainerGap()
-                        .addComponent(btCancelar))
+                        .addComponent(btnCancel))
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGap(50, 50, 50)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(btBuscar)
+                            .addComponent(btnSearch)
                             .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                 .addComponent(jLabel1)
-                                .addComponent(txCedula, javax.swing.GroupLayout.PREFERRED_SIZE, 297, javax.swing.GroupLayout.PREFERRED_SIZE)))))
+                                .addComponent(txtIdCard, javax.swing.GroupLayout.PREFERRED_SIZE, 297, javax.swing.GroupLayout.PREFERRED_SIZE)))))
                 .addContainerGap(53, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
@@ -101,11 +101,11 @@ public class FrmPrintMenu extends javax.swing.JFrame {
                 .addContainerGap(92, Short.MAX_VALUE)
                 .addComponent(jLabel1)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(txCedula, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(txtIdCard, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(42, 42, 42)
-                .addComponent(btBuscar)
+                .addComponent(btnSearch)
                 .addGap(67, 67, 67)
-                .addComponent(btCancelar)
+                .addComponent(btnCancel)
                 .addContainerGap())
         );
 
@@ -123,13 +123,13 @@ public class FrmPrintMenu extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void btCancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btCancelarActionPerformed
+    private void btnCancelActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCancelActionPerformed
         new FrmAdminMenu().setVisible(true);
         dispose();
-    }//GEN-LAST:event_btCancelarActionPerformed
+    }//GEN-LAST:event_btnCancelActionPerformed
 
-    private void btBuscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btBuscarActionPerformed
-        String id = txCedula.getText();
+    private void btnSearchActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSearchActionPerformed
+        String id = txtIdCard.getText();
 
         if (id.isEmpty()) {
             JOptionPane.showMessageDialog(this, "Por favor, ingrese una cédula", "Error", JOptionPane.ERROR_MESSAGE);
@@ -225,11 +225,11 @@ public class FrmPrintMenu extends javax.swing.JFrame {
         }
 
 
-    }//GEN-LAST:event_btBuscarActionPerformed
+    }//GEN-LAST:event_btnSearchActionPerformed
 
-    private void txCedulaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txCedulaActionPerformed
+    private void txtIdCardActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtIdCardActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_txCedulaActionPerformed
+    }//GEN-LAST:event_txtIdCardActionPerformed
 
     /**
      * @param args the command line arguments
@@ -267,10 +267,10 @@ public class FrmPrintMenu extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JToggleButton btBuscar;
-    private javax.swing.JToggleButton btCancelar;
+    private javax.swing.JToggleButton btnCancel;
+    private javax.swing.JToggleButton btnSearch;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JPanel jPanel1;
-    private javax.swing.JTextField txCedula;
+    private javax.swing.JTextField txtIdCard;
     // End of variables declaration//GEN-END:variables
 }

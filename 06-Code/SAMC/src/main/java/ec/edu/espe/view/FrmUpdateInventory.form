@@ -57,15 +57,15 @@
                               <Component id="jLabel1" alignment="1" max="32767" attributes="0"/>
                               <Group type="102" alignment="1" attributes="0">
                                   <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
-                                  <Component id="btGuardar" min="-2" max="-2" attributes="0"/>
+                                  <Component id="btnSave" min="-2" max="-2" attributes="0"/>
                               </Group>
-                              <Component id="txCantidad" alignment="1" max="32767" attributes="0"/>
+                              <Component id="txtQuantity" alignment="1" max="32767" attributes="0"/>
                           </Group>
                           <EmptySpace max="-2" attributes="0"/>
                       </Group>
                       <Group type="102" alignment="1" attributes="0">
                           <EmptySpace max="32767" attributes="0"/>
-                          <Component id="btVolver" min="-2" pref="96" max="-2" attributes="0"/>
+                          <Component id="btnGoBack" min="-2" pref="96" max="-2" attributes="0"/>
                           <EmptySpace min="-2" pref="18" max="-2" attributes="0"/>
                       </Group>
                   </Group>
@@ -80,11 +80,11 @@
                   <EmptySpace type="separate" max="-2" attributes="0"/>
                   <Component id="jLabel1" min="-2" max="-2" attributes="0"/>
                   <EmptySpace max="-2" attributes="0"/>
-                  <Component id="txCantidad" min="-2" max="-2" attributes="0"/>
+                  <Component id="txtQuantity" min="-2" max="-2" attributes="0"/>
                   <EmptySpace type="separate" max="-2" attributes="0"/>
-                  <Component id="btGuardar" min="-2" max="-2" attributes="0"/>
+                  <Component id="btnSave" min="-2" max="-2" attributes="0"/>
                   <EmptySpace min="-2" pref="215" max="-2" attributes="0"/>
-                  <Component id="btVolver" min="-2" max="-2" attributes="0"/>
+                  <Component id="btnGoBack" min="-2" max="-2" attributes="0"/>
                   <EmptySpace min="-2" pref="23" max="-2" attributes="0"/>
               </Group>
               <Group type="102" alignment="0" attributes="0">
@@ -103,7 +103,7 @@
 
           <Layout class="org.netbeans.modules.form.compat2.layouts.support.JScrollPaneSupportLayout"/>
           <SubComponents>
-            <Component class="javax.swing.JTable" name="tbListaInventario">
+            <Component class="javax.swing.JTable" name="tblInventoryList">
               <Properties>
                 <Property name="model" type="javax.swing.table.TableModel" editor="org.netbeans.modules.form.editors2.TableModelEditor">
                   <Table columnCount="0" rowCount="4"/>
@@ -126,7 +126,7 @@
             <Property name="text" type="java.lang.String" value="Ingrese la nueva cantidad"/>
           </Properties>
         </Component>
-        <Component class="javax.swing.JTextField" name="txCantidad">
+        <Component class="javax.swing.JTextField" name="txtQuantity">
         </Component>
         <Component class="javax.swing.JLabel" name="jLabel2">
           <Properties>
@@ -136,20 +136,20 @@
             <Property name="text" type="java.lang.String" value="Seleccione el producto"/>
           </Properties>
         </Component>
-        <Component class="javax.swing.JToggleButton" name="btGuardar">
+        <Component class="javax.swing.JToggleButton" name="btnSave">
           <Properties>
             <Property name="text" type="java.lang.String" value="Guardar"/>
           </Properties>
           <Events>
-            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btGuardarActionPerformed"/>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnSaveActionPerformed"/>
           </Events>
         </Component>
-        <Component class="javax.swing.JToggleButton" name="btVolver">
+        <Component class="javax.swing.JToggleButton" name="btnGoBack">
           <Properties>
             <Property name="text" type="java.lang.String" value="Volver"/>
           </Properties>
           <Events>
-            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btVolverActionPerformed"/>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnGoBackActionPerformed"/>
           </Events>
         </Component>
       </SubComponents>

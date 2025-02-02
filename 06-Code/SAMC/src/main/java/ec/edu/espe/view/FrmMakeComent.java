@@ -34,26 +34,26 @@ public class FrmMakeComent extends javax.swing.JFrame {
     private void initComponents() {
 
         jPanel1 = new javax.swing.JPanel();
-        btAtras = new javax.swing.JButton();
-        txComentario = new javax.swing.JTextField();
-        btEnviar = new javax.swing.JToggleButton();
+        btnGoBack = new javax.swing.JButton();
+        txtComment = new javax.swing.JTextField();
+        btnSend = new javax.swing.JToggleButton();
         jLabel1 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
         jPanel1.setBackground(new java.awt.Color(0, 153, 153));
 
-        btAtras.setText("Atras");
-        btAtras.addActionListener(new java.awt.event.ActionListener() {
+        btnGoBack.setText("Atras");
+        btnGoBack.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btAtrasActionPerformed(evt);
+                btnGoBackActionPerformed(evt);
             }
         });
 
-        btEnviar.setText("Enviar");
-        btEnviar.addActionListener(new java.awt.event.ActionListener() {
+        btnSend.setText("Enviar");
+        btnSend.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btEnviarActionPerformed(evt);
+                btnSendActionPerformed(evt);
             }
         });
 
@@ -66,29 +66,29 @@ public class FrmMakeComent extends javax.swing.JFrame {
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(btEnviar)
+                    .addComponent(btnSend)
                     .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                         .addGroup(jPanel1Layout.createSequentialGroup()
                             .addGap(15, 15, 15)
-                            .addComponent(btAtras))
+                            .addComponent(btnGoBack))
                         .addGroup(jPanel1Layout.createSequentialGroup()
                             .addGap(44, 44, 44)
                             .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                 .addComponent(jLabel1)
-                                .addComponent(txComentario, javax.swing.GroupLayout.PREFERRED_SIZE, 310, javax.swing.GroupLayout.PREFERRED_SIZE)))))
+                                .addComponent(txtComment, javax.swing.GroupLayout.PREFERRED_SIZE, 310, javax.swing.GroupLayout.PREFERRED_SIZE)))))
                 .addContainerGap(46, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGap(14, 14, 14)
-                .addComponent(btAtras)
+                .addComponent(btnGoBack)
                 .addGap(26, 26, 26)
                 .addComponent(jLabel1)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(txComentario, javax.swing.GroupLayout.PREFERRED_SIZE, 155, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(txtComment, javax.swing.GroupLayout.PREFERRED_SIZE, 155, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
-                .addComponent(btEnviar)
+                .addComponent(btnSend)
                 .addContainerGap(19, Short.MAX_VALUE))
         );
 
@@ -106,13 +106,13 @@ public class FrmMakeComent extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void btAtrasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btAtrasActionPerformed
+    private void btnGoBackActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnGoBackActionPerformed
         new FrmMainMenu().setVisible(true);
         dispose();
-    }//GEN-LAST:event_btAtrasActionPerformed
+    }//GEN-LAST:event_btnGoBackActionPerformed
 
-    private void btEnviarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btEnviarActionPerformed
-        String comment = txComentario.getText();
+    private void btnSendActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSendActionPerformed
+        String comment = txtComment.getText();
 
         if (comment == null || comment.trim().isEmpty()) {
             JOptionPane.showMessageDialog(this, "Por favor, ingresa un comentario antes de enviarlo.", "Advertencia", JOptionPane.WARNING_MESSAGE);
@@ -135,7 +135,7 @@ public class FrmMakeComent extends javax.swing.JFrame {
         try {
             collection.insertOne(comentarioDoc);
             JOptionPane.showMessageDialog(this, "Comentario enviado exitosamente.", "Éxito", JOptionPane.INFORMATION_MESSAGE);
-            txComentario.setText("");
+            txtComment.setText("");
         } catch (Exception e) {
             JOptionPane.showMessageDialog(this, "Error al enviar el comentario: " + e.getMessage(), "Error", JOptionPane.ERROR_MESSAGE);
         }
@@ -144,7 +144,7 @@ public class FrmMakeComent extends javax.swing.JFrame {
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {
         new FrmMainMenu().setVisible(true);
         dispose();
-    }//GEN-LAST:event_btEnviarActionPerformed
+    }//GEN-LAST:event_btnSendActionPerformed
 
     /**
      * @param args the command line arguments
@@ -182,10 +182,10 @@ public class FrmMakeComent extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton btAtras;
-    private javax.swing.JToggleButton btEnviar;
+    private javax.swing.JButton btnGoBack;
+    private javax.swing.JToggleButton btnSend;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JPanel jPanel1;
-    private javax.swing.JTextField txComentario;
+    private javax.swing.JTextField txtComment;
     // End of variables declaration//GEN-END:variables
 }

@@ -75,7 +75,7 @@ public class FrmMenuOrder extends javax.swing.JFrame {
             MenuItem menuItem = new MenuItem(id, name, descrition, priceFloat, inventory);
             menuItems.add(menuItem);
         }
-        tbContenido.setModel(model);
+        tblContent.setModel(model);
     }
 
     //CARGAR NOMBRES DE PLATILLOS EN COMBO BOX
@@ -92,12 +92,12 @@ public class FrmMenuOrder extends javax.swing.JFrame {
         
         FindIterable<Document> documents = collection.find();
         
-        cbPlatillo.removeAllItems();
+        cbDish.removeAllItems();
         
         for (Document doc : documents) {
             String nombre = doc.getString("Nombre");
             if (nombre != null) {
-                cbPlatillo.addItem(nombre);
+                cbDish.addItem(nombre);
             }
         }
     }
@@ -112,38 +112,38 @@ public class FrmMenuOrder extends javax.swing.JFrame {
     private void initComponents() {
 
         jPanel1 = new javax.swing.JPanel();
-        btAtras = new javax.swing.JToggleButton();
+        btnGoBack = new javax.swing.JToggleButton();
         jScrollPane2 = new javax.swing.JScrollPane();
-        tbContenido = new javax.swing.JTable();
-        cbPlatillo = new javax.swing.JComboBox<>();
+        tblContent = new javax.swing.JTable();
+        cbDish = new javax.swing.JComboBox<>();
         jLabel1 = new javax.swing.JLabel();
-        spCantidad = new javax.swing.JSpinner();
+        spQuantity = new javax.swing.JSpinner();
         jLabel2 = new javax.swing.JLabel();
-        btAnadir = new javax.swing.JToggleButton();
+        btnAdd = new javax.swing.JToggleButton();
         jLabel3 = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
         jLabel5 = new javax.swing.JLabel();
         jLabel6 = new javax.swing.JLabel();
         jLabel7 = new javax.swing.JLabel();
-        txNombre = new javax.swing.JTextField();
-        txCedula = new javax.swing.JTextField();
-        txCorreoElectronico = new javax.swing.JTextField();
-        txTelefono = new javax.swing.JTextField();
-        txDireccion = new javax.swing.JTextField();
-        btOrdenar = new javax.swing.JToggleButton();
+        txtName = new javax.swing.JTextField();
+        txtIdCard = new javax.swing.JTextField();
+        txtEmail = new javax.swing.JTextField();
+        txtPhoneNumber = new javax.swing.JTextField();
+        txtAddress = new javax.swing.JTextField();
+        btnOrder = new javax.swing.JToggleButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
         jPanel1.setBackground(new java.awt.Color(0, 153, 153));
 
-        btAtras.setText("Atras");
-        btAtras.addActionListener(new java.awt.event.ActionListener() {
+        btnGoBack.setText("Atras");
+        btnGoBack.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btAtrasActionPerformed(evt);
+                btnGoBackActionPerformed(evt);
             }
         });
 
-        tbContenido.setModel(new javax.swing.table.DefaultTableModel(
+        tblContent.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {},
                 {},
@@ -154,9 +154,9 @@ public class FrmMenuOrder extends javax.swing.JFrame {
 
             }
         ));
-        jScrollPane2.setViewportView(tbContenido);
+        jScrollPane2.setViewportView(tblContent);
 
-        cbPlatillo.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        cbDish.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
 
         jLabel1.setForeground(new java.awt.Color(255, 255, 255));
         jLabel1.setText("Platillo");
@@ -164,10 +164,10 @@ public class FrmMenuOrder extends javax.swing.JFrame {
         jLabel2.setForeground(new java.awt.Color(255, 255, 255));
         jLabel2.setText("Cantidad");
 
-        btAnadir.setText("Añadir");
-        btAnadir.addActionListener(new java.awt.event.ActionListener() {
+        btnAdd.setText("Añadir");
+        btnAdd.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btAnadirActionPerformed(evt);
+                btnAddActionPerformed(evt);
             }
         });
 
@@ -186,28 +186,28 @@ public class FrmMenuOrder extends javax.swing.JFrame {
         jLabel7.setForeground(new java.awt.Color(255, 255, 255));
         jLabel7.setText("Direccion");
 
-        txNombre.addActionListener(new java.awt.event.ActionListener() {
+        txtName.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txNombreActionPerformed(evt);
+                txtNameActionPerformed(evt);
             }
         });
 
-        txCedula.addActionListener(new java.awt.event.ActionListener() {
+        txtIdCard.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txCedulaActionPerformed(evt);
+                txtIdCardActionPerformed(evt);
             }
         });
 
-        txDireccion.addActionListener(new java.awt.event.ActionListener() {
+        txtAddress.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txDireccionActionPerformed(evt);
+                txtAddressActionPerformed(evt);
             }
         });
 
-        btOrdenar.setText("Ordenar");
-        btOrdenar.addActionListener(new java.awt.event.ActionListener() {
+        btnOrder.setText("Ordenar");
+        btnOrder.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btOrdenarActionPerformed(evt);
+                btnOrderActionPerformed(evt);
             }
         });
 
@@ -233,18 +233,18 @@ public class FrmMenuOrder extends javax.swing.JFrame {
                                     .addComponent(jLabel6))
                                 .addGap(18, 18, 18)
                                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(cbPlatillo, javax.swing.GroupLayout.PREFERRED_SIZE, 191, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(spCantidad, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                            .addComponent(btAnadir, javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(txNombre)
-                            .addComponent(txCorreoElectronico)
-                            .addComponent(txTelefono)
-                            .addComponent(txDireccion)
-                            .addComponent(txCedula)))
+                                    .addComponent(cbDish, javax.swing.GroupLayout.PREFERRED_SIZE, 191, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(spQuantity, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                            .addComponent(btnAdd, javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(txtName)
+                            .addComponent(txtEmail)
+                            .addComponent(txtPhoneNumber)
+                            .addComponent(txtAddress)
+                            .addComponent(txtIdCard)))
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addComponent(btAtras, javax.swing.GroupLayout.PREFERRED_SIZE, 110, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(btnGoBack, javax.swing.GroupLayout.PREFERRED_SIZE, 110, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(btOrdenar)))
+                        .addComponent(btnOrder)))
                 .addContainerGap())
         );
         jPanel1Layout.setVerticalGroup(
@@ -254,41 +254,41 @@ public class FrmMenuOrder extends javax.swing.JFrame {
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGap(45, 45, 45)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(cbPlatillo, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(cbDish, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jLabel1))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(spCantidad, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(spQuantity, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jLabel2))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(btAnadir)
+                        .addComponent(btnAdd)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(jLabel3)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(txNombre, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(txtName, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(jLabel4)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(txCedula, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(txtIdCard, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(jLabel5)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(txCorreoElectronico, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(txtEmail, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(jLabel6)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(txTelefono, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(txtPhoneNumber, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(jLabel7)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(txDireccion, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(txtAddress, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGap(17, 17, 17)
                         .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 376, Short.MAX_VALUE)))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(btAtras)
-                    .addComponent(btOrdenar))
+                    .addComponent(btnGoBack)
+                    .addComponent(btnOrder))
                 .addGap(0, 7, Short.MAX_VALUE))
         );
 
@@ -307,9 +307,9 @@ public class FrmMenuOrder extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     //ANIADE LOS PRODUCTOS A LA LISTA
-    private void btAnadirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btAnadirActionPerformed
-        String dishName = (String) cbPlatillo.getSelectedItem();
-        int quantity = (int) spCantidad.getValue();
+    private void btnAddActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAddActionPerformed
+        String dishName = (String) cbDish.getSelectedItem();
+        int quantity = (int) spQuantity.getValue();
 
         if (dishName != null && quantity > 0) {
             MongoDatabase database = MongoDBManager.getDatabase();
@@ -350,20 +350,20 @@ public class FrmMenuOrder extends javax.swing.JFrame {
         } else {
             JOptionPane.showMessageDialog(this, "Selecciona un platillo y una cantidad válida", "Error", JOptionPane.ERROR_MESSAGE);
         }
-    }//GEN-LAST:event_btAnadirActionPerformed
+    }//GEN-LAST:event_btnAddActionPerformed
 
-    private void txNombreActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txNombreActionPerformed
+    private void txtNameActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtNameActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_txNombreActionPerformed
+    }//GEN-LAST:event_txtNameActionPerformed
 
     //REVISA LOS DATOS DEL CLIENTE, AÑADE TODOS LOS PEDIDOS AL CLIENTE, GENERA LA ORDEN Y RESTA EL INVENTARIO, ACTUALIZA EL MONGO
-    private void btOrdenarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btOrdenarActionPerformed
+    private void btnOrderActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnOrderActionPerformed
 
-        String customerName = txNombre.getText().trim();
-        String customerIdStr = txCedula.getText().trim();
-        String customerEmail = txCorreoElectronico.getText().trim();
-        String customerContactNumber = txTelefono.getText().trim();
-        String customerAddress = txDireccion.getText().trim();
+        String customerName = txtName.getText().trim();
+        String customerIdStr = txtIdCard.getText().trim();
+        String customerEmail = txtEmail.getText().trim();
+        String customerContactNumber = txtPhoneNumber.getText().trim();
+        String customerAddress = txtAddress.getText().trim();
 
         if (customerName.isEmpty() || customerIdStr.isEmpty() || customerEmail.isEmpty() || customerContactNumber.isEmpty() || customerAddress.isEmpty()) {
             JOptionPane.showMessageDialog(this, "Completa todos los campos del cliente", "Error", JOptionPane.ERROR_MESSAGE);
@@ -486,13 +486,13 @@ public class FrmMenuOrder extends javax.swing.JFrame {
                 JOptionPane.showMessageDialog(this, "Error al guardar la orden: " + e.getMessage(), "Error", JOptionPane.ERROR_MESSAGE);
             }
 
-            txNombre.setText("");
-            txCedula.setText("");
-            txCorreoElectronico.setText("");
-            txTelefono.setText("");
-            txDireccion.setText("");
-            cbPlatillo.setSelectedIndex(0);
-            spCantidad.setValue(0);
+            txtName.setText("");
+            txtIdCard.setText("");
+            txtEmail.setText("");
+            txtPhoneNumber.setText("");
+            txtAddress.setText("");
+            cbDish.setSelectedIndex(0);
+            spQuantity.setValue(0);
             orderedItems.clear();
 
         } catch (NumberFormatException e) {
@@ -501,20 +501,20 @@ public class FrmMenuOrder extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(this, "Error inesperado: " + e.getMessage(), "Error", JOptionPane.ERROR_MESSAGE);
             e.printStackTrace();
         }
-    }//GEN-LAST:event_btOrdenarActionPerformed
+    }//GEN-LAST:event_btnOrderActionPerformed
 
-    private void btAtrasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btAtrasActionPerformed
+    private void btnGoBackActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnGoBackActionPerformed
         new FrmMainMenu().setVisible(true);
         dispose();
-    }//GEN-LAST:event_btAtrasActionPerformed
+    }//GEN-LAST:event_btnGoBackActionPerformed
 
-    private void txCedulaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txCedulaActionPerformed
+    private void txtIdCardActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtIdCardActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_txCedulaActionPerformed
+    }//GEN-LAST:event_txtIdCardActionPerformed
 
-    private void txDireccionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txDireccionActionPerformed
+    private void txtAddressActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtAddressActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_txDireccionActionPerformed
+    }//GEN-LAST:event_txtAddressActionPerformed
 
     /**
      * @param args the command line arguments
@@ -553,10 +553,10 @@ public class FrmMenuOrder extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JToggleButton btAnadir;
-    private javax.swing.JToggleButton btAtras;
-    private javax.swing.JToggleButton btOrdenar;
-    private javax.swing.JComboBox<String> cbPlatillo;
+    private javax.swing.JToggleButton btnAdd;
+    private javax.swing.JToggleButton btnGoBack;
+    private javax.swing.JToggleButton btnOrder;
+    private javax.swing.JComboBox<String> cbDish;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
@@ -566,12 +566,12 @@ public class FrmMenuOrder extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel7;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane2;
-    private javax.swing.JSpinner spCantidad;
-    private javax.swing.JTable tbContenido;
-    private javax.swing.JTextField txCedula;
-    private javax.swing.JTextField txCorreoElectronico;
-    private javax.swing.JTextField txDireccion;
-    private javax.swing.JTextField txNombre;
-    private javax.swing.JTextField txTelefono;
+    private javax.swing.JSpinner spQuantity;
+    private javax.swing.JTable tblContent;
+    private javax.swing.JTextField txtAddress;
+    private javax.swing.JTextField txtEmail;
+    private javax.swing.JTextField txtIdCard;
+    private javax.swing.JTextField txtName;
+    private javax.swing.JTextField txtPhoneNumber;
     // End of variables declaration//GEN-END:variables
 }

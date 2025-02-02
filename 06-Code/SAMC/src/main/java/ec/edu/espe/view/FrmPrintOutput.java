@@ -27,7 +27,7 @@ public class FrmPrintOutput extends javax.swing.JFrame {
     public FrmPrintOutput(String output) {
         this.output = output;
         initComponents();
-        txImpresion.setText(output);
+        txtPrintOut.setText(output);
         this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
     }
 
@@ -41,20 +41,20 @@ public class FrmPrintOutput extends javax.swing.JFrame {
     private void initComponents() {
 
         jPanel1 = new javax.swing.JPanel();
-        btAtras = new javax.swing.JButton();
+        btnGoBack = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
-        txImpresion = new javax.swing.JTextArea();
+        txtPrintOut = new javax.swing.JTextArea();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
         jPanel1.setBackground(new java.awt.Color(0, 153, 153));
 
-        btAtras.setText("Atras");
-        btAtras.addActionListener(new java.awt.event.ActionListener() {
+        btnGoBack.setText("Atras");
+        btnGoBack.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btAtrasActionPerformed(evt);
+                btnGoBackActionPerformed(evt);
             }
         });
 
@@ -64,13 +64,13 @@ public class FrmPrintOutput extends javax.swing.JFrame {
         jLabel2.setForeground(new java.awt.Color(255, 255, 255));
         jLabel2.setText("Vista previa:");
 
-        txImpresion.setEditable(false);
-        txImpresion.setBackground(new java.awt.Color(0, 102, 102));
-        txImpresion.setColumns(20);
-        txImpresion.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
-        txImpresion.setForeground(new java.awt.Color(255, 255, 255));
-        txImpresion.setRows(5);
-        jScrollPane1.setViewportView(txImpresion);
+        txtPrintOut.setEditable(false);
+        txtPrintOut.setBackground(new java.awt.Color(0, 102, 102));
+        txtPrintOut.setColumns(20);
+        txtPrintOut.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        txtPrintOut.setForeground(new java.awt.Color(255, 255, 255));
+        txtPrintOut.setRows(5);
+        jScrollPane1.setViewportView(txtPrintOut);
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -83,7 +83,7 @@ public class FrmPrintOutput extends javax.swing.JFrame {
                     .addComponent(jLabel1)
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGap(244, 244, 244)
-                        .addComponent(btAtras))
+                        .addComponent(btnGoBack))
                     .addComponent(jLabel2))
                 .addContainerGap(41, Short.MAX_VALUE))
         );
@@ -97,7 +97,7 @@ public class FrmPrintOutput extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 237, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(btAtras)
+                .addComponent(btnGoBack)
                 .addGap(10, 10, 10))
         );
 
@@ -117,10 +117,10 @@ public class FrmPrintOutput extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void btAtrasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btAtrasActionPerformed
+    private void btnGoBackActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnGoBackActionPerformed
         new FrmAdminMenu().setVisible(true);
         dispose();
-    }//GEN-LAST:event_btAtrasActionPerformed
+    }//GEN-LAST:event_btnGoBackActionPerformed
 
     /**
      * @param args the command line arguments
@@ -159,11 +159,11 @@ public class FrmPrintOutput extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton btAtras;
+    private javax.swing.JButton btnGoBack;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTextArea txImpresion;
+    private javax.swing.JTextArea txtPrintOut;
     // End of variables declaration//GEN-END:variables
 }

@@ -62,22 +62,22 @@
                                   </Group>
                                   <EmptySpace type="separate" max="-2" attributes="0"/>
                                   <Group type="103" groupAlignment="0" attributes="0">
-                                      <Component id="cbPlatillo" min="-2" pref="191" max="-2" attributes="0"/>
-                                      <Component id="spCantidad" min="-2" max="-2" attributes="0"/>
+                                      <Component id="cbDish" min="-2" pref="191" max="-2" attributes="0"/>
+                                      <Component id="spQuantity" min="-2" max="-2" attributes="0"/>
                                   </Group>
                               </Group>
-                              <Component id="btAnadir" alignment="1" min="-2" max="-2" attributes="0"/>
-                              <Component id="txNombre" alignment="0" max="32767" attributes="0"/>
-                              <Component id="txCorreoElectronico" alignment="0" max="32767" attributes="0"/>
-                              <Component id="txTelefono" alignment="0" max="32767" attributes="0"/>
-                              <Component id="txDireccion" max="32767" attributes="0"/>
-                              <Component id="txCedula" alignment="0" max="32767" attributes="0"/>
+                              <Component id="btnAdd" alignment="1" min="-2" max="-2" attributes="0"/>
+                              <Component id="txtName" alignment="0" max="32767" attributes="0"/>
+                              <Component id="txtEmail" alignment="0" max="32767" attributes="0"/>
+                              <Component id="txtPhoneNumber" alignment="0" max="32767" attributes="0"/>
+                              <Component id="txtAddress" max="32767" attributes="0"/>
+                              <Component id="txtIdCard" alignment="0" max="32767" attributes="0"/>
                           </Group>
                       </Group>
                       <Group type="102" attributes="0">
-                          <Component id="btAtras" min="-2" pref="110" max="-2" attributes="0"/>
+                          <Component id="btnGoBack" min="-2" pref="110" max="-2" attributes="0"/>
                           <EmptySpace max="32767" attributes="0"/>
-                          <Component id="btOrdenar" min="-2" max="-2" attributes="0"/>
+                          <Component id="btnOrder" min="-2" max="-2" attributes="0"/>
                       </Group>
                   </Group>
                   <EmptySpace max="-2" attributes="0"/>
@@ -91,36 +91,36 @@
                       <Group type="102" attributes="0">
                           <EmptySpace min="-2" pref="45" max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="3" attributes="0">
-                              <Component id="cbPlatillo" alignment="3" min="-2" pref="22" max="-2" attributes="0"/>
+                              <Component id="cbDish" alignment="3" min="-2" pref="22" max="-2" attributes="0"/>
                               <Component id="jLabel1" alignment="3" min="-2" max="-2" attributes="0"/>
                           </Group>
                           <EmptySpace type="unrelated" max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="3" attributes="0">
-                              <Component id="spCantidad" alignment="3" min="-2" max="-2" attributes="0"/>
+                              <Component id="spQuantity" alignment="3" min="-2" max="-2" attributes="0"/>
                               <Component id="jLabel2" alignment="3" min="-2" max="-2" attributes="0"/>
                           </Group>
                           <EmptySpace max="-2" attributes="0"/>
-                          <Component id="btAnadir" min="-2" max="-2" attributes="0"/>
+                          <Component id="btnAdd" min="-2" max="-2" attributes="0"/>
                           <EmptySpace max="-2" attributes="0"/>
                           <Component id="jLabel3" min="-2" max="-2" attributes="0"/>
                           <EmptySpace max="-2" attributes="0"/>
-                          <Component id="txNombre" min="-2" max="-2" attributes="0"/>
+                          <Component id="txtName" min="-2" max="-2" attributes="0"/>
                           <EmptySpace max="-2" attributes="0"/>
                           <Component id="jLabel4" min="-2" max="-2" attributes="0"/>
                           <EmptySpace max="-2" attributes="0"/>
-                          <Component id="txCedula" min="-2" max="-2" attributes="0"/>
+                          <Component id="txtIdCard" min="-2" max="-2" attributes="0"/>
                           <EmptySpace max="-2" attributes="0"/>
                           <Component id="jLabel5" min="-2" max="-2" attributes="0"/>
                           <EmptySpace max="-2" attributes="0"/>
-                          <Component id="txCorreoElectronico" min="-2" max="-2" attributes="0"/>
+                          <Component id="txtEmail" min="-2" max="-2" attributes="0"/>
                           <EmptySpace max="-2" attributes="0"/>
                           <Component id="jLabel6" min="-2" max="-2" attributes="0"/>
                           <EmptySpace max="-2" attributes="0"/>
-                          <Component id="txTelefono" min="-2" max="-2" attributes="0"/>
+                          <Component id="txtPhoneNumber" min="-2" max="-2" attributes="0"/>
                           <EmptySpace min="-2" max="-2" attributes="0"/>
                           <Component id="jLabel7" min="-2" max="-2" attributes="0"/>
                           <EmptySpace max="-2" attributes="0"/>
-                          <Component id="txDireccion" min="-2" max="-2" attributes="0"/>
+                          <Component id="txtAddress" min="-2" max="-2" attributes="0"/>
                       </Group>
                       <Group type="102" attributes="0">
                           <EmptySpace min="-2" pref="17" max="-2" attributes="0"/>
@@ -129,8 +129,8 @@
                   </Group>
                   <EmptySpace max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="3" attributes="0">
-                      <Component id="btAtras" alignment="3" min="-2" max="-2" attributes="0"/>
-                      <Component id="btOrdenar" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="btnGoBack" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="btnOrder" alignment="3" min="-2" max="-2" attributes="0"/>
                   </Group>
                   <EmptySpace min="0" pref="7" max="32767" attributes="0"/>
               </Group>
@@ -138,12 +138,12 @@
         </DimensionLayout>
       </Layout>
       <SubComponents>
-        <Component class="javax.swing.JToggleButton" name="btAtras">
+        <Component class="javax.swing.JToggleButton" name="btnGoBack">
           <Properties>
             <Property name="text" type="java.lang.String" value="Atras"/>
           </Properties>
           <Events>
-            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btAtrasActionPerformed"/>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnGoBackActionPerformed"/>
           </Events>
         </Component>
         <Container class="javax.swing.JScrollPane" name="jScrollPane2">
@@ -153,7 +153,7 @@
 
           <Layout class="org.netbeans.modules.form.compat2.layouts.support.JScrollPaneSupportLayout"/>
           <SubComponents>
-            <Component class="javax.swing.JTable" name="tbContenido">
+            <Component class="javax.swing.JTable" name="tblContent">
               <Properties>
                 <Property name="model" type="javax.swing.table.TableModel" editor="org.netbeans.modules.form.editors2.TableModelEditor">
                   <Table columnCount="0" rowCount="4"/>
@@ -168,7 +168,7 @@
             </Component>
           </SubComponents>
         </Container>
-        <Component class="javax.swing.JComboBox" name="cbPlatillo">
+        <Component class="javax.swing.JComboBox" name="cbDish">
           <Properties>
             <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
               <StringArray count="4">
@@ -191,7 +191,7 @@
             <Property name="text" type="java.lang.String" value="Platillo"/>
           </Properties>
         </Component>
-        <Component class="javax.swing.JSpinner" name="spCantidad">
+        <Component class="javax.swing.JSpinner" name="spQuantity">
           <AuxValues>
             <AuxValue name="JavaCodeGenerator_SerializeTo" type="java.lang.String" value="FrmMenuOrder_spCantidad"/>
           </AuxValues>
@@ -204,12 +204,12 @@
             <Property name="text" type="java.lang.String" value="Cantidad"/>
           </Properties>
         </Component>
-        <Component class="javax.swing.JToggleButton" name="btAnadir">
+        <Component class="javax.swing.JToggleButton" name="btnAdd">
           <Properties>
             <Property name="text" type="java.lang.String" value="A&#xf1;adir"/>
           </Properties>
           <Events>
-            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btAnadirActionPerformed"/>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnAddActionPerformed"/>
           </Events>
         </Component>
         <Component class="javax.swing.JLabel" name="jLabel3">
@@ -252,31 +252,31 @@
             <Property name="text" type="java.lang.String" value="Direccion"/>
           </Properties>
         </Component>
-        <Component class="javax.swing.JTextField" name="txNombre">
+        <Component class="javax.swing.JTextField" name="txtName">
           <Events>
-            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="txNombreActionPerformed"/>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="txtNameActionPerformed"/>
           </Events>
         </Component>
-        <Component class="javax.swing.JTextField" name="txCedula">
+        <Component class="javax.swing.JTextField" name="txtIdCard">
           <Events>
-            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="txCedulaActionPerformed"/>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="txtIdCardActionPerformed"/>
           </Events>
         </Component>
-        <Component class="javax.swing.JTextField" name="txCorreoElectronico">
+        <Component class="javax.swing.JTextField" name="txtEmail">
         </Component>
-        <Component class="javax.swing.JTextField" name="txTelefono">
+        <Component class="javax.swing.JTextField" name="txtPhoneNumber">
         </Component>
-        <Component class="javax.swing.JTextField" name="txDireccion">
+        <Component class="javax.swing.JTextField" name="txtAddress">
           <Events>
-            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="txDireccionActionPerformed"/>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="txtAddressActionPerformed"/>
           </Events>
         </Component>
-        <Component class="javax.swing.JToggleButton" name="btOrdenar">
+        <Component class="javax.swing.JToggleButton" name="btnOrder">
           <Properties>
             <Property name="text" type="java.lang.String" value="Ordenar"/>
           </Properties>
           <Events>
-            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btOrdenarActionPerformed"/>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnOrderActionPerformed"/>
           </Events>
         </Component>
       </SubComponents>
