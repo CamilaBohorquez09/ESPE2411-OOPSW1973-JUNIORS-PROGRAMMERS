@@ -4,14 +4,8 @@
  */
 package ec.edu.espe.view;
 
-import com.mongodb.client.MongoClient;
-import com.mongodb.client.MongoCollection;
-import com.mongodb.client.MongoDatabase;
-import ec.edu.espe.controller.MongoDBManager;
+import ec.edu.espe.controller.pdfController;
 import javax.swing.JFrame;
-import javax.swing.JOptionPane;
-import javax.swing.JTextArea;
-import org.bson.Document;
 
 /**
  *
@@ -28,6 +22,7 @@ public class FrmPrintOutput extends javax.swing.JFrame {
         this.output = output;
         initComponents();
         txtPrintOut.setText(output);
+        pdfController.createPDF("print.pdf", output);
         this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
     }
 
