@@ -1,11 +1,11 @@
 
-package ec.edu.espe.view;
+package ec.edu.espe.samc.view;
 
 import com.mongodb.client.FindIterable;
 import com.mongodb.client.MongoClient;
 import com.mongodb.client.MongoCollection;
 import com.mongodb.client.MongoDatabase;
-import ec.edu.espe.controller.MongoDBManager;
+import ec.edu.espe.samc.controller.MongoDBManager;
 import javax.swing.JOptionPane;
 import org.bson.Document;
 

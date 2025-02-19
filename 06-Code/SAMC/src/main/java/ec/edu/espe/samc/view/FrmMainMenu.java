@@ -1,4 +1,4 @@
-package ec.edu.espe.view;
+package ec.edu.espe.samc.view;
 
 public class FrmMainMenu extends javax.swing.JFrame {
 

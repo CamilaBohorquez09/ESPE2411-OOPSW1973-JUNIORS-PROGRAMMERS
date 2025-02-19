@@ -2,62 +2,29 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
  */
-package ec.edu.espe.view;
+package ec.edu.espe.samc.view;
 
-import com.mongodb.client.FindIterable;
-import com.mongodb.client.MongoClient;
-import com.mongodb.client.MongoCollection;
-import com.mongodb.client.MongoDatabase;
-import ec.edu.espe.controller.MongoDBManager;
-import java.util.HashMap;
-import java.util.List;
-import javax.swing.JOptionPane;
-import org.bson.Document;
-import static ec.edu.espe.samc.model.ChefOrderList.generateOrderList;
+import ec.edu.espe.samc.controller.pdfController;
+import javax.swing.JFrame;
 
 /**
  *
- * @author Camila Bohorquez
+ * @author Camila Bohorquez 
  */
-public class FrmChefMenu extends javax.swing.JFrame {
+public class FrmPrintOutput extends javax.swing.JFrame {
+
+    private final String output;
 
     /**
-     * Creates new form FrmChefMenu
+     * Creates new form FrmPrintOutput
      */
-    public FrmChefMenu() {
+    public FrmPrintOutput(String output) {
+        this.output = output;
         initComponents();
-        this.setLocationRelativeTo(null);
-        loadDataMongoDB();
+        txtPrintOut.setText(output);
+        pdfController.createPDF("print.pdf", output);
+        this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
     }
-
-    private void loadDataMongoDB() {
-        MongoClient client = MongoDBManager.getMongoClient();
-        if (client == null) {
-            JOptionPane.showMessageDialog(this, "No se pudo conectar a MongoDB", "Error", JOptionPane.ERROR_MESSAGE);
-            return;
-        }
-
-        MongoDatabase database = client.getDatabase("bd_restaurante");
-        MongoCollection<Document> collection = database.getCollection("ordenes");
-
-        FindIterable<Document> documents = collection.find();
-
-        HashMap<String, Integer> platillosMap = new HashMap<>();
-        for (Document doc : documents) {
-            List<Document> platillos = (List<Document>) doc.get("platillos");
-
-            for (Document platillo : platillos) {
-                String nombrePlatillo = platillo.getString("nombre");
-                int cantidad = platillo.getInteger("cantidad", 1);
-
-                platillosMap.put(nombrePlatillo, platillosMap.getOrDefault(nombrePlatillo, 0) + cantidad);
-            }
-        }
-
-        String platillosString = generateOrderList(platillosMap);
-        jTextArea1.setText(platillosString);
-    }
-
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -69,67 +36,71 @@ public class FrmChefMenu extends javax.swing.JFrame {
     private void initComponents() {
 
         jPanel1 = new javax.swing.JPanel();
-        jScrollPane1 = new javax.swing.JScrollPane();
-        jTextArea1 = new javax.swing.JTextArea();
+        btnGoBack = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
-        btnGoBack = new javax.swing.JToggleButton();
+        jLabel2 = new javax.swing.JLabel();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        txtPrintOut = new javax.swing.JTextArea();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
         jPanel1.setBackground(new java.awt.Color(0, 153, 153));
-        jPanel1.setForeground(new java.awt.Color(0, 153, 153));
 
-        jTextArea1.setColumns(20);
-        jTextArea1.setRows(5);
-        jScrollPane1.setViewportView(jTextArea1);
-
-        jLabel1.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
-        jLabel1.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel1.setText("Lista de Ordenes");
-
-        btnGoBack.setText("Volver");
+        btnGoBack.setText("Atras");
         btnGoBack.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnGoBackActionPerformed(evt);
             }
         });
 
+        jLabel1.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel1.setText("Generado con exito");
+
+        jLabel2.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel2.setText("Vista previa:");
+
+        txtPrintOut.setEditable(false);
+        txtPrintOut.setBackground(new java.awt.Color(0, 102, 102));
+        txtPrintOut.setColumns(20);
+        txtPrintOut.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        txtPrintOut.setForeground(new java.awt.Color(255, 255, 255));
+        txtPrintOut.setRows(5);
+        jScrollPane1.setViewportView(txtPrintOut);
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGap(43, 43, 43)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(jScrollPane1)
+                    .addComponent(jLabel1)
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addComponent(btnGoBack, javax.swing.GroupLayout.PREFERRED_SIZE, 96, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(0, 0, Short.MAX_VALUE)))
-                .addContainerGap())
-            .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(133, 133, 133)
-                .addComponent(jLabel1)
-                .addContainerGap(133, Short.MAX_VALUE))
+                        .addGap(244, 244, 244)
+                        .addComponent(btnGoBack))
+                    .addComponent(jLabel2))
+                .addContainerGap(41, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(23, 23, 23)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                .addContainerGap(28, Short.MAX_VALUE)
                 .addComponent(jLabel1)
-                .addGap(34, 34, 34)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 238, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jLabel2)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 237, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(btnGoBack)
-                .addContainerGap(22, Short.MAX_VALUE))
+                .addGap(10, 10, 10))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 0, Short.MAX_VALUE))
+            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -163,30 +134,31 @@ public class FrmChefMenu extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(FrmChefMenu.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(FrmPrintOutput.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(FrmChefMenu.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(FrmPrintOutput.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(FrmChefMenu.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(FrmPrintOutput.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(FrmChefMenu.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(FrmPrintOutput.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
         //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new FrmChefMenu().setVisible(true);
+                String base = "No se encontro al cliente";
+                new FrmPrintOutput(base).setVisible(true);
             }
         });
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JToggleButton btnGoBack;
+    private javax.swing.JButton btnGoBack;
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTextArea jTextArea1;
+    private javax.swing.JTextArea txtPrintOut;
     // End of variables declaration//GEN-END:variables
-
 }

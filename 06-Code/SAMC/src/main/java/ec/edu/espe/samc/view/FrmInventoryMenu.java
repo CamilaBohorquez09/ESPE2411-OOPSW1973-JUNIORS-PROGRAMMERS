@@ -1,7 +1,7 @@
 
-package ec.edu.espe.view;
+package ec.edu.espe.samc.view;
 
-import ec.edu.espe.view.FrmAdminMenu;
+import ec.edu.espe.samc.view.FrmAdminMenu;
 
 
 public class FrmInventoryMenu extends javax.swing.JFrame {

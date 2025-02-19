@@ -1,5 +1,5 @@
 
-package ec.edu.espe.view;
+package ec.edu.espe.samc.view;
 
 public class FrmBankDetails extends javax.swing.JFrame {
 

@@ -2,7 +2,7 @@ package ec.edu.espe.samc.utils;
 import java.util.Scanner;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
-import ec.edu.espe.exceptions.InvalidIDCardException;
+import ec.edu.espe.samc.exceptions.InvalidIDCardException;
 
 public class Validations {
     public static boolean validateOnlyLetters(String input) {

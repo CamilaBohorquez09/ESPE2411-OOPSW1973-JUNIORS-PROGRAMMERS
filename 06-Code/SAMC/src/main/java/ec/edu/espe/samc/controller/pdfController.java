@@ -1,4 +1,4 @@
-package ec.edu.espe.controller;
+package ec.edu.espe.samc.controller;
 
 import com.itextpdf.text.Document;
 import com.itextpdf.text.DocumentException;

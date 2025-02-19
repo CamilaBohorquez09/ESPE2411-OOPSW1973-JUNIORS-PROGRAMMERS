@@ -1,7 +1,7 @@
 /*
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  */
-package ec.edu.espe.view;
+package ec.edu.espe.samc.view;
 
 /**
  *

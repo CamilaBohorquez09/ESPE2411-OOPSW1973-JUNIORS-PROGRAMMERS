@@ -2,12 +2,12 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
  */
-package ec.edu.espe.view;
+package ec.edu.espe.samc.view;
 
 import com.mongodb.client.MongoClient;
 import com.mongodb.client.MongoCollection;
 import com.mongodb.client.MongoDatabase;
-import ec.edu.espe.controller.MongoDBManager;
+import ec.edu.espe.samc.controller.MongoDBManager;
 import javax.swing.JOptionPane;
 import org.bson.Document;
 
