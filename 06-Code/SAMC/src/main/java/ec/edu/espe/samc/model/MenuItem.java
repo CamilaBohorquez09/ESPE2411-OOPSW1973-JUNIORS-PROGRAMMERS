@@ -1,4 +1,4 @@
-package ec.edu.espe.model;
+package ec.edu.espe.samc.model;
 
 import com.mongodb.client.FindIterable;
 import com.mongodb.client.MongoClient;

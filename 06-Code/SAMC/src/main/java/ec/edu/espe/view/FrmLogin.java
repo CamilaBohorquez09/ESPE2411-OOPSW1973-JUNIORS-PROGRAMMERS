@@ -9,7 +9,7 @@ import com.mongodb.client.MongoCollection;
 import com.mongodb.client.MongoDatabase;
 import ec.edu.espe.controller.AccountController;
 import ec.edu.espe.controller.MongoDBManager;
-import ec.edu.espe.model.Account;
+import ec.edu.espe.samc.model.Account;
 import javax.swing.JOptionPane;
 import org.bson.Document;
 

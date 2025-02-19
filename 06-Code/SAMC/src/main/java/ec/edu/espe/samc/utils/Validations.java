@@ -1,4 +1,4 @@
-package ec.edu.espe.utils;
+package ec.edu.espe.samc.utils;
 import java.util.Scanner;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;

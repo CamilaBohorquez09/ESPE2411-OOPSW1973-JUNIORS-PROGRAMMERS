@@ -1,4 +1,4 @@
-package ec.edu.espe.utils;
+package ec.edu.espe.samc.utils;
 
 public class ValidationException extends Exception {
 

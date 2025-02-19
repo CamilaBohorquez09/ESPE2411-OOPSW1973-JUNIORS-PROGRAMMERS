@@ -1,4 +1,4 @@
-package ec.edu.espe.model;
+package ec.edu.espe.samc.model;
 
 import java.util.Map;
 

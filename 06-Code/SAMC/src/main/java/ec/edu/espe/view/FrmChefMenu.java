@@ -13,7 +13,7 @@ import java.util.HashMap;
 import java.util.List;
 import javax.swing.JOptionPane;
 import org.bson.Document;
-import static ec.edu.espe.model.ChefOrderList.generateOrderList;
+import static ec.edu.espe.samc.model.ChefOrderList.generateOrderList;
 
 /**
  *
