@@ -42,6 +42,7 @@ public class FrmPrintOutput extends javax.swing.JFrame {
         jScrollPane1 = new javax.swing.JScrollPane();
         txtPrintOut = new javax.swing.JTextArea();
         btnMxWindow = new javax.swing.JToggleButton();
+        btnMinWindow = new javax.swing.JToggleButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setBackground(new java.awt.Color(0, 153, 153));
@@ -76,22 +77,31 @@ public class FrmPrintOutput extends javax.swing.JFrame {
             }
         });
 
+        btnMinWindow.setText("Minimizar ventana");
+        btnMinWindow.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnMinWindowActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGap(43, 43, 43)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(jScrollPane1)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel1)
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(6, 6, 6)
-                        .addComponent(btnMxWindow)
-                        .addGap(108, 108, 108)
-                        .addComponent(btnGoBack))
-                    .addComponent(jLabel2))
-                .addContainerGap(58, Short.MAX_VALUE))
+                    .addComponent(jLabel2)
+                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                        .addGroup(jPanel1Layout.createSequentialGroup()
+                            .addComponent(btnMxWindow)
+                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                            .addComponent(btnMinWindow)
+                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(btnGoBack))
+                        .addComponent(jScrollPane1, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 400, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(39, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -105,7 +115,8 @@ public class FrmPrintOutput extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnGoBack)
-                    .addComponent(btnMxWindow))
+                    .addComponent(btnMxWindow)
+                    .addComponent(btnMinWindow))
                 .addGap(10, 10, 10))
         );
 
@@ -113,7 +124,9 @@ public class FrmPrintOutput extends javax.swing.JFrame {
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 0, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -131,6 +144,10 @@ public class FrmPrintOutput extends javax.swing.JFrame {
     private void btnMxWindowActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnMxWindowActionPerformed
         setExtendedState(JFrame.MAXIMIZED_BOTH);
     }//GEN-LAST:event_btnMxWindowActionPerformed
+
+    private void btnMinWindowActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnMinWindowActionPerformed
+        setExtendedState(JFrame.NORMAL);
+    }//GEN-LAST:event_btnMinWindowActionPerformed
 
     /**
      * @param args the command line arguments
@@ -170,6 +187,7 @@ public class FrmPrintOutput extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnGoBack;
+    private javax.swing.JToggleButton btnMinWindow;
     private javax.swing.JToggleButton btnMxWindow;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;

@@ -78,6 +78,8 @@
                           <Component id="btnGoBack" min="-2" pref="110" max="-2" attributes="0"/>
                           <EmptySpace min="-2" pref="31" max="-2" attributes="0"/>
                           <Component id="btnMxWindow" min="-2" max="-2" attributes="0"/>
+                          <EmptySpace type="separate" max="-2" attributes="0"/>
+                          <Component id="btnMinWindow" min="-2" max="-2" attributes="0"/>
                           <EmptySpace max="32767" attributes="0"/>
                           <Component id="btnOrder" min="-2" max="-2" attributes="0"/>
                       </Group>
@@ -134,6 +136,7 @@
                       <Component id="btnGoBack" alignment="3" min="-2" max="-2" attributes="0"/>
                       <Component id="btnOrder" alignment="3" min="-2" max="-2" attributes="0"/>
                       <Component id="btnMxWindow" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="btnMinWindow" alignment="3" min="-2" max="-2" attributes="0"/>
                   </Group>
                   <EmptySpace min="0" pref="7" max="32767" attributes="0"/>
               </Group>
@@ -288,6 +291,14 @@
           </Properties>
           <Events>
             <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnMxWindowActionPerformed"/>
+          </Events>
+        </Component>
+        <Component class="javax.swing.JToggleButton" name="btnMinWindow">
+          <Properties>
+            <Property name="text" type="java.lang.String" value="Minimizar ventana"/>
+          </Properties>
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnMinWindowActionPerformed"/>
           </Events>
         </Component>
       </SubComponents>

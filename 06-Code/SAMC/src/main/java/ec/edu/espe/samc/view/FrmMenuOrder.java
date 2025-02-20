@@ -133,6 +133,7 @@ public class FrmMenuOrder extends javax.swing.JFrame {
         txtAddress = new javax.swing.JTextField();
         btnOrder = new javax.swing.JToggleButton();
         btnMxWindow = new javax.swing.JToggleButton();
+        btnMinWindow = new javax.swing.JToggleButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -220,6 +221,13 @@ public class FrmMenuOrder extends javax.swing.JFrame {
             }
         });
 
+        btnMinWindow.setText("Minimizar ventana");
+        btnMinWindow.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnMinWindowActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
@@ -254,6 +262,8 @@ public class FrmMenuOrder extends javax.swing.JFrame {
                         .addComponent(btnGoBack, javax.swing.GroupLayout.PREFERRED_SIZE, 110, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(31, 31, 31)
                         .addComponent(btnMxWindow)
+                        .addGap(18, 18, 18)
+                        .addComponent(btnMinWindow)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(btnOrder)))
                 .addContainerGap())
@@ -300,7 +310,8 @@ public class FrmMenuOrder extends javax.swing.JFrame {
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnGoBack)
                     .addComponent(btnOrder)
-                    .addComponent(btnMxWindow))
+                    .addComponent(btnMxWindow)
+                    .addComponent(btnMinWindow))
                 .addGap(0, 7, Short.MAX_VALUE))
         );
 
@@ -524,6 +535,10 @@ public class FrmMenuOrder extends javax.swing.JFrame {
         setExtendedState(JFrame.MAXIMIZED_BOTH);
     }//GEN-LAST:event_btnMxWindowActionPerformed
 
+    private void btnMinWindowActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnMinWindowActionPerformed
+        setExtendedState(JFrame.NORMAL);
+    }//GEN-LAST:event_btnMinWindowActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -563,6 +578,7 @@ public class FrmMenuOrder extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JToggleButton btnAdd;
     private javax.swing.JToggleButton btnGoBack;
+    private javax.swing.JToggleButton btnMinWindow;
     private javax.swing.JToggleButton btnMxWindow;
     private javax.swing.JToggleButton btnOrder;
     private javax.swing.JComboBox<String> cbDish;
