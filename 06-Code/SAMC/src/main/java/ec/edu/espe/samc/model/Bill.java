@@ -1,11 +1,13 @@
 package ec.edu.espe.samc.model;
 
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.Map;
 
 public class Bill extends TransactionReceipt {
 
     public Bill(Customer customer, Map<String, Integer> order, float total) {
-        super(customer, order, total);
+        super(customer, order, total, new SimpleDateFormat("yyyy-MM-dd HH:mm:ss").format(new Date()));
     }
 
     @Override
@@ -28,5 +30,4 @@ public class Bill extends TransactionReceipt {
         receipt.append("Total: $").append(String.format("%.2f", getTotal())).append("\n");
         return receipt.toString();
     }
-
 }

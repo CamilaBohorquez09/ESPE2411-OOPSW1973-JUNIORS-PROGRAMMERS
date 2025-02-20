@@ -1,6 +1,5 @@
 package ec.edu.espe.samc.view;
 
-import com.mongodb.client.MongoClient;
 import com.mongodb.client.MongoCollection;
 import com.mongodb.client.MongoDatabase;
 import ec.edu.espe.samc.controller.AccountController;

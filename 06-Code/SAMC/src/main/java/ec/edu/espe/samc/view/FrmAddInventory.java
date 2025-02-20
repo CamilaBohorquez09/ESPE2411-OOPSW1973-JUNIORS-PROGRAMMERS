@@ -5,7 +5,6 @@ import com.mongodb.client.MongoClient;
 import com.mongodb.client.MongoCollection;
 import com.mongodb.client.MongoDatabase;
 import ec.edu.espe.samc.controller.MongoDBManager;
-import ec.edu.espe.samc.model.Dish;
 import javax.swing.JOptionPane;
 import org.bson.Document;
 

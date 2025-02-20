@@ -1,15 +1,9 @@
 package ec.edu.espe.samc.controller;
 
-import com.mongodb.ConnectionString;
 import com.mongodb.MongoClientSettings;
 import com.mongodb.client.MongoClient;
 import com.mongodb.client.MongoClients;
 import com.mongodb.client.MongoDatabase;
-import org.bson.codecs.configuration.CodecRegistry;
-import org.bson.codecs.pojo.PojoCodecProvider;
-
-import static org.bson.codecs.configuration.CodecRegistries.fromProviders;
-import static org.bson.codecs.configuration.CodecRegistries.fromRegistries;
 
 public class MongoDBManager implements DatabaseConnection {
     private static MongoDBManager instance;
@@ -18,7 +12,6 @@ public class MongoDBManager implements DatabaseConnection {
     private static final String DATABASE_NAME = "bd_restaurante";
 
     private MongoDBManager() {
-        // Configuración de CodecRegistry para POJOs
         MongoClientSettings settings = MongoDBConfig.getMongoClientSettings();
         mongoClient = MongoClients.create(settings);
         database = mongoClient.getDatabase(DATABASE_NAME);
