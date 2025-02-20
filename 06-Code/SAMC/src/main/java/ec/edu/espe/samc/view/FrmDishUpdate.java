@@ -5,7 +5,7 @@ import com.mongodb.client.FindIterable;
 import com.mongodb.client.MongoClient;
 import com.mongodb.client.MongoCollection;
 import com.mongodb.client.MongoDatabase;
-import ec.edu.espe.samc.controller.MongoDBManager;
+import ec.edu.espe.samc.controller.MongoDBConnectionSingleton;
 import javax.swing.JOptionPane;
 import org.bson.Document;
 
@@ -18,7 +18,7 @@ public class FrmDishUpdate extends javax.swing.JFrame {
     }
     
     private void loadNamesInComboBox() {
-        MongoClient client = MongoDBManager.getMongoClient();
+        MongoClient client = MongoDBConnectionSingleton.getInstance().getMongoClient();
         if (client == null) {
             JOptionPane.showMessageDialog(this, "No se pudo conectar a MongoDB", "Error", JOptionPane.ERROR_MESSAGE);
             return;
@@ -209,7 +209,7 @@ public class FrmDishUpdate extends javax.swing.JFrame {
     String selectedDish = (String) jComboBox1.getSelectedItem();
     
     if (selectedDish != null) {
-        MongoClient client = MongoDBManager.getMongoClient();
+        MongoClient client = MongoDBConnectionSingleton.getInstance().getMongoClient();
         if (client == null) {
             JOptionPane.showMessageDialog(this, "No se pudo conectar a MongoDB", "Error", JOptionPane.ERROR_MESSAGE);
             return;
@@ -255,7 +255,7 @@ public class FrmDishUpdate extends javax.swing.JFrame {
             return;
         }
 
-        MongoClient client = MongoDBManager.getMongoClient();
+        MongoClient client = MongoDBConnectionSingleton.getInstance().getMongoClient();
         if (client == null) {
             JOptionPane.showMessageDialog(this, "No se pudo conectar a MongoDB", "Error", JOptionPane.ERROR_MESSAGE);
             return;

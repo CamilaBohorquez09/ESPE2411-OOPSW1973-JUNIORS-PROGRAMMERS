@@ -7,7 +7,7 @@ package ec.edu.espe.samc.view;
 import com.mongodb.client.MongoClient;
 import com.mongodb.client.MongoCollection;
 import com.mongodb.client.MongoDatabase;
-import ec.edu.espe.samc.controller.MongoDBManager;
+import ec.edu.espe.samc.controller.MongoDBConnectionSingleton;
 import ec.edu.espe.samc.controller.AccountController;
 import javax.swing.JOptionPane;
 import org.bson.Document;
@@ -105,7 +105,7 @@ public class FrmAdminLogin extends javax.swing.JFrame {
     }//GEN-LAST:event_txtPasswordActionPerformed
 
     private void btnAccessActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAccessActionPerformed
-        MongoClient client = MongoDBManager.getMongoClient();
+        MongoClient client = MongoDBConnectionSingleton.getInstance().getMongoClient();
         char[] inputPassword = txtPassword.getPassword();
         String inputPasswordString = new String(inputPassword);
         String storedPassword = null;

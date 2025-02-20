@@ -8,7 +8,7 @@ import com.mongodb.client.FindIterable;
 import com.mongodb.client.MongoClient;
 import com.mongodb.client.MongoCollection;
 import com.mongodb.client.MongoDatabase;
-import ec.edu.espe.samc.controller.MongoDBManager;
+import ec.edu.espe.samc.controller.MongoDBConnectionSingleton;
 import ec.edu.espe.samc.model.Counter;
 import ec.edu.espe.samc.model.MenuItem;
 import ec.edu.espe.samc.model.Order;
@@ -40,23 +40,23 @@ public class FrmMenuOrder extends javax.swing.JFrame {
 
     //CARGAR DATOS DE MONGO
     private void loadDataMongoDB() {
-        MongoClient client = MongoDBManager.getMongoClient();
+        MongoClient client = MongoDBConnectionSingleton.getInstance().getMongoClient();
         if (client == null) {
             JOptionPane.showMessageDialog(this, "No se pudo conectar a MongoDB", "Error", JOptionPane.ERROR_MESSAGE);
             return;
         }
         MongoDatabase database = client.getDatabase("bd_restaurante");
         MongoCollection<Document> collection = database.getCollection("comida");
-        
+
         documents = collection.find();
-        
+
         DefaultTableModel model = new DefaultTableModel();
         model.addColumn("ID");
         model.addColumn("Nombre");
         model.addColumn("Descripción");
         model.addColumn("Precio");
         model.addColumn("Inventario");
-        
+
         for (Document doc : documents) {
             Object[] row = new Object[5];
             row[0] = doc.getInteger("ID");
@@ -66,7 +66,7 @@ public class FrmMenuOrder extends javax.swing.JFrame {
             row[3] = price != null ? price.doubleValue() : null;
             row[4] = doc.getInteger("Inventario");
             model.addRow(row);
-            
+
             int id = doc.getInteger("ID");
             String name = doc.getString("Nombre");
             String descrition = doc.getString("Descripcion");
@@ -80,20 +80,20 @@ public class FrmMenuOrder extends javax.swing.JFrame {
 
     //CARGAR NOMBRES DE PLATILLOS EN COMBO BOX
     private void loadNamesInComboBox() {
-        MongoClient client = MongoDBManager.getMongoClient();
-        
+        MongoClient client = MongoDBConnectionSingleton.getInstance().getMongoClient();
+
         if (client == null) {
             JOptionPane.showMessageDialog(this, "No se pudo conectar a MongoDB", "Error", JOptionPane.ERROR_MESSAGE);
             return;
         }
-        
+
         MongoDatabase database = client.getDatabase("bd_restaurante");
         MongoCollection<Document> collection = database.getCollection("comida");
-        
+
         FindIterable<Document> documents = collection.find();
-        
+
         cbDish.removeAllItems();
-        
+
         for (Document doc : documents) {
             String nombre = doc.getString("Nombre");
             if (nombre != null) {
@@ -312,7 +312,8 @@ public class FrmMenuOrder extends javax.swing.JFrame {
         int quantity = (int) spQuantity.getValue();
 
         if (dishName != null && quantity > 0) {
-            MongoDatabase database = MongoDBManager.getDatabase();
+            MongoDBConnectionSingleton mongoDBConnection = MongoDBConnectionSingleton.getInstance();
+            MongoDatabase database = mongoDBConnection.getDatabase();
 
             if (database == null) {
                 JOptionPane.showMessageDialog(this, "Error al conectar con la base de datos", "Error", JOptionPane.ERROR_MESSAGE);
@@ -397,11 +398,13 @@ public class FrmMenuOrder extends javax.swing.JFrame {
 
             int customerId = Integer.parseInt(customerIdStr);
 
+            MongoDBConnectionSingleton mongoDBConnection = MongoDBConnectionSingleton.getInstance();
+            MongoDatabase database = mongoDBConnection.getDatabase();
+
             for (Map.Entry<String, Integer> entry : orderedItems.entrySet()) {
                 String dishName = entry.getKey();
                 int quantity = entry.getValue();
 
-                MongoDatabase database = MongoDBManager.getDatabase();
                 if (database == null) {
                     JOptionPane.showMessageDialog(this, "Error al conectar con la base de datos", "Error", JOptionPane.ERROR_MESSAGE);
                     return;
@@ -430,17 +433,6 @@ public class FrmMenuOrder extends javax.swing.JFrame {
 
             float total = new Counter().calculateTotal(orderedItems, menuItems);
 
-            MongoClient client = MongoDBManager.getMongoClient();
-            if (client == null) {
-                JOptionPane.showMessageDialog(this, "No se pudo conectar a MongoDB", "Error", JOptionPane.ERROR_MESSAGE);
-                return;
-            }
-
-            if (client == null) {
-                JOptionPane.showMessageDialog(this, "No se pudo conectar a MongoDB", "Error", JOptionPane.ERROR_MESSAGE);
-                return;
-            }
-            MongoDatabase database = client.getDatabase("bd_restaurante");
             MongoCollection<Document> collection = database.getCollection("ordenes");
 
             Document ordenDoc = new Document();

@@ -7,7 +7,7 @@ package ec.edu.espe.samc.view;
 import com.mongodb.client.FindIterable;
 import com.mongodb.client.MongoCollection;
 import com.mongodb.client.MongoDatabase;
-import ec.edu.espe.samc.controller.MongoDBManager;
+import ec.edu.espe.samc.controller.MongoDBConnectionSingleton;
 import ec.edu.espe.samc.model.Bill;
 import ec.edu.espe.samc.model.Counter;
 import ec.edu.espe.samc.model.Customer;
@@ -136,7 +136,8 @@ public class FrmPrintMenu extends javax.swing.JFrame {
             return;
         }
 
-        MongoDatabase database = MongoDBManager.getDatabase();
+        MongoDBConnectionSingleton mongoDBConnection = MongoDBConnectionSingleton.getInstance();
+        MongoDatabase database = mongoDBConnection.getDatabase();
 
         if (database == null) {
             JOptionPane.showMessageDialog(this, "Error al conectar con la base de datos", "Error", JOptionPane.ERROR_MESSAGE);
@@ -188,9 +189,9 @@ public class FrmPrintMenu extends javax.swing.JFrame {
                 }
 
                 float total = new Counter().calculateTotal(orderedItems, menuItems);
-                
+
                 Bill bill = new Bill(customer, orderedItems, total);
-                
+
                 new FrmPrintOutput(bill.toString()).setVisible(true);
                 dispose();
             } else if (selectedOption == JOptionPane.NO_OPTION) {
@@ -213,18 +214,16 @@ public class FrmPrintMenu extends javax.swing.JFrame {
                 }
 
                 float total = new Counter().calculateTotal(orderedItems, menuItems);
-                
+
                 SaleNote saleNote = new SaleNote(customer, orderedItems, total);
-                
+
                 new FrmPrintOutput(saleNote.toString()).setVisible(true);
                 dispose();
             }
 
         } else {
-            JOptionPane.showMessageDialog(this, "No se encontraron ordenes para la cedula ingresada.");
+            JOptionPane.showMessageDialog(this, "No se encontraron ordenes para la cédula ingresada.");
         }
-
-
     }//GEN-LAST:event_btnSearchActionPerformed
 
     private void txtIdCardActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtIdCardActionPerformed

@@ -5,10 +5,9 @@
 package ec.edu.espe.samc.view;
 
 import com.mongodb.client.FindIterable;
-import com.mongodb.client.MongoClient;
 import com.mongodb.client.MongoCollection;
 import com.mongodb.client.MongoDatabase;
-import ec.edu.espe.samc.controller.MongoDBManager;
+import ec.edu.espe.samc.controller.MongoDBConnectionSingleton;
 import javax.swing.JOptionPane;
 import javax.swing.event.ListSelectionEvent;
 import javax.swing.event.ListSelectionListener;
@@ -30,35 +29,42 @@ public class FrmUpdateInventory extends javax.swing.JFrame {
         loadDataMongoDB();
         configureTableSelection();
     }
+
     private void loadDataMongoDB() {
-        MongoClient client = MongoDBManager.getMongoClient();
-        if (client == null) {
+        MongoDBConnectionSingleton mongoDBConnection = MongoDBConnectionSingleton.getInstance();
+        MongoDatabase database = mongoDBConnection.getDatabase();
+
+        if (database == null) {
             JOptionPane.showMessageDialog(this, "No se pudo conectar a MongoDB", "Error", JOptionPane.ERROR_MESSAGE);
             return;
         }
-        MongoDatabase database = client.getDatabase("bd_restaurante");
+
         MongoCollection<Document> collection = database.getCollection("comida");
         FindIterable<Document> documents = collection.find();
-        DefaultTableModel model = new DefaultTableModel(){
+        DefaultTableModel model = new DefaultTableModel() {
             @Override
-            public boolean isCellEditable(int row, int column){
+            public boolean isCellEditable(int row, int column) {
                 return false;
             }
         };
+
         model.addColumn("ID");
         model.addColumn("Nombre");
         model.addColumn("Inventario");
+
         for (Document doc : documents) {
-            Object[] row = new Object[5];
+            Object[] row = new Object[3];
             row[0] = doc.getInteger("ID").toString();
             row[1] = doc.getString("Nombre");
             row[2] = doc.getInteger("Inventario");
             model.addRow(row);
         }
+
         tblInventoryList.setModel(model);
     }
+
     private void configureTableSelection() {
-  
+
         tblInventoryList.getSelectionModel().addListSelectionListener(new ListSelectionListener() {
             @Override
             public void valueChanged(ListSelectionEvent e) {
@@ -205,13 +211,15 @@ public class FrmUpdateInventory extends javax.swing.JFrame {
         try {
             int newInventory = Integer.parseInt(newInventoryText);
 
-            MongoClient client = MongoDBManager.getMongoClient();
-            if (client == null) {
+            // Obtener la instancia del Singleton y la base de datos
+            MongoDBConnectionSingleton mongoDBConnection = MongoDBConnectionSingleton.getInstance();
+            MongoDatabase database = mongoDBConnection.getDatabase();
+
+            if (database == null) {
                 JOptionPane.showMessageDialog(this, "No se pudo conectar a MongoDB.", "Error", JOptionPane.ERROR_MESSAGE);
                 return;
             }
 
-            MongoDatabase database = client.getDatabase("bd_restaurante");
             MongoCollection<Document> collection = database.getCollection("comida");
 
             Document filter = new Document("ID", Integer.parseInt(id));

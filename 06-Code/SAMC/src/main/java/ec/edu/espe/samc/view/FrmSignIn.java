@@ -4,7 +4,7 @@ import com.mongodb.client.MongoClient;
 import com.mongodb.client.MongoCollection;
 import com.mongodb.client.MongoDatabase;
 import ec.edu.espe.samc.controller.AccountController;
-import ec.edu.espe.samc.controller.MongoDBManager;
+import ec.edu.espe.samc.controller.MongoDBConnectionSingleton;
 import ec.edu.espe.samc.model.Account;
 import javax.swing.JOptionPane;
 import org.bson.Document;
@@ -156,23 +156,21 @@ public class FrmSignIn extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(this, "Contraseña no válida");
             return;
         }
-        
+
         String passwordEncrypted = AccountController.encryptPassword(inputPasswordString);
-        
+
         Account newAccount = Account.getInstance(txtName.getText(), txtLastName.getText(), txtUserName.getText(), passwordEncrypted);
 
-        
-        
-        MongoClient client = MongoDBManager.getMongoClient();
-        if (client == null) {
+        MongoDBConnectionSingleton mongoDBConnection = MongoDBConnectionSingleton.getInstance();
+        MongoDatabase database = mongoDBConnection.getDatabase();
+
+        if (database == null) {
             JOptionPane.showMessageDialog(this, "No se pudo conectar a MongoDB", "Error", JOptionPane.ERROR_MESSAGE);
             return;
         }
 
-        MongoDatabase database = client.getDatabase("bd_restaurante");
         MongoCollection<Document> collection = database.getCollection("cuentas");
-        
-        
+
         Document accountDoc = new Document("name", newAccount.getName())
                 .append("lastName", newAccount.getLastName())
                 .append("userName", newAccount.getUsername())
