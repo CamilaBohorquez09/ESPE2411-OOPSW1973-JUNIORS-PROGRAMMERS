@@ -6,7 +6,7 @@ package ec.edu.espe.samc.view;
 
 /**
  *
- * @author Camila Bohorquez 
+ * @author Camila Bohorquez
  */
 public class FrmAdminMenu extends javax.swing.JFrame {
 
@@ -32,6 +32,7 @@ public class FrmAdminMenu extends javax.swing.JFrame {
         btnInventory = new javax.swing.JToggleButton();
         btnShowOrders = new javax.swing.JToggleButton();
         btnSignOut = new javax.swing.JToggleButton();
+        btnExit = new javax.swing.JToggleButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -62,10 +63,17 @@ public class FrmAdminMenu extends javax.swing.JFrame {
             }
         });
 
-        btnSignOut.setText("Cerrar sesión y Salir");
+        btnSignOut.setText("Cerrar sesión y volver al menu principal");
         btnSignOut.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnSignOutActionPerformed(evt);
+            }
+        });
+
+        btnExit.setText("Salir del programa");
+        btnExit.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnExitActionPerformed(evt);
             }
         });
 
@@ -86,8 +94,13 @@ public class FrmAdminMenu extends javax.swing.JFrame {
                 .addGap(91, 91, 91))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(btnSignOut)
-                .addGap(134, 134, 134))
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                        .addComponent(btnSignOut)
+                        .addGap(83, 83, 83))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                        .addComponent(btnExit)
+                        .addGap(138, 138, 138))))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -100,9 +113,11 @@ public class FrmAdminMenu extends javax.swing.JFrame {
                 .addComponent(btnInventory)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(btnShowOrders)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 49, Short.MAX_VALUE)
+                .addGap(35, 35, 35)
                 .addComponent(btnSignOut)
-                .addGap(30, 30, 30))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(btnExit)
+                .addContainerGap(15, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -138,6 +153,10 @@ public class FrmAdminMenu extends javax.swing.JFrame {
         new FrmChefMenu().setVisible(true);
         dispose();
     }//GEN-LAST:event_btnShowOrdersActionPerformed
+
+    private void btnExitActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnExitActionPerformed
+        System.exit(0);
+    }//GEN-LAST:event_btnExitActionPerformed
 
     /**
      * @param args the command line arguments
@@ -175,6 +194,7 @@ public class FrmAdminMenu extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JToggleButton btnExit;
     private javax.swing.JToggleButton btnInventory;
     private javax.swing.JToggleButton btnPrint;
     private javax.swing.JToggleButton btnShowOrders;
