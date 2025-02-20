@@ -159,7 +159,7 @@ public class FrmSignIn extends javax.swing.JFrame {
         
         String passwordEncrypted = AccountController.encryptPassword(inputPasswordString);
         
-        Account newAccount = new Account(txtName.getText(), txtLastName.getText(), txtUserName.getText(), passwordEncrypted);
+        Account newAccount = Account.getInstance(txtName.getText(), txtLastName.getText(), txtUserName.getText(), passwordEncrypted);
 
         
         

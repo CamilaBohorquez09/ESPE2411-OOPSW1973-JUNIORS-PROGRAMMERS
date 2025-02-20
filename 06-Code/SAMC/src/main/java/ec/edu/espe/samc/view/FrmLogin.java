@@ -187,7 +187,7 @@ public class FrmLogin extends javax.swing.JFrame {
             return;
         }
 
-        foundAccount = new Account(
+        foundAccount = Account.getInstance(
                 userDoc.getString("name"),
                 userDoc.getString("lastName"),
                 userDoc.getString("userName"),
