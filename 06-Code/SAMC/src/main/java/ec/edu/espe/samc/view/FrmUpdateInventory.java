@@ -7,7 +7,7 @@ package ec.edu.espe.samc.view;
 import com.mongodb.client.FindIterable;
 import com.mongodb.client.MongoCollection;
 import com.mongodb.client.MongoDatabase;
-import ec.edu.espe.samc.controller.MongoDBConnectionSingleton;
+import ec.edu.espe.samc.controller.MongoDBManager;
 import javax.swing.JOptionPane;
 import javax.swing.event.ListSelectionEvent;
 import javax.swing.event.ListSelectionListener;
@@ -31,7 +31,7 @@ public class FrmUpdateInventory extends javax.swing.JFrame {
     }
 
     private void loadDataMongoDB() {
-        MongoDBConnectionSingleton mongoDBConnection = MongoDBConnectionSingleton.getInstance();
+        MongoDBManager mongoDBConnection = MongoDBManager.getInstance();
         MongoDatabase database = mongoDBConnection.getDatabase();
 
         if (database == null) {
@@ -212,7 +212,7 @@ public class FrmUpdateInventory extends javax.swing.JFrame {
             int newInventory = Integer.parseInt(newInventoryText);
 
             // Obtener la instancia del Singleton y la base de datos
-            MongoDBConnectionSingleton mongoDBConnection = MongoDBConnectionSingleton.getInstance();
+            MongoDBManager mongoDBConnection = MongoDBManager.getInstance();
             MongoDatabase database = mongoDBConnection.getDatabase();
 
             if (database == null) {

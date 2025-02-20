@@ -5,7 +5,7 @@ import com.mongodb.client.FindIterable;
 import com.mongodb.client.MongoClient;
 import com.mongodb.client.MongoCollection;
 import com.mongodb.client.MongoDatabase;
-import ec.edu.espe.samc.controller.MongoDBConnectionSingleton;
+import ec.edu.espe.samc.controller.MongoDBManager;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 import org.bson.Document;
@@ -19,7 +19,7 @@ public class FrmDishList extends javax.swing.JFrame {
     }
     
     private void loadDataMongoDB() {
-        MongoClient client = MongoDBConnectionSingleton.getInstance().getMongoClient();
+        MongoClient client = MongoDBManager.getInstance().getMongoClient();
         if (client == null) {
             JOptionPane.showMessageDialog(this, "No se pudo conectar a MongoDB", "Error", JOptionPane.ERROR_MESSAGE);
             return;

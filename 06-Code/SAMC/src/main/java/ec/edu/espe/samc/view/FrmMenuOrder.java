@@ -8,7 +8,7 @@ import com.mongodb.client.FindIterable;
 import com.mongodb.client.MongoClient;
 import com.mongodb.client.MongoCollection;
 import com.mongodb.client.MongoDatabase;
-import ec.edu.espe.samc.controller.MongoDBConnectionSingleton;
+import ec.edu.espe.samc.controller.MongoDBManager;
 import ec.edu.espe.samc.model.Counter;
 import ec.edu.espe.samc.model.MenuItem;
 import ec.edu.espe.samc.model.Order;
@@ -40,7 +40,7 @@ public class FrmMenuOrder extends javax.swing.JFrame {
 
     //CARGAR DATOS DE MONGO
     private void loadDataMongoDB() {
-        MongoClient client = MongoDBConnectionSingleton.getInstance().getMongoClient();
+        MongoClient client = MongoDBManager.getInstance().getMongoClient();
         if (client == null) {
             JOptionPane.showMessageDialog(this, "No se pudo conectar a MongoDB", "Error", JOptionPane.ERROR_MESSAGE);
             return;
@@ -80,7 +80,7 @@ public class FrmMenuOrder extends javax.swing.JFrame {
 
     //CARGAR NOMBRES DE PLATILLOS EN COMBO BOX
     private void loadNamesInComboBox() {
-        MongoClient client = MongoDBConnectionSingleton.getInstance().getMongoClient();
+        MongoClient client = MongoDBManager.getInstance().getMongoClient();
 
         if (client == null) {
             JOptionPane.showMessageDialog(this, "No se pudo conectar a MongoDB", "Error", JOptionPane.ERROR_MESSAGE);
@@ -312,7 +312,7 @@ public class FrmMenuOrder extends javax.swing.JFrame {
         int quantity = (int) spQuantity.getValue();
 
         if (dishName != null && quantity > 0) {
-            MongoDBConnectionSingleton mongoDBConnection = MongoDBConnectionSingleton.getInstance();
+            MongoDBManager mongoDBConnection = MongoDBManager.getInstance();
             MongoDatabase database = mongoDBConnection.getDatabase();
 
             if (database == null) {
@@ -398,7 +398,7 @@ public class FrmMenuOrder extends javax.swing.JFrame {
 
             int customerId = Integer.parseInt(customerIdStr);
 
-            MongoDBConnectionSingleton mongoDBConnection = MongoDBConnectionSingleton.getInstance();
+            MongoDBManager mongoDBConnection = MongoDBManager.getInstance();
             MongoDatabase database = mongoDBConnection.getDatabase();
 
             for (Map.Entry<String, Integer> entry : orderedItems.entrySet()) {

@@ -11,22 +11,22 @@ import org.bson.codecs.pojo.PojoCodecProvider;
 import static org.bson.codecs.configuration.CodecRegistries.fromProviders;
 import static org.bson.codecs.configuration.CodecRegistries.fromRegistries;
 
-public class MongoDBConnectionSingleton implements DatabaseConnection {
-    private static MongoDBConnectionSingleton instance;
+public class MongoDBManager implements DatabaseConnection {
+    private static MongoDBManager instance;
     private MongoClient mongoClient;
     private MongoDatabase database;
     private static final String DATABASE_NAME = "bd_restaurante";
 
-    private MongoDBConnectionSingleton() {
+    private MongoDBManager() {
         // Configuración de CodecRegistry para POJOs
         MongoClientSettings settings = MongoDBConfig.getMongoClientSettings();
         mongoClient = MongoClients.create(settings);
         database = mongoClient.getDatabase(DATABASE_NAME);
     }
 
-    public static synchronized MongoDBConnectionSingleton getInstance() {
+    public static synchronized MongoDBManager getInstance() {
         if (instance == null) {
-            instance = new MongoDBConnectionSingleton();
+            instance = new MongoDBManager();
         }
         return instance;
     }
@@ -50,7 +50,7 @@ public class MongoDBConnectionSingleton implements DatabaseConnection {
     }
 
     public static void main(String[] args) {
-        DatabaseConnection dbConnection = MongoDBConnectionSingleton.getInstance();
+        DatabaseConnection dbConnection = MongoDBManager.getInstance();
         MongoDatabase database = dbConnection.getDatabase();
         if (database != null) {
             System.out.println("Base de datos seleccionada: " + database.getName());

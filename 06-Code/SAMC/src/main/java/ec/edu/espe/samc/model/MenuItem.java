@@ -4,7 +4,7 @@ import com.mongodb.client.FindIterable;
 import com.mongodb.client.MongoClient;
 import com.mongodb.client.MongoCollection;
 import com.mongodb.client.MongoDatabase;
-import ec.edu.espe.samc.controller.MongoDBConnectionSingleton;
+import ec.edu.espe.samc.controller.MongoDBManager;
 import java.util.ArrayList;
 import java.util.List;
 import org.bson.Document;
@@ -13,7 +13,7 @@ public class MenuItem {
 
     public static List<MenuItem> loadMenuItems() {
         List<MenuItem> menuItems = new ArrayList<>();
-        MongoClient client = MongoDBConnectionSingleton.getInstance().getMongoClient();
+        MongoClient client = MongoDBManager.getInstance().getMongoClient();
         if (client == null) {
             return menuItems;
         }

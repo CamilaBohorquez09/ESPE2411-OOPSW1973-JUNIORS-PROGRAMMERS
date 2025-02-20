@@ -7,7 +7,7 @@ package ec.edu.espe.samc.view;
 import com.mongodb.client.FindIterable;
 import com.mongodb.client.MongoCollection;
 import com.mongodb.client.MongoDatabase;
-import ec.edu.espe.samc.controller.MongoDBConnectionSingleton;
+import ec.edu.espe.samc.controller.MongoDBManager;
 import ec.edu.espe.samc.model.Bill;
 import ec.edu.espe.samc.model.Counter;
 import ec.edu.espe.samc.model.Customer;
@@ -136,7 +136,7 @@ public class FrmPrintMenu extends javax.swing.JFrame {
             return;
         }
 
-        MongoDBConnectionSingleton mongoDBConnection = MongoDBConnectionSingleton.getInstance();
+        MongoDBManager mongoDBConnection = MongoDBManager.getInstance();
         MongoDatabase database = mongoDBConnection.getDatabase();
 
         if (database == null) {
