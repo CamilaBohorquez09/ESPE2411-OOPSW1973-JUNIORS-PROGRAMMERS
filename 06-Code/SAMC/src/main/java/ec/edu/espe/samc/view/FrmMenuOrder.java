@@ -16,6 +16,7 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 import org.bson.Document;
@@ -131,6 +132,7 @@ public class FrmMenuOrder extends javax.swing.JFrame {
         txtPhoneNumber = new javax.swing.JTextField();
         txtAddress = new javax.swing.JTextField();
         btnOrder = new javax.swing.JToggleButton();
+        btnMxWindow = new javax.swing.JToggleButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -211,6 +213,13 @@ public class FrmMenuOrder extends javax.swing.JFrame {
             }
         });
 
+        btnMxWindow.setText("Maximizar ventana");
+        btnMxWindow.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnMxWindowActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
@@ -243,6 +252,8 @@ public class FrmMenuOrder extends javax.swing.JFrame {
                             .addComponent(txtIdCard)))
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addComponent(btnGoBack, javax.swing.GroupLayout.PREFERRED_SIZE, 110, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(31, 31, 31)
+                        .addComponent(btnMxWindow)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(btnOrder)))
                 .addContainerGap())
@@ -288,7 +299,8 @@ public class FrmMenuOrder extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnGoBack)
-                    .addComponent(btnOrder))
+                    .addComponent(btnOrder)
+                    .addComponent(btnMxWindow))
                 .addGap(0, 7, Short.MAX_VALUE))
         );
 
@@ -508,6 +520,10 @@ public class FrmMenuOrder extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_txtAddressActionPerformed
 
+    private void btnMxWindowActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnMxWindowActionPerformed
+        setExtendedState(JFrame.MAXIMIZED_BOTH);
+    }//GEN-LAST:event_btnMxWindowActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -547,6 +563,7 @@ public class FrmMenuOrder extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JToggleButton btnAdd;
     private javax.swing.JToggleButton btnGoBack;
+    private javax.swing.JToggleButton btnMxWindow;
     private javax.swing.JToggleButton btnOrder;
     private javax.swing.JComboBox<String> cbDish;
     private javax.swing.JLabel jLabel1;
