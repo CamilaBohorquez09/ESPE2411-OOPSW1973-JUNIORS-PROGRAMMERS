@@ -6,6 +6,7 @@ import com.mongodb.client.MongoCollection;
 import com.mongodb.client.MongoDatabase;
 import ec.edu.espe.samc.controller.MongoDBManager;
 import ec.edu.espe.samc.controller.AccountController;
+import ec.edu.espe.samc.controller.TextBoxValidation;
 import javax.swing.JOptionPane;
 import org.bson.Document;
 
@@ -98,6 +99,9 @@ public class FrmAdminLogin extends javax.swing.JFrame {
     }//GEN-LAST:event_txtPasswordActionPerformed
 
     private void btnAccessActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAccessActionPerformed
+          if (!TextBoxValidation.validateFields(this, txtPassword)) {
+              return;
+          }
         MongoClient client = MongoDBManager.getInstance().getMongoClient();
         char[] inputPassword = txtPassword.getPassword();
         String inputPasswordString = new String(inputPassword);
