@@ -10,6 +10,7 @@ import javax.swing.JOptionPane;
 import org.bson.Document;
 
 public class FrmDishUpdate extends javax.swing.JFrame {
+    private boolean isComboBoxLoaded = false;
 
     public FrmDishUpdate() {
         initComponents();
@@ -33,6 +34,7 @@ public class FrmDishUpdate extends javax.swing.JFrame {
                 jComboBox1.addItem(name);
             }
         }
+        isComboBoxLoaded = true;
     }
     
     
@@ -205,7 +207,7 @@ public class FrmDishUpdate extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jComboBox1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBox1ActionPerformed
-
+    if (!isComboBoxLoaded) return;
     String selectedDish = (String) jComboBox1.getSelectedItem();
     
     if (selectedDish != null) {
