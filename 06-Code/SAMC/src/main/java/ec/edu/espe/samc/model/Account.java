@@ -6,10 +6,8 @@ public class Account {
     private String userName;
     private String password;
 
-    // Instancia única de la clase
     private static Account instance;
 
-    // Constructor privado
     private Account(String name, String lastName, String username, String password) {
         this.name = name;
         this.lastName = lastName;
@@ -17,7 +15,6 @@ public class Account {
         this.password = password;
     }
 
-    // Método estático para obtener la instancia única de la clase
     public static Account getInstance(String name, String lastName, String username, String password) {
         if (instance == null) {
             instance = new Account(name, lastName, username, password);
@@ -25,7 +22,6 @@ public class Account {
         return instance;
     }
 
-    // Getters y setters
     public String getName() {
         return name;
     }

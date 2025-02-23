@@ -21,7 +21,7 @@ public class ManageFileJson {
             return;
         }
 
-        MongoCollection<Document> collection = database.getCollection("tu_coleccion"); // Cambiar el nombre de la colección
+        MongoCollection<Document> collection = database.getCollection("tu_coleccion");
         Gson gson = new GsonBuilder().setPrettyPrinting().create();
 
         try (FileWriter writer = new FileWriter(FILE_PATH);

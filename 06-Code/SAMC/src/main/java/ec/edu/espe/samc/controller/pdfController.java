@@ -7,7 +7,7 @@ import com.itextpdf.text.pdf.PdfWriter;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 
-public class pdfController {
+public class PDFController {
     public static void createPDF(String fileName, String textContent) {
         Document document = new Document();
         try {

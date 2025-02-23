@@ -1,7 +1,4 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
- */
+
 package ec.edu.espe.samc.view;
 
 import com.mongodb.client.MongoClient;
@@ -11,10 +8,6 @@ import ec.edu.espe.samc.controller.MongoDBManager;
 import javax.swing.JOptionPane;
 import org.bson.Document;
 
-/**
- *
- * @author Ismael Travez, The Java Bandits, DCCO-ESPE
- */
 public class FrmMakeComent extends javax.swing.JFrame {
 
     /**

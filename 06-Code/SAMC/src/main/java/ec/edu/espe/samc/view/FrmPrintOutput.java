@@ -1,10 +1,7 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
- */
+
 package ec.edu.espe.samc.view;
 
-import ec.edu.espe.samc.controller.pdfController;
+import ec.edu.espe.samc.controller.PDFController;
 import javax.swing.JFrame;
 
 /**
@@ -22,7 +19,7 @@ public class FrmPrintOutput extends javax.swing.JFrame {
         this.output = output;
         initComponents();
         txtPrintOut.setText(output);
-        pdfController.createPDF("print.pdf", output);
+        PDFController.createPDF("print.pdf", output);
         this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
     }
 

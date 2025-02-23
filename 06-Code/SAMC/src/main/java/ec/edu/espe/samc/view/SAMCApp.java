@@ -1,6 +1,4 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- */
+
 package ec.edu.espe.samc.view;
 
 import com.mongodb.client.MongoDatabase;
@@ -25,10 +23,9 @@ public class SAMCApp {
     }
 
     public static void main(String[] args) {
-        //Inicializar la conexión a la base de datos
+ 
         initializeDatabaseConnection();
 
-        //PRIMERA VENTANA INICIAR SESION (LOGIN)
         new FrmLogin().setVisible(true);
     }
 }
