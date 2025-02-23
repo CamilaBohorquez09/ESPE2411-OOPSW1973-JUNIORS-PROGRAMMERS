@@ -5,6 +5,7 @@ import com.mongodb.client.MongoClient;
 import com.mongodb.client.MongoCollection;
 import com.mongodb.client.MongoDatabase;
 import ec.edu.espe.samc.controller.MongoDBManager;
+import ec.edu.espe.samc.controller.TextBoxValidation;
 import javax.swing.JOptionPane;
 import org.bson.Document;
 
@@ -105,6 +106,9 @@ public class FrmMakeComent extends javax.swing.JFrame {
     }//GEN-LAST:event_btnGoBackActionPerformed
 
     private void btnSendActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSendActionPerformed
+        if (!TextBoxValidation.validateFields(this, txtComment)) {
+            return;
+        }
         String comment = txtComment.getText();
 
         if (comment == null || comment.trim().isEmpty()) {

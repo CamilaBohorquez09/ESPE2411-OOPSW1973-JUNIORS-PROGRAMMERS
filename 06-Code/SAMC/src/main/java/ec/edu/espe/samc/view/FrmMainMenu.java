@@ -102,7 +102,7 @@ public class FrmMainMenu extends javax.swing.JFrame {
         });
         jMenu1.add(mitmShowLocation);
 
-        mitmLogOut.setText("Cerrar Seción");
+        mitmLogOut.setText("Cerrar Sesión");
         mitmLogOut.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 mitmLogOutActionPerformed(evt);
