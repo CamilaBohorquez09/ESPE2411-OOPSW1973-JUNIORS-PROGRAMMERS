@@ -6,8 +6,8 @@ import com.mongodb.client.MongoCollection;
 import com.mongodb.client.MongoDatabase;
 import ec.edu.espe.samc.controller.AccountController;
 import ec.edu.espe.samc.controller.MongoDBManager;
+import ec.edu.espe.samc.controller.TextBoxValidation;
 import ec.edu.espe.samc.model.Account;
-import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 import org.bson.Document;
 
@@ -116,6 +116,9 @@ public class FrmLogin extends javax.swing.JFrame {
 
     private void btLoginActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btLoginActionPerformed
 
+      if (!TextBoxValidation.validateFields(this, txtUserName, txtPassword)) {
+          return;
+      }
         char[] inputPassword = txtPassword.getPassword();
         String inputPasswordString = new String(inputPassword);
 

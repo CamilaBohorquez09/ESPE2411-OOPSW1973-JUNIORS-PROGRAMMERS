@@ -5,6 +5,7 @@ import com.mongodb.client.MongoClient;
 import com.mongodb.client.MongoCollection;
 import com.mongodb.client.MongoDatabase;
 import ec.edu.espe.samc.controller.MongoDBManager;
+import ec.edu.espe.samc.controller.TextBoxValidation;
 import javax.swing.JOptionPane;
 import org.bson.Document;
 
@@ -168,7 +169,9 @@ public class FrmAddInventory extends javax.swing.JFrame {
         String description = jTextField2.getText();
         String priceText = jTextField3.getText();
         String inventoryText = jTextField4.getText();
-
+         if (!TextBoxValidation.validateFields(this, jTextField1, jTextField2,jTextField3, jTextField4 )) {
+          return;
+      }
         if (name.isEmpty() || description.isEmpty() || priceText.isEmpty() || inventoryText.isEmpty()) {
             JOptionPane.showMessageDialog(this, "Todos los campos son obligatorios.", "Advertencia", JOptionPane.WARNING_MESSAGE);
             return;
