@@ -4,16 +4,17 @@ import com.mongodb.client.MongoCollection;
 import com.mongodb.client.MongoDatabase;
 import ec.edu.espe.samc.controller.AccountController;
 import ec.edu.espe.samc.controller.MongoDBManager;
+import ec.edu.espe.samc.controller.TextBoxValidation;
 import ec.edu.espe.samc.model.Account;
 import javax.swing.JOptionPane;
 import org.bson.Document;
 
-public class FrmSignIn extends javax.swing.JFrame {
+public class FrmSignUp extends javax.swing.JFrame {
 
     /**
      * Creates new form FrmSignIn
      */
-    public FrmSignIn() {
+    public FrmSignUp() {
         initComponents();
     }
 
@@ -135,7 +136,9 @@ public class FrmSignIn extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btCreateAccountActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btCreateAccountActionPerformed
-
+        if (!TextBoxValidation.validateFields(this, txtName,txtPassword,txtLastName, txtUserName  )) {
+              return;
+        }
         char[] inputPassword = txtPassword.getPassword();
         String inputPasswordString = new String(inputPassword);
 
@@ -198,20 +201,21 @@ public class FrmSignIn extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(FrmSignIn.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(FrmSignUp.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(FrmSignIn.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(FrmSignUp.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(FrmSignIn.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(FrmSignUp.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(FrmSignIn.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(FrmSignUp.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
+        //</editor-fold>
         //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new FrmSignIn().setVisible(true);
+                new FrmSignUp().setVisible(true);
             }
         });
     }

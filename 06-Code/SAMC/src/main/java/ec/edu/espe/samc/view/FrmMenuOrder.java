@@ -377,7 +377,6 @@ public class FrmMenuOrder extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_txtNameActionPerformed
 
-    //REVISA LOS DATOS DEL CLIENTE, AÑADE TODOS LOS PEDIDOS AL CLIENTE, GENERA LA ORDEN Y RESTA EL INVENTARIO, ACTUALIZA EL MONGO
     private void btnOrderActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnOrderActionPerformed
 
         String customerName = txtName.getText().trim();
@@ -387,7 +386,7 @@ public class FrmMenuOrder extends javax.swing.JFrame {
         String customerAddress = txtAddress.getText().trim();
 
         if (customerName.isEmpty() || customerIdStr.isEmpty() || customerEmail.isEmpty() || customerContactNumber.isEmpty() || customerAddress.isEmpty()) {
-            JOptionPane.showMessageDialog(this, "Completa todos los campos del cliente", "Error", JOptionPane.ERROR_MESSAGE);
+            JOptionPane.showMessageDialog(this, "Es necesario llenar todos los campos para realizar la orden", "Error", JOptionPane.ERROR_MESSAGE);
             return;
         }
 
