@@ -11,6 +11,7 @@ import ec.edu.espe.samc.model.Account;
 import javax.swing.JOptionPane;
 import org.bson.Document;
 
+
 public class FrmLogin extends javax.swing.JFrame {
     
     Account foundAccount;

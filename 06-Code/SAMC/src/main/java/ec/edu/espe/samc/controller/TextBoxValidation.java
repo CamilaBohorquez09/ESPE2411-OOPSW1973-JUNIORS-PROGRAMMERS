@@ -6,7 +6,6 @@ import javax.swing.JPasswordField;
 import javax.swing.JTextField;
 
 public class TextBoxValidation {
-
     /**
      * Validates that no input field is empty.
      * @param parent The JFrame to center the error message on
