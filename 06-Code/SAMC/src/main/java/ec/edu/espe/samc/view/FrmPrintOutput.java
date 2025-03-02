@@ -1,7 +1,7 @@
 
 package ec.edu.espe.samc.view;
 
-import ec.edu.espe.samc.controller.PDFController;
+import ec.edu.espe.samc.controller.pdfController;
 import javax.swing.JFrame;
 
 /**
@@ -19,7 +19,7 @@ public class FrmPrintOutput extends javax.swing.JFrame {
         this.output = output;
         initComponents();
         txtPrintOut.setText(output);
-        PDFController.createPDF("print.pdf", output);
+        pdfController.createPDF("print.pdf", output);
         this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
     }
 
