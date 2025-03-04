@@ -85,11 +85,11 @@ public class FrmAdminMenu extends javax.swing.JFrame {
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(69, 69, 69)
+                .addGap(57, 57, 57)
                 .addComponent(jLabel5)
                 .addGap(18, 18, 18)
                 .addComponent(MenuAdministrator)
-                .addGap(36, 36, 36)
+                .addGap(48, 48, 48)
                 .addComponent(btnSignOut)
                 .addGap(18, 18, 18)
                 .addComponent(btnExit)
