@@ -20,7 +20,7 @@ public class FrmAdminMenu extends javax.swing.JFrame {
     private void initComponents() {
 
         jPanel1 = new javax.swing.JPanel();
-        jLabel1 = new javax.swing.JLabel();
+        MenuAdministrator = new javax.swing.JLabel();
         btnSignOut = new javax.swing.JToggleButton();
         btnExit = new javax.swing.JToggleButton();
         jLabel5 = new javax.swing.JLabel();
@@ -36,9 +36,9 @@ public class FrmAdminMenu extends javax.swing.JFrame {
 
         jPanel1.setBackground(new java.awt.Color(0, 153, 153));
 
-        jLabel1.setFont(new java.awt.Font("Segoe UI", 0, 36)); // NOI18N
-        jLabel1.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel1.setText("Menu Administrador");
+        MenuAdministrator.setFont(new java.awt.Font("Segoe UI", 0, 36)); // NOI18N
+        MenuAdministrator.setForeground(new java.awt.Color(255, 255, 255));
+        MenuAdministrator.setText("Menu Administrador");
 
         btnSignOut.setBackground(new java.awt.Color(0, 51, 51));
         btnSignOut.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
@@ -76,7 +76,7 @@ public class FrmAdminMenu extends javax.swing.JFrame {
                             .addComponent(btnSignOut)
                             .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                                 .addComponent(jLabel5)
-                                .addComponent(jLabel1))))
+                                .addComponent(MenuAdministrator))))
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGap(125, 125, 125)
                         .addComponent(btnExit)))
@@ -88,7 +88,7 @@ public class FrmAdminMenu extends javax.swing.JFrame {
                 .addGap(69, 69, 69)
                 .addComponent(jLabel5)
                 .addGap(18, 18, 18)
-                .addComponent(jLabel1)
+                .addComponent(MenuAdministrator)
                 .addGap(36, 36, 36)
                 .addComponent(btnSignOut)
                 .addGap(18, 18, 18)
@@ -208,6 +208,7 @@ public class FrmAdminMenu extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JLabel MenuAdministrator;
     private javax.swing.JMenu Modify;
     private javax.swing.JMenu Show;
     private javax.swing.JToggleButton btnExit;
@@ -215,7 +216,6 @@ public class FrmAdminMenu extends javax.swing.JFrame {
     private javax.swing.JMenuItem btnPrint;
     private javax.swing.JMenuItem btnShowOrders;
     private javax.swing.JToggleButton btnSignOut;
-    private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JMenuBar jMenuBar1;
     private javax.swing.JPanel jPanel1;
