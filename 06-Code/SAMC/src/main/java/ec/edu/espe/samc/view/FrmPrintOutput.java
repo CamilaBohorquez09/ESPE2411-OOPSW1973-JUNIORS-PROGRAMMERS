@@ -1,8 +1,9 @@
-
 package ec.edu.espe.samc.view;
 
 import ec.edu.espe.samc.controller.pdfController;
+import javax.swing.JFileChooser;
 import javax.swing.JFrame;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -19,7 +20,6 @@ public class FrmPrintOutput extends javax.swing.JFrame {
         this.output = output;
         initComponents();
         txtPrintOut.setText(output);
-        pdfController.createPDF("print.pdf", output);
         this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
     }
 
@@ -40,6 +40,7 @@ public class FrmPrintOutput extends javax.swing.JFrame {
         txtPrintOut = new javax.swing.JTextArea();
         btnMxWindow = new javax.swing.JToggleButton();
         btnMinWindow = new javax.swing.JToggleButton();
+        btnSavePDF = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setBackground(new java.awt.Color(0, 153, 153));
@@ -81,6 +82,13 @@ public class FrmPrintOutput extends javax.swing.JFrame {
             }
         });
 
+        btnSavePDF.setText("Guardar como PDF");
+        btnSavePDF.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnSavePDFActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
@@ -96,6 +104,8 @@ public class FrmPrintOutput extends javax.swing.JFrame {
                             .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                             .addComponent(btnMinWindow)
                             .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(btnSavePDF)
+                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                             .addComponent(btnGoBack))
                         .addComponent(jScrollPane1, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 400, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap(39, Short.MAX_VALUE))
@@ -113,7 +123,8 @@ public class FrmPrintOutput extends javax.swing.JFrame {
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnGoBack)
                     .addComponent(btnMxWindow)
-                    .addComponent(btnMinWindow))
+                    .addComponent(btnMinWindow)
+                    .addComponent(btnSavePDF))
                 .addGap(10, 10, 10))
         );
 
@@ -145,6 +156,21 @@ public class FrmPrintOutput extends javax.swing.JFrame {
     private void btnMinWindowActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnMinWindowActionPerformed
         setExtendedState(JFrame.NORMAL);
     }//GEN-LAST:event_btnMinWindowActionPerformed
+
+    private void btnSavePDFActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSavePDFActionPerformed
+        JFileChooser fileChooser = new JFileChooser();
+        fileChooser.setDialogTitle("Guardar como PDF");
+        int userSelection = fileChooser.showSaveDialog(this);
+
+        if (userSelection == JFileChooser.APPROVE_OPTION) {
+            String filePath = fileChooser.getSelectedFile().getAbsolutePath();
+            if (!filePath.endsWith(".pdf")) {
+                filePath += ".pdf";
+            }
+            pdfController.createPDF(filePath, txtPrintOut.getText());
+            JOptionPane.showMessageDialog(this, "PDF guardado exitosamente en " + filePath);
+        }
+    }//GEN-LAST:event_btnSavePDFActionPerformed
 
     /**
      * @param args the command line arguments
@@ -186,6 +212,7 @@ public class FrmPrintOutput extends javax.swing.JFrame {
     private javax.swing.JButton btnGoBack;
     private javax.swing.JToggleButton btnMinWindow;
     private javax.swing.JToggleButton btnMxWindow;
+    private javax.swing.JButton btnSavePDF;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JPanel jPanel1;
