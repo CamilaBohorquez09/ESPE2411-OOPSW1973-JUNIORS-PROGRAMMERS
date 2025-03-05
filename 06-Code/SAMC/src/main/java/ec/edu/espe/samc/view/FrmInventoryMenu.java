@@ -1,19 +1,16 @@
 
 package ec.edu.espe.samc.view;
 
-/**
- *
- * @author Alan Arias
- */
+import ec.edu.espe.samc.view.FrmAdminMenu;
+
+
 public class FrmInventoryMenu extends javax.swing.JFrame {
 
-    /**
-     * Creates new form FrmInventoryMenu1
-     */
-   public FrmInventoryMenu() {
+    public FrmInventoryMenu() {
         initComponents();
         this.setLocationRelativeTo(null);
     }
+
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -23,25 +20,14 @@ public class FrmInventoryMenu extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jMenuBar2 = new javax.swing.JMenuBar();
-        jMenu3 = new javax.swing.JMenu();
-        jMenu4 = new javax.swing.JMenu();
         jPanel1 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
+        btnAddStock = new javax.swing.JButton();
+        btnAddDishes = new javax.swing.JButton();
+        btnEditDishes = new javax.swing.JButton();
         btnGoBack = new javax.swing.JButton();
-        jLabel5 = new javax.swing.JLabel();
-        jMenuBar1 = new javax.swing.JMenuBar();
-        add = new javax.swing.JMenu();
-        btnAddStock = new javax.swing.JMenuItem();
-        btnAddDishes = new javax.swing.JMenuItem();
-        jMenu2 = new javax.swing.JMenu();
-        btnEditDishes = new javax.swing.JMenuItem();
-
-        jMenu3.setText("File");
-        jMenuBar2.add(jMenu3);
-
-        jMenu4.setText("Edit");
-        jMenuBar2.add(jMenu4);
+        btnAddDishes1 = new javax.swing.JButton();
+        btnEditDishes1 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -50,6 +36,36 @@ public class FrmInventoryMenu extends javax.swing.JFrame {
         jLabel1.setFont(new java.awt.Font("Segoe UI", 1, 36)); // NOI18N
         jLabel1.setForeground(new java.awt.Color(255, 255, 255));
         jLabel1.setText("Menu Inventario");
+
+        btnAddStock.setBackground(new java.awt.Color(0, 51, 51));
+        btnAddStock.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        btnAddStock.setForeground(new java.awt.Color(255, 255, 255));
+        btnAddStock.setText("Agregar Stock");
+        btnAddStock.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnAddStockActionPerformed(evt);
+            }
+        });
+
+        btnAddDishes.setBackground(new java.awt.Color(0, 51, 51));
+        btnAddDishes.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        btnAddDishes.setForeground(new java.awt.Color(255, 255, 255));
+        btnAddDishes.setText("Añadir Platillos");
+        btnAddDishes.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnAddDishesActionPerformed(evt);
+            }
+        });
+
+        btnEditDishes.setBackground(new java.awt.Color(0, 51, 51));
+        btnEditDishes.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        btnEditDishes.setForeground(new java.awt.Color(255, 255, 255));
+        btnEditDishes.setText("Editar Platillos");
+        btnEditDishes.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnEditDishesActionPerformed(evt);
+            }
+        });
 
         btnGoBack.setBackground(new java.awt.Color(0, 51, 51));
         btnGoBack.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
@@ -61,70 +77,62 @@ public class FrmInventoryMenu extends javax.swing.JFrame {
             }
         });
 
-        jLabel5.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
-        jLabel5.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel5.setText("AGACHADITOS DE LA JAVI");
+        btnAddDishes1.setBackground(new java.awt.Color(0, 51, 51));
+        btnAddDishes1.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        btnAddDishes1.setForeground(new java.awt.Color(255, 255, 255));
+        btnAddDishes1.setText("Añadir Bebidas");
+        btnAddDishes1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnAddDishes1ActionPerformed(evt);
+            }
+        });
+
+        btnEditDishes1.setBackground(new java.awt.Color(0, 51, 51));
+        btnEditDishes1.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        btnEditDishes1.setForeground(new java.awt.Color(255, 255, 255));
+        btnEditDishes1.setText("Editar Bebidas");
+        btnEditDishes1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnEditDishes1ActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                .addContainerGap(96, Short.MAX_VALUE)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(btnGoBack, javax.swing.GroupLayout.PREFERRED_SIZE, 300, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                        .addComponent(jLabel5)
-                        .addGroup(jPanel1Layout.createSequentialGroup()
-                            .addComponent(jLabel1)
-                            .addGap(16, 16, 16))))
-                .addGap(96, 96, 96))
+                .addContainerGap(109, Short.MAX_VALUE)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addComponent(btnAddStock, javax.swing.GroupLayout.PREFERRED_SIZE, 300, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(btnAddDishes, javax.swing.GroupLayout.PREFERRED_SIZE, 300, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(btnEditDishes, javax.swing.GroupLayout.PREFERRED_SIZE, 300, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(btnGoBack, javax.swing.GroupLayout.PREFERRED_SIZE, 300, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(btnAddDishes1, javax.swing.GroupLayout.PREFERRED_SIZE, 300, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(btnEditDishes1, javax.swing.GroupLayout.PREFERRED_SIZE, 300, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jLabel1))
+                .addGap(101, 101, 101))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(50, 50, 50)
-                .addComponent(jLabel5)
-                .addGap(62, 62, 62)
+                .addGap(70, 70, 70)
                 .addComponent(jLabel1)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 78, Short.MAX_VALUE)
+                .addGap(18, 18, 18)
+                .addComponent(btnAddStock)
+                .addGap(18, 18, 18)
+                .addComponent(btnAddDishes)
+                .addGap(18, 18, 18)
+                .addComponent(btnEditDishes)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(btnAddDishes1)
+                .addGap(18, 18, 18)
+                .addComponent(btnEditDishes1)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(btnGoBack)
-                .addGap(39, 39, 39))
+                .addContainerGap(26, Short.MAX_VALUE))
         );
-
-        add.setText("Añadir");
-
-        btnAddStock.setText("Agregar Stock");
-        btnAddStock.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnAddStockActionPerformed(evt);
-            }
-        });
-        add.add(btnAddStock);
-
-        btnAddDishes.setText("Añadir Platillos");
-        btnAddDishes.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnAddDishesActionPerformed(evt);
-            }
-        });
-        add.add(btnAddDishes);
-
-        jMenuBar1.add(add);
-
-        jMenu2.setText("Editar");
-
-        btnEditDishes.setText("Editar Platillos");
-        btnEditDishes.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnEditDishesActionPerformed(evt);
-            }
-        });
-        jMenu2.add(btnEditDishes);
-
-        jMenuBar1.add(jMenu2);
-
-        setJMenuBar(jMenuBar1);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -140,13 +148,8 @@ public class FrmInventoryMenu extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void btnGoBackActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnGoBackActionPerformed
-        new FrmAdminMenu().setVisible(true);
-        dispose();
-    }//GEN-LAST:event_btnGoBackActionPerformed
-
     private void btnAddStockActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAddStockActionPerformed
-         new FrmUpdateInventory().setVisible(true);
+        new FrmUpdateInventory().setVisible(true);
         dispose();
     }//GEN-LAST:event_btnAddStockActionPerformed
 
@@ -159,6 +162,23 @@ public class FrmInventoryMenu extends javax.swing.JFrame {
         new FrmDishUpdate().setVisible(true);
         dispose();
     }//GEN-LAST:event_btnEditDishesActionPerformed
+
+    private void btnGoBackActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnGoBackActionPerformed
+        new FrmAdminMenu().setVisible(true);
+        dispose();
+    }//GEN-LAST:event_btnGoBackActionPerformed
+
+    private void btnAddDishes1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAddDishes1ActionPerformed
+        // TODO add your handling code here:
+        new FrmAddDrinks().setVisible(true);
+        dispose();
+    }//GEN-LAST:event_btnAddDishes1ActionPerformed
+
+    private void btnEditDishes1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEditDishes1ActionPerformed
+        // TODO add your handling code here:
+        new FrmDrinksUpdate1().setVisible(true);
+        dispose();
+    }//GEN-LAST:event_btnEditDishes1ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -187,6 +207,12 @@ public class FrmInventoryMenu extends javax.swing.JFrame {
         }
         //</editor-fold>
         //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
@@ -197,18 +223,13 @@ public class FrmInventoryMenu extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JMenu add;
-    private javax.swing.JMenuItem btnAddDishes;
-    private javax.swing.JMenuItem btnAddStock;
-    private javax.swing.JMenuItem btnEditDishes;
+    private javax.swing.JButton btnAddDishes;
+    private javax.swing.JButton btnAddDishes1;
+    private javax.swing.JButton btnAddStock;
+    private javax.swing.JButton btnEditDishes;
+    private javax.swing.JButton btnEditDishes1;
     private javax.swing.JButton btnGoBack;
     private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel5;
-    private javax.swing.JMenu jMenu2;
-    private javax.swing.JMenu jMenu3;
-    private javax.swing.JMenu jMenu4;
-    private javax.swing.JMenuBar jMenuBar1;
-    private javax.swing.JMenuBar jMenuBar2;
     private javax.swing.JPanel jPanel1;
     // End of variables declaration//GEN-END:variables
 }

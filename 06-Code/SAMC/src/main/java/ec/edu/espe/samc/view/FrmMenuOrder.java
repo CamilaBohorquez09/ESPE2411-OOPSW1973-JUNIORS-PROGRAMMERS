@@ -1,4 +1,3 @@
-
 package ec.edu.espe.samc.view;
 
 import com.mongodb.client.FindIterable;
@@ -450,13 +449,55 @@ public class FrmMenuOrder extends javax.swing.JFrame {
                 }
             }
 
+            // Prompt to ask if the user wants to add a drink
+            int addDrinkOption = JOptionPane.showConfirmDialog(this, "¿Desea agregar una bebida a su orden?", "Agregar Bebida", JOptionPane.YES_NO_OPTION);
+            if (addDrinkOption == JOptionPane.YES_OPTION) {
+                MongoClient client = MongoDBManager.getInstance().getMongoClient();
+                if (client == null) {
+                    JOptionPane.showMessageDialog(this, "No se pudo conectar a MongoDB", "Error", JOptionPane.ERROR_MESSAGE);
+                    return;
+                }
+                MongoCollection<Document> drinkCollection = database.getCollection("bebidas");
+                FindIterable<Document> drinkDocuments = drinkCollection.find();
+
+                List<String> drinkNames = new ArrayList<>();
+                for (Document doc : drinkDocuments) {
+                    String drinkName = doc.getString("Nombre");
+                    if (drinkName != null) {
+                        drinkNames.add(drinkName);
+                    }
+                }
+
+                String[] drinkArray = drinkNames.toArray(new String[0]);
+                String selectedDrink = (String) JOptionPane.showInputDialog(this, "Seleccione una bebida:", "Bebidas", JOptionPane.QUESTION_MESSAGE, null, drinkArray, drinkArray[0]);
+
+                if (selectedDrink != null) {
+                    int drinkQuantity = Integer.parseInt(JOptionPane.showInputDialog(this, "Ingrese la cantidad de " + selectedDrink + ":"));
+                    Document drink = drinkCollection.find(new Document("Nombre", selectedDrink)).first();
+                    if (drink != null) {
+                        int currentInventory = drink.getInteger("Inventario");
+                        if (currentInventory >= drinkQuantity) {
+                            orderedItems.put(selectedDrink, drinkQuantity);
+                            drinkCollection.updateOne(
+                                new Document("Nombre", selectedDrink),
+                                new Document("$inc", new Document("Inventario", -drinkQuantity))
+                            );
+                        } else {
+                            JOptionPane.showMessageDialog(this, "No hay suficiente inventario para la bebida seleccionada", "Error", JOptionPane.ERROR_MESSAGE);
+                        }
+                    } else {
+                        JOptionPane.showMessageDialog(this, "Bebida no encontrada en la base de datos", "Error", JOptionPane.ERROR_MESSAGE);
+                    }
+                }
+            }
+
             float total = new Counter().calculateTotal(orderedItems, menuItems);
 
             MongoCollection<Document> collection = database.getCollection("ordenes");
 
             Document ordenDoc = new Document();
             ordenDoc.put("nombreCliente", customerName);
-            ordenDoc.put("cedulaCliente", customerId);
+            ordenDoc.put("cedulaCliente", customerIdStr); // Store as string
             ordenDoc.put("correoCliente", customerEmail);
             ordenDoc.put("telefonoCliente", customerContactNumber);
             ordenDoc.put("direccionCliente", customerAddress);

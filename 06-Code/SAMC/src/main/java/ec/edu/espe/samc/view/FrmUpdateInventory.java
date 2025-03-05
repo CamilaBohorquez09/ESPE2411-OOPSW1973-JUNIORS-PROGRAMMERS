@@ -1,4 +1,3 @@
-
 package ec.edu.espe.samc.view;
 
 import com.mongodb.client.FindIterable;
@@ -10,6 +9,13 @@ import javax.swing.event.ListSelectionEvent;
 import javax.swing.event.ListSelectionListener;
 import javax.swing.table.DefaultTableModel;
 import org.bson.Document;
+import com.itextpdf.text.DocumentException;
+import com.itextpdf.text.Paragraph;
+import com.itextpdf.text.pdf.PdfPTable;
+import com.itextpdf.text.pdf.PdfWriter;
+import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
+import javax.swing.JFileChooser;
 
 /**
  *
@@ -36,8 +42,6 @@ public class FrmUpdateInventory extends javax.swing.JFrame {
             return;
         }
 
-        MongoCollection<Document> collection = database.getCollection("comida");
-        FindIterable<Document> documents = collection.find();
         DefaultTableModel model = new DefaultTableModel() {
             @Override
             public boolean isCellEditable(int row, int column) {
@@ -48,12 +52,27 @@ public class FrmUpdateInventory extends javax.swing.JFrame {
         model.addColumn("ID");
         model.addColumn("Nombre");
         model.addColumn("Inventario");
+        model.addColumn("Tipo");
 
-        for (Document doc : documents) {
-            Object[] row = new Object[3];
+        MongoCollection<Document> comidaCollection = database.getCollection("comida");
+        FindIterable<Document> comidaDocuments = comidaCollection.find();
+        for (Document doc : comidaDocuments) {
+            Object[] row = new Object[4];
             row[0] = doc.getInteger("ID").toString();
             row[1] = doc.getString("Nombre");
             row[2] = doc.getInteger("Inventario");
+            row[3] = "Comida";
+            model.addRow(row);
+        }
+
+        MongoCollection<Document> bebidaCollection = database.getCollection("bebida");
+        FindIterable<Document> bebidaDocuments = bebidaCollection.find();
+        for (Document doc : bebidaDocuments) {
+            Object[] row = new Object[4];
+            row[0] = doc.getInteger("ID").toString();
+            row[1] = doc.getString("Nombre");
+            row[2] = doc.getInteger("Inventario");
+            row[3] = "Bebida";
             model.addRow(row);
         }
 
@@ -83,6 +102,7 @@ public class FrmUpdateInventory extends javax.swing.JFrame {
      */
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
+
     private void initComponents() {
 
         jPanel1 = new javax.swing.JPanel();
@@ -93,6 +113,7 @@ public class FrmUpdateInventory extends javax.swing.JFrame {
         jLabel2 = new javax.swing.JLabel();
         btnSave = new javax.swing.JToggleButton();
         btnGoBack = new javax.swing.JToggleButton();
+        btnSavePDF = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -131,6 +152,13 @@ public class FrmUpdateInventory extends javax.swing.JFrame {
             }
         });
 
+        btnSavePDF.setText("Guardar PDF");
+        btnSavePDF.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnSavePDFActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
@@ -154,7 +182,11 @@ public class FrmUpdateInventory extends javax.swing.JFrame {
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(btnGoBack, javax.swing.GroupLayout.PREFERRED_SIZE, 96, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(18, 18, 18))))
+                        .addGap(18, 18, 18))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(btnSavePDF)
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -167,7 +199,9 @@ public class FrmUpdateInventory extends javax.swing.JFrame {
                 .addComponent(txtQuantity, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addComponent(btnSave)
-                .addGap(215, 215, 215)
+                .addGap(18, 18, 18)
+                .addComponent(btnSavePDF)
+                .addGap(177, 177, 177)
                 .addComponent(btnGoBack)
                 .addGap(23, 23, 23))
             .addGroup(jPanel1Layout.createSequentialGroup()
@@ -199,6 +233,7 @@ public class FrmUpdateInventory extends javax.swing.JFrame {
 
         String id = tblInventoryList.getValueAt(selectedRow, 0).toString();
         String newInventoryText = txtQuantity.getText();
+        String tipo = tblInventoryList.getValueAt(selectedRow, 3).toString();
 
         if (newInventoryText.isEmpty()) {
             JOptionPane.showMessageDialog(this, "Por favor, ingresa un valor de inventario.", "Error", JOptionPane.ERROR_MESSAGE);
@@ -216,7 +251,7 @@ public class FrmUpdateInventory extends javax.swing.JFrame {
                 return;
             }
 
-            MongoCollection<Document> collection = database.getCollection("comida");
+            MongoCollection<Document> collection = database.getCollection(tipo.toLowerCase());
 
             Document filter = new Document("ID", Integer.parseInt(id));
             Document update = new Document("$set", new Document("Inventario", newInventory));
@@ -233,6 +268,36 @@ public class FrmUpdateInventory extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(this, "Error al actualizar el inventario: " + e.getMessage(), "Error", JOptionPane.ERROR_MESSAGE);
         }
     }//GEN-LAST:event_btnSaveActionPerformed
+
+    private void btnSavePDFActionPerformed(java.awt.event.ActionEvent evt) {
+        JFileChooser fileChooser = new JFileChooser();
+        fileChooser.setDialogTitle("Guardar PDF");
+        int userSelection = fileChooser.showSaveDialog(this);
+
+        if (userSelection == JFileChooser.APPROVE_OPTION) {
+            java.io.File fileToSave = fileChooser.getSelectedFile();
+            com.itextpdf.text.Document document = new com.itextpdf.text.Document();
+            try {
+                PdfWriter.getInstance(document, new FileOutputStream(fileToSave.getAbsolutePath() + ".pdf"));
+                document.open();
+                PdfPTable table = new PdfPTable(tblInventoryList.getColumnCount());
+                for (int i = 0; i < tblInventoryList.getColumnCount(); i++) {
+                    table.addCell(tblInventoryList.getColumnName(i));
+                }
+                for (int rows = 0; rows < tblInventoryList.getRowCount(); rows++) {
+                    for (int cols = 0; cols < tblInventoryList.getColumnCount(); cols++) {
+                        table.addCell(tblInventoryList.getModel().getValueAt(rows, cols).toString());
+                    }
+                }
+                document.add(new Paragraph("Inventario"));
+                document.add(table);
+                document.close();
+                JOptionPane.showMessageDialog(null, "PDF guardado correctamente.");
+            } catch (DocumentException | FileNotFoundException e) {
+                JOptionPane.showMessageDialog(null, "Error al guardar PDF: " + e.getMessage());
+            }
+        }
+    }
 
     private void btnGoBackActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnGoBackActionPerformed
         new FrmInventoryMenu().setVisible(true);
@@ -277,6 +342,7 @@ public class FrmUpdateInventory extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JToggleButton btnGoBack;
     private javax.swing.JToggleButton btnSave;
+    private javax.swing.JButton btnSavePDF;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JPanel jPanel1;
